@@ -1,9 +1,10 @@
 import { Box, Button, Modal, TextField } from "@mui/material"
 import axios from "axios";
-import { FormEvent, useRef, useState } from "react";
+import { FormEvent, useRef } from "react";
+const apiUrl=import.meta.env.VITE_APP_API_URL ;    // קישור לשרת
 
-const SignUp = ({ setSignUp }: { setSignUp: (signUp: boolean) => void }) => {
-    const [open, setOpen] = useState(false);
+const SignUp = ({ setSignUp, open, setOpen }: { setSignUp: (log: boolean) => void, open: boolean, setOpen: (open: boolean) => void }) => {
+    //const [open, setOpen] = useState(false);
     const userIdRef = useRef<HTMLInputElement>(null);
     const nameRef = useRef<HTMLInputElement>(null);
     const emailRef = useRef<HTMLInputElement>(null);
@@ -13,7 +14,7 @@ const SignUp = ({ setSignUp }: { setSignUp: (signUp: boolean) => void }) => {
         e.preventDefault();
 
         try {
-            const res = await axios.post(`https://localhost:7143/api/User/registerUser`, {
+            const res = await axios.post(`${apiUrl}/api/User/registerUser`, {
                 UserId:userIdRef.current?.value,
                 Name:nameRef.current?.value,
                 Email: emailRef.current?.value,
@@ -46,11 +47,6 @@ const SignUp = ({ setSignUp }: { setSignUp: (signUp: boolean) => void }) => {
     }
     return (<>
         <div style={{position: 'absolute', top: 0, left: 0, marginLeft: '120px', marginTop: '20px' }}>
-
-            <Button variant="outlined" onClick={() => { setOpen(true) }} sx={{borderColor: 'pink', color: 'black', backgroundColor: 'transparent', transition: '0.3s', '&:hover': { backgroundColor: 'transparent', borderColor: 'black', color: 'pink' } }}>
-                Sign Up
-            </Button>
-
             <Modal open={open} onClose={() => { setOpen(false) }}>
                 <Box sx={{ padding: 4, backgroundColor: 'white', width: 300, margin: 'auto', marginTop: 10 }}>
                     <h2>Sign Up</h2>
