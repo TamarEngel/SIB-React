@@ -51,10 +51,13 @@ body{
     flex-direction: row-reverse;
     margin-bottom: 50px;
     margin-top: 50px;
-    margin-left: 200px; 
+    margin-right: 150px; 
+    /* margin-left: 200px; */
 }
 .section:not(.reverse){
-    margin-left: 400px; 
+    margin-right: 50px;
+    margin-left: 70px;
+    /* margin-left: 400px;  */
     margin-bottom: 50px;
     margin-top: 50px;
 }
