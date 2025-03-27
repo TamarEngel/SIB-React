@@ -1,34 +1,110 @@
-body.home-page {
-    background-image: url("/images/Designer.jpg"); 
+body{
     background-size: cover;
     background-position: center;
-    background-attachment: fixed; 
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden; 
-    height: 130vh; 
+    overflow-x: hidden;
 }
-
-.page-content {
-    margin-top: 240vh;
-    background-color: black; 
-    color: white;
-    width:1280px;
-    margin-left: 0;
-    padding-left: 0;
-    min-height: 100vh; 
+.backgroundImage {
+    width: 100vw;
+    height: 100vh; 
+    max-width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
+    overflow: hidden; 
 }
 
-.footer {
-    background-color: #333; 
-    color: white;
-    padding: 20px;
-    text-align: center;
-    width:1280px;
-    position: relative;
-    bottom: 0;
+.backgroundImage img {
+    width: 87vw;
+    height: 100vh;
+    max-width: 100vw;
+    max-height: 100vh; /* מבטיח שהתמונה לא תגלוש */
+    object-fit: cover;
+    background-attachment: fixed;
+    background-position: center;
 }
+
+/* תוכן מוסתר בהתחלה */
+.content-container {
+    max-width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 40px;
+    margin-right: 1px;
+
+}
+
+
+/* כל קטע - תמונה בצד אחד וטקסט בצד שני */
+.section {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* מחליף את space-between */
+    gap: 30px;
+    width: 100%;
+    max-width: 1200px;
+    height: 380px;
+}
+
+/* הופך את הסדר כשמדובר באינדקס זוגי */
+.section.reverse {
+    flex-direction: row-reverse;
+    margin-bottom: 50px;
+    margin-top: 50px;
+    margin-left: 200px; 
+}
+.section:not(.reverse){
+    margin-left: 400px; 
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+
+/* גודל התמונה */
+.section-image {
+    margin: 50px;
+    width: 475px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.custom-button:hover {
+    background-color: #444;
+    border-color: #999;
+}
+.section-text{
+    text-align: left; /* מיישר את כל הטקסט לשמאל */
+    color: white;
+    width: 400px;
+}
+.section-text h2 {
+    font-size: 1.5em; /* גודל כותרת */
+    color: #ffffff; /* צבע לבן */
+    font-weight: 700; /* עובי טקסט */
+    line-height: 1.4; /* מרווח שורות */
+    max-width: 910px;
+    margin-bottom: 1rem;
+}
+.section-text p {
+    color: #dddedf; /* צבע טקסט */
+    font-size: 15px; /* גודל טקסט */
+    margin-bottom: 2rem; /* ריווח מתחת */
+}
+.custom-button {
+    height: 43px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* רווח בין הטקסט לאייקון */
+    background-color: #000000; /* רקע שחור */
+    color: #ffffff; /* צבע טקסט */
+    font-size: 16px;
+    font-weight: 600;
+    border: 1px solid #26272c;
+    border-radius: 38px;
+    transition: all 0.15s ease-in-out;
+    cursor: pointer;
+}
+
+.custom-button:hover {
+    background-color: #333333; /* שינוי רקע בעת מעבר */
+}
+

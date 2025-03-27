@@ -1,0 +1,113 @@
+.footer {
+    text-align: center;
+    background-color: #0b0f17;
+    /* background-color: black; */
+    color: white;
+    text-align: center;
+    width: 100vw;
+    padding: 40px 20px;
+    position: relative; /* מוודא שהוא אחרי התוכן */
+    left: 0;
+    font-Family: "Plus Jakarta Sans, Arial, Helvetica, sans-serif",
+}
+.footer-container {
+    max-width: 1200px; /* מגביל את הרוחב של התוכן בתוך הפוטר */
+    margin: 0 auto; /* ממרכז את התוכן */
+}
+.footer-sections {
+    text-align: left;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 20px;
+}
+
+.footer-column h3 {
+    font-size: 22px;
+    color: #ffffff;
+    margin-bottom: 15px;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-column ul li {
+    font-size: 14px;
+    border-color: rgb(144, 148, 166);
+    color: #9094A6;
+    cursor: pointer;
+    text-decoration: none;
+    margin: 8px 0;
+    transition: color 0.3s ease;
+}
+
+.footer-column ul li:hover {
+    color: #ffffff;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 10px;
+    font-size: 14px;
+}
+
+.footer-logo {
+    width: 80px;
+    margin-bottom: 10px;
+}
+
+.legal-links a {
+    border-color: rgb(144, 148, 166);
+    color: #9094A6;
+    margin: 0 10px;
+}
+
+.legal-links a:hover {
+    color: #ffffff;
+}
+
+
+
+.social-icons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    max-width: 200px; 
+    margin: 0 auto 20px;
+}
+
+.social-icons img {
+    margin: 6px;
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+    transition: transform 0.5s ease-in-out;
+}
+
+.social-icons img:hover {
+    transform: scale(1.1);
+}
+
+
+.app-buttons {
+    display: flex;
+    flex-direction: column; /* מסדר את הכפתורים אחד מתחת לשני */
+    align-items: center; /* ממקם אותם במרכז */
+}
+
+.app-buttons img {
+    width: 140px;
+    margin: 10px 0; /* רווח בין הכפתורים */
+    cursor: pointer;
+    transition: transform 0.4s ease-in-out;
+}
+
+.app-buttons img:hover {
+    transform: scale(1.1); /* מגדיל מעט את הכפתורים במעבר */
+}
