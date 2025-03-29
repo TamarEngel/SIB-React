@@ -44,7 +44,7 @@ const CreationRating = ({ creationId, initialVotes }: { creationId: number; init
             return;
         }
         try {
-            await axios.post('https://localhost:7143/api/Vote', {
+            await axios.post(`${apiUrl}/api/Vote`, {
                 UserId: id,
                 CreationId: creationId
             },
@@ -80,7 +80,7 @@ const CreationRating = ({ creationId, initialVotes }: { creationId: number; init
             return;
         }
         try {
-            await axios.delete('https://localhost:7143/api/Vote/deleteVote', {
+            await axios.delete(`${apiUrl}/api/Vote/deleteVote`, {
                 data: {
                     userId: id,
                     creationId: creationId

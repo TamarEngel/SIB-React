@@ -29,7 +29,7 @@ const FileUploader = ({ challengeId, setCreations }: { challengeId: number; setC
       // שלב 1: קבלת Presigned URL מהשרת
       let presignedUrl;
       try {
-        const res = await axios.get('https://localhost:7143/api/Creation/upload-url', {
+        const res = await axios.get(`${apiUrl}/api/Creation/upload-url`, {
           params: {
             fileName: file.name,
             contentType: file.type,

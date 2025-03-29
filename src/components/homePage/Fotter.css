@@ -1,22 +1,20 @@
 .footer {
     text-align: center;
     background-color: #0b0f17;
-    /* background-color: black; */
     color: white;
     text-align: center;
-    width: 100vw;
+    /* width: 100vw; */
     padding: 40px 20px;
-    position: relative; /* מוודא שהוא אחרי התוכן */
+    position: relative;
     left: 0;
     font-Family: "Plus Jakarta Sans, Arial, Helvetica, sans-serif",
 }
-.footer-container {
-    max-width: 1200px; /* מגביל את הרוחב של התוכן בתוך הפוטר */
-    margin: 0 auto; /* ממרכז את התוכן */
-}
+/* .footer-container {
+    max-width: 1200px; 
+    margin: 0 auto; 
+} */
 .footer-sections {
     background-color: #0b0f17;
-    margin-right: 300px;
     text-align: left;
     display: flex;
     justify-content: space-around;
