@@ -28,6 +28,7 @@ const ChallengeDetails = observer(() => {
                     if (currentChall?.isDeleted) {
                         const winnerCreation = await challengeStore.getWinningCreation(Number(id));
                         setWinningCreation(winnerCreation);
+                        winningCreation && console.log(winningCreation.fileName);
                     }
                 }
             }
