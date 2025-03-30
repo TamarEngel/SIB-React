@@ -122,10 +122,11 @@ const HomePage = () => {
             document.body.classList.remove('home-page');
         };
     }, []);
-    const handlefeatures =()=>{
-        navigate(`/allChallenges`);
-    }
 
+    const handlefeatures = () => {
+        navigate(`/allChallenges`);
+
+    };
     return (
         <>
             <div className="backgroundImage">
@@ -192,7 +193,7 @@ const HomePage = () => {
                         <div className="section-text">
                             <h2>{section.title}</h2>
                             <p>{section.text}</p>
-                            <button className="custom-button" onClick={handlefeatures()}>
+                            <button className="custom-button" onClick={handlefeatures}>
                                 {section.buttonText}
                                 <img src="/images/icons8-arrow-25.png" alt="arrow icon" />
                             </button>
