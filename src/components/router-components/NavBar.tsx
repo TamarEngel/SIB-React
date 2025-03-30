@@ -10,6 +10,7 @@ import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import LoginIcon from '@mui/icons-material/Login';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import EditIcon from '@mui/icons-material/Edit';
+import { useNavigate } from 'react-router-dom';
 
 const NavBar = () => {
   const [log, setLog] = useState(false);
@@ -22,6 +23,8 @@ const NavBar = () => {
   const token = sessionStorage.getItem('token');
   const { name } = getUserDataFromToken();
   const profilName = name ? name[0] : "?";
+  const navigate = useNavigate();
+
 
   useEffect(() => {
     const handleScroll = () => setShowBackground(window.scrollY > 50);
@@ -56,7 +59,7 @@ const NavBar = () => {
               <MenuItem key="updateProfile" onClick={() => { setOpenUpdate(true); handleClose() }} sx={linkStyles2}>
                 Update Profile <EditIcon sx={{ marginLeft: "8px", fontSize: "19px" }} />
               </MenuItem>
-              <MenuItem key="logout" sx={linkStyles2} onClick={() => { sessionStorage.removeItem('token'); window.location.reload(); }}>
+              <MenuItem key="logout" sx={linkStyles2} onClick={() => { sessionStorage.removeItem('token'); window.location.reload();  navigate("/"); }}>
                 Logout <ExitToAppIcon sx={{ marginLeft: "8px", fontSize: "20px" }} />
               </MenuItem>
             </>

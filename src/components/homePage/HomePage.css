@@ -11,17 +11,18 @@ body{
     justify-content: center;
     align-items: center;
     overflow: hidden; 
+    margin-bottom: 50px;
 }
 
 .backgroundImage img {
-    width: 90vw;
+    width: 85vw;
     height: 100vh;
     max-width: 100vw;
     max-height: 100vh; /* מבטיח שהתמונה לא תגלוש */
     object-fit: cover;
     background-attachment: fixed;
     background-position: center;
-    margin-right: 300px;
+    /* margin-right: 300px; */
 }
 
 /* תוכן מוסתר בהתחלה */
@@ -51,14 +52,11 @@ body{
 .section.reverse {
     flex-direction: row-reverse;
     margin-bottom: 50px;
-    margin-top: 50px;
     margin-right: 150px; 
-    /* margin-left: 200px; */
 }
 .section:not(.reverse){
-    margin-right: 50px;
-    margin-left: 70px;
-    /* margin-left: 400px;  */
+    /* margin-right: 50px;
+    margin-left: 70px; */
     margin-bottom: 50px;
     margin-top: 50px;
 }
@@ -112,3 +110,53 @@ body{
     background-color: #333333; /* שינוי רקע בעת מעבר */
 }
 
+.header-container {
+    margin-top: 50px;
+    text-align: center;
+    color: white;
+    padding: 40px 20px;
+}
+
+.features-title {
+    font-size: 14px;
+    background-image: linear-gradient(90deg, #f1535d 45%, #ffffff 50%, #edc106 80%);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.features-heading {
+    background-image: linear-gradient(81.02deg, #f1535d 29.47%, #ffffff 45.52%, #edc106 114.8%);
+    background-size: 100%;
+    background-repeat: repeat;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.features-text {
+    font-size: 16px;
+    color: #ddd;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.pp{
+    font-size: 15px;
+    margin: 0px;
+}
+.gg{
+    font-size: 15px;
+}
+.head{
+    width: 910px;
+    height: 100px;
+    margin-left: 100px;
+    margin-bottom: 70px;
+}
+.c2{
+    margin-bottom: 200px;
+}
