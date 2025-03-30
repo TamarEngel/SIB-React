@@ -236,6 +236,8 @@ const HomePage = () => {
                 </Grid>
             </Container>
             <Footer />
+
+
         </>
     );
 }

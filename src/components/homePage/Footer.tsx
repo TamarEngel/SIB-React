@@ -51,7 +51,7 @@ const Footer = () => {
                 </div>
             </div>
             <div className="footer-bottom">
-                <img src="/images/logo-leonardo-ai.svg" alt="SIB Logo" className="footer-logo" />
+                <img src="/images/profile/1.1.png" alt="SIB Logo" className="footer-logo" />
                 <p>© 2025 All Rights Reserved, SIB - Smart Images Battle</p>
                 <div className="legal-links">
                     <a href="#">Legal Notice</a> | <a href="#">DMCA</a> | <a href="#">Terms of Service</a> | <a href="#">Cookie Policy</a>

@@ -56,8 +56,9 @@
 }
 
 .footer-logo {
-    width: 80px;
-    margin-bottom: 10px;
+    height: 110px;
+    width:170px;
+    margin-bottom: 5px;
 }
 
 .legal-links a {
