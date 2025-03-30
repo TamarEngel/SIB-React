@@ -45,7 +45,7 @@ const ChallengeList = observer(() => {
             backgroundColor: "#06080d",
             marginTop:"20px",
             minHeight: "100vh",
-            padding: "66px 20px 36px",
+            padding: "95px 40px 70px",
             display: "flex",
             flexDirection: "column",
             alignItems: "center"

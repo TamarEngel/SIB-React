@@ -2,32 +2,33 @@ import { useEffect } from 'react';
 import './HomePage.css';
 import { Container, Grid, Typography, Card, CardContent } from '@mui/material';
 import Footer from './Footer';
+import { useNavigate } from 'react-router-dom';
 
 const sections = [
 
     {
-        title: "Image generation",
-        text: "Realtime Canvas lets you create lightning fast, instantaneous drawing-to-image AI generations. Select from a range of drawing tools and prompt settings and watch as your image transform live! Great for coming up with ideas for a new maketing campaign or taking control of the image generation process for precise results.",
+        title: "Epic AI-Powered Image Battles",
+        text: " Compete in weekly challenges – Every week brings a new AI-driven creative prompt. Submit your most impressive generated image and go head-to-head with creators worldwide.Win, Rank, and Shine – The community votes on the best images. The top-rated masterpiece takes the crown and earns eternal glory in the Hall of Fame..",
         imgSrc: "/images/3.png",
-        buttonText: "Generate Video"
+        buttonText: "Join the Battle"
     },
     {
-        title: "Stay in control!",
-        text: "Choose from a selection of high quality models and presets, covering almost any theme you can think of. Add in style elements or upload your own images for precise control over your generations. Perfect for headers, blog imagery, social media graphics and advertising visuals.",
+        title: "AI-Driven Image Creation",
+        text: "Seamless AI Generation Upload an AI-generated image or create one using your preferred AI tool. SIB is your stage to showcase creativity at its peak.Precision & Control Enhance your images before submission. Adjust details, refine styles, and make sure your creation stands out in the competition.",
         imgSrc: "/images/1.png",
-        buttonText: "Build my First API key"
+        buttonText: "Start Creating"
     },
     {
-        title: "Motion",
-        text: "Realtime Canvas lets you create lightning fast, instantaneous drawing-to-image AI generations. Select from a range of drawing tools and prompt settings and watch as your image transform live! Great for coming up with ideas for a new maketing campaign or taking control of the image generation process for precise results.",
+        title: "Engage & Vote!",
+        text: "Every week, users have the opportunity to cast their votes on the submissions they find most impressive. The voting system allows the community to actively participate in the decision-making process, ensuring that only the most captivating and innovative creations rise to the top. 👍 By liking and rating the images, you're not only supporting your favorite artists, but you're also helping to determine the winner of each challenge. Engage with the community, discover incredible talent, and be part of a dynamic process that celebrates artistic innovation.",
         imgSrc: "/images/0.png",
-        buttonText: "Generate Video"
+        buttonText: "Cast Your Vote"
     },
     {
-        title: "Image generation",
-        text: "Motion brings your marketing visuals to life, creating up to 4 seconds of animation. Select an image from your feed or upload your own and generate a video in seconds. Stitch them together to create promo videos, social media content, animated storyboards, video ads and more.",
+        title: "Dynamic Leaderboards & Achievements",        
+        text: "Beyond competition, SIB offers a structured leaderboard, ranking system, and achievement badges to celebrate milestones and progress. receiving high ratings from the community, or consistently participating in contests, As you climb the ranks, you unlock exclusive rewards and gain greater visibility among fellow creators,See where you stand with live rankings, performance stats, and historical scores.        ",
         imgSrc: "/images/2.png",
-        buttonText: "Generate Image"
+        buttonText: "Track My Progress"
     },
 ];
 
@@ -111,6 +112,7 @@ const cardData = [
 ];
 
 const HomePage = () => {
+    const navigate = useNavigate();
     useEffect(() => {
         // להוסיף את הקלאס 'home-page' ל-body רק בעמוד הבית
         document.body.classList.add('home-page');
@@ -120,7 +122,9 @@ const HomePage = () => {
             document.body.classList.remove('home-page');
         };
     }, []);
-
+    const handlefeatures =()=>{
+        navigate(`/allChallenges`);
+    }
 
     return (
         <>
@@ -141,13 +145,12 @@ const HomePage = () => {
             }}>
                 {/* קטע המספרים */}
                 <Typography variant="h6" sx={{ fontSize: "1rem", fontWeight: "400", marginBottom: "20px" }}>
-                    Thousands of professionals use Leonardo.Ai for their marketing & advertising needs:
-                </Typography>
+                Millions of creators compete in SIB, uploading AI-generated masterpieces:</Typography>
                 <Grid container spacing={2} justifyContent="center">
                     {[
-                        { number: "500K", text: "Marketers leverage ", more: "Leonardo.Ai" },
-                        { number: "1B+", text: "Images, headers and ", more: "videos generated" },
-                        { number: "2.7M+", text: "Businesses using our API", more: "to create visuals" }
+                        { number: "500K", text: "Users create and share ", more: "stunning images" },
+                        { number: "1B+", text: "artworks generated and uploaded", more: "for challenges" },
+                        { number: "2.7M+", text: "votes and ratings ", more: "cast in competitions SIB" }
                     ].map((item, index) => (
                         <Grid item xs={12} sm={4} key={index} sx={{
                             borderLeft: index !== 0 ? "1px solid #26272c" : "none", // קו דק יותר
@@ -177,10 +180,9 @@ const HomePage = () => {
 
             <div className="header-container">
                 <p className="features-title">Our Features</p>
-                <h1 className="features-heading">Tools For Marketing and Advertising Images</h1>
+                <h1 className="features-heading">Welcome to SIB – Smart Images Battle</h1>
                 <p className="features-text">
-                    Our full suite of AI-powered tools are designed to boost your workflow - from idea, to pitch and final creative.
-                    Here's how Leonardo.Ai can help you to quickly produce marketing images and videos:
+                At SIB, artists, designers, and AI enthusiasts compete in weekly challenges, generating stunning AI-powered images based on creative prompts. Vote, rank, and watch the most brilliant creations rise to the top. Join the ultimate battle of artistic imagination!
                 </p>
             </div>
             <div className="content-container">
@@ -190,7 +192,7 @@ const HomePage = () => {
                         <div className="section-text">
                             <h2>{section.title}</h2>
                             <p>{section.text}</p>
-                            <button className="custom-button">
+                            <button className="custom-button" onClick={handlefeatures()}>
                                 {section.buttonText}
                                 <img src="/images/icons8-arrow-25.png" alt="arrow icon" />
                             </button>
