@@ -8,13 +8,13 @@ const Footer = () => {
                 <div className="footer-column">
                     <h3>Solutions</h3>
                     <ul>
-                        <li>AI Art Generator</li>
-                        <li>AI Video Generator</li>
-                        <li>Transparent PNG Generator</li>
-                        <li>AI Marketing Tools</li>
-                        <li>AI Graphic Design</li>
-                        <li>AI Print on Demand</li>
-                        <li>AI Marketing Tools</li>
+                        <li>AI Art Battle</li>
+                        <li>AI Image Generation</li>
+                        <li>AI Video Creation </li>
+                        <li>AI Community Engagement </li>
+                        <li>Leaderboard & Achievements</li>
+                        <li>AI-Enhanced Editing </li>
+                        <li>AI-Powered Inspiration</li>
                         <li>AI Graphic</li>
                         <li>AI Print to th</li>
                         <li>AI Architecture</li>
@@ -23,15 +23,15 @@ const Footer = () => {
                 <div className="footer-column">
                     <h3>About</h3>
                     <ul>
-                        <li>API</li>
-                        <li>FAQ</li>
+                        <li>Our Vision</li>
+                        <li>Follow Us</li>
                         <li>Blog</li>
                         <li>Support</li>
                         <li>Contact us</li>
                         <li>Careers</li>
-                        <li>AI Art Generator</li>
-                        <li>AI Video Generator</li>
-                        <li>Transparent PNG Generator</li>
+                        <li>AI-Powered Inspiration</li>
+                        <li>The story behind SIB.</li>
+                        <li>Meet the Team</li>
                     </ul>
                 </div>
                 <div className="footer-column app-links">

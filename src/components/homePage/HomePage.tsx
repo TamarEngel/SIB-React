@@ -51,8 +51,8 @@ const cardData = [
                 </defs>
             </svg>
         ),
-        title: "Speed Up Your Advertising Game",
-        text: "Generate high-quality banners, ads, headers, graphics, and videos custom-tailored to your campaigns. Boost your creative process, optimise your budget and save time."
+        title: "A Game-Changer for My Creativity!",
+        text: "SIB has completely transformed my approach to AI art. The weekly challenges inspire new techniques and ideas, and the global competition motivates me to push my limits. The ... - Emily, AI Artist"
     },
     {
         icon: (
@@ -70,8 +70,8 @@ const cardData = [
                 </defs>
             </svg>
         ),
-        title: "Instant A/B testing for Graphics",
-        text: "Create multiple variations of advertising images or videos in seconds. Quickly uncover the optimal ad creative, improve ROI and slash marketing costs."
+        title: "A Thrilling Experience Every Week!",
+        text: "Each week, I look forward to the challenges on SIB. The variety of prompts keeps things fresh, and the competition is motivating. It’s rewarding to see my work voted on by others... - Jake, Graphic Designer"
     },
     {
         icon: (<svg className="brxe-svg" xmlns="http://www.w3.org/2000/svg" width="32" height="38" viewBox="0 0 38 38" fill="none">
@@ -88,8 +88,8 @@ const cardData = [
             </defs>
         </svg>
         ),
-        title: "Customize Content at Scale",
-        text: "Customize your visual content to meet your brand's needs. No need to buy stock images when you can use our AI tools to create custom visuals for your audience and drive conversions."
+        title: "A Platform That Elevates Your Art",
+        text: "IB connects me with a global community of artists, and the support and feedback help me grow. The leaderboard adds extra motivation...- Sofia, Digital Artist"
     },
     {
         icon: (<svg className="brxe-svg" xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 38 38" fill="none">
@@ -106,8 +106,8 @@ const cardData = [
             </defs>
         </svg>
         ),
-        title: "From Concept to Production",
-        text: "Quickly ideate and concept your campaign with our AI tools. Save time and nail the brief by seamlessly integrating new ideas without breaking the creative budget."
+        title: "SIB Has Helped Me Improve as an Artist!",
+        text: "SIB has been a huge boost to my development. The weekly challenges keep me experimenting, and the feedback helps me refine my skills. I’ve improved...- Alex, AI Art Enthusiast"
     }
 ];
 
@@ -204,10 +204,9 @@ const HomePage = () => {
 
             <Container className="c2" maxWidth="lg" sx={{ textAlign: "center", color: "white", mt: 10 }}>
                 <div className="head">
-                    <h3>How Leonardo.Ai Helps You Achieve Your Marketing Goals</h3>
+                    <h3>What SIB Users Are Saying About Their Experience</h3>
                     <p className="gg">
-                        Leonardo's AI tools help marketers and advertisers produce high quality images for landing pages, blogs, paid adertising creative, social media and video content. Accelerate your marketing workflow, from creative idea to production ready assets. Our AI tools for marketers can help uplift your brand visuals, maximise creative budgets, improve ROI and create impressive  visuals for pitch decks.
-                    </p>
+                    SIB has transformed the way creators engage with AI art. Weekly challenges, global competition, and a supportive community push artists to evolve and refine their skills. It’s a platform for showcasing creativity, receiving feedback, and connecting with talented individuals. Whether it's the thrill of competition or personal growth, SIB provides an unmatched experience for all artists. Here's what some of our users have to say about how SIB has impacted their creative journey:</p>
                 </div>
                 {/* קטע הריבועים */}
                 <Grid container spacing={2} justifyContent="center" sx={{ mt: 4 }}>
