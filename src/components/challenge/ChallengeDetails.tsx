@@ -46,7 +46,7 @@ const ChallengeDetails = observer(() => {
     }
 
     return (
-        <Box sx={{ padding: 3 }}>
+        <Box sx={{ padding: 3,marginTop:"50px",marginLeft:"60px",width:"80%" }}>
             {/* כותרת מעוצבת */}
             <Typography sx={{
                 fontSize: "clamp(1.5625rem, 0.8152rem + 2.9891vw, 2.25rem)",
@@ -102,7 +102,7 @@ const ChallengeDetails = observer(() => {
             </Typography>
 
             <Grid container spacing={4} sx={{
-                marginTop: 3,  // רווח משמעותי בין הדפים
+                // marginTop: 3,  // רווח משמעותי בין הדפים
                 display: 'flex',
                 justifyContent: 'center',  // למרכז את התוכן
                 alignItems: 'flex-start',  // לוודא שהם מתחילים מאותה שורה
@@ -117,12 +117,7 @@ const ChallengeDetails = observer(() => {
                                 padding: 0.5,  // הגדלה של רווח בתוך הכרטיס
                                 textAlign: "center",
                                 backgroundColor: "black",  // רקע כהה יותר לכרטיסים
-                                border: "0.5px solid #fff",  // גבול לבן דק
-                                // transition: "transform 0.3s ease-in-out, opacity 0.3s",
-                                // "&:hover": {
-                                //     transform: "scale(1.05)",  // הגדלה בתוך הכרטיס בעת ריחוף
-                                //     opacity: 1.5
-                                // },
+                                border: "1px solid #26272c",
                                 width: "100%",
                                 borderRadius: 2  // פינות מעוגלות
                             }}>

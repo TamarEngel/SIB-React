@@ -130,7 +130,7 @@ const FileUploader = ({ challengeId, setCreations }: { challengeId: number; setC
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}
         style={{
-          width: "300px",
+          width: "400px",
           height: "150px",
           border: dragActive ? "2px dashed #ffffff" : "2px dashed #555",
           borderRadius: "12px",
@@ -144,7 +144,7 @@ const FileUploader = ({ challengeId, setCreations }: { challengeId: number; setC
         }}
       >
         <CloudUploadIcon style={{ fontSize: "50px", color: "#ffffff" }} />
-        <p>גרור לכאן קובץ או בחר מהמחשב</p>
+        <p>Drag a file here or select from your computer using the button below.</p>
       </div>
 
       <input
@@ -155,72 +155,20 @@ const FileUploader = ({ challengeId, setCreations }: { challengeId: number; setC
       />
 
       <label htmlFor="file-upload" className="custom-button" style={buttonStyle}>
-        בחירת קובץ
+      Select a file
       </label>
 
       {file && <p style={{ marginTop: "10px", fontSize: "14px" }}>{file.name}</p>}
 
       <button onClick={handleUpload} className="custom-button" style={buttonStyle}>
-        העלה קובץ
+      Upload a file
       </button>
-     {progress > 0 && <Typography sx={{ color: "#ffffff", marginTop: '8px' }}>התקדמות: {progress}%</Typography>}
+     {progress > 0 && <Typography sx={{ color: "#ffffff", marginTop: '8px' }}>progress: {progress}%</Typography>}
 
     </div>
 
-    // <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 1 }}>
-    //   {/* כפתור בחירת קובץ */}
-    //   <label htmlFor="file-upload">
-    //     <Box component="span" sx={{
-    //       display: 'inline-block',
-    //       background: 'linear-gradient(45deg, #f1535d, #edc106)',
-    //       color: '#fff',
-    //       padding: '8px 16px',
-    //       borderRadius: '8px',
-    //       cursor: 'pointer',
-    //       fontWeight: 'bold',
-    //       transition: 'transform 0.2s ease-in-out',
-    //       '&:hover': { transform: 'scale(1.05)' }
-    //     }}>
-    //       בחירת קובץ
-    //     </Box>
-    //   </label>
-    //   <input
-    //     id="file-upload"
-    //     type="file"
-    //     onChange={handleFileChange}
-    //     style={{ display: 'none' }}
-    //   />
-
-    //   {/* כפתור העלאה */}
-    //   <button onClick={handleUpload} style={{
-    //     background: 'linear-gradient(45deg, #f1535d, #edc106)',
-    //     color: '#fff',
-    //     padding: '8px 16px',
-    //     border: 'none',
-    //     borderRadius: '8px',
-    //     cursor: 'pointer',
-    //     fontWeight: 'bold',
-    //     transition: 'transform 0.2s ease-in-out',
-    //   }}
-    //     onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
-    //     onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
-    //   >
-    //     העלה קובץ
-    //   </button>
-
-    //   {/* הצגת ההתקדמות */}
-    //   {progress > 0 && <Typography sx={{ color: "#ffffff", marginTop: '8px' }}>התקדמות: {progress}%</Typography>}
-    // </Box>
-    // <div>
-    //   <input type="file" onChange={handleFileChange} />
-    //   <button onClick={handleUpload}>העלה קובץ</button>
-    //   {progress > 0 && <div>התקדמות: {progress}%</div>}
-    // </div>
   );
 };
-
-// buttonStyle[":hover"] = { backgroundColor: "#333333" };
-
 const buttonStyle = {
   height: "43px",
   display: "inline-flex",
