@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { getUserDataFromToken } from '../../utils/authUtils';
-import { Box, Typography } from '@mui/material';
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
+import { Typography } from '@mui/material';
 
 const apiUrl = import.meta.env.VITE_APP_API_URL;    // קישור לשרת
 
@@ -163,6 +163,8 @@ const FileUploader = ({ challengeId, setCreations }: { challengeId: number; setC
       <button onClick={handleUpload} className="custom-button" style={buttonStyle}>
         העלה קובץ
       </button>
+     {progress > 0 && <Typography sx={{ color: "#ffffff", marginTop: '8px' }}>התקדמות: {progress}%</Typography>}
+
     </div>
 
     // <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 1 }}>
