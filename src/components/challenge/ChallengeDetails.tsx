@@ -102,7 +102,7 @@ const ChallengeDetails = observer(() => {
             </Typography>
 
             <Grid container spacing={4} sx={{
-                // marginTop: 3,  // רווח משמעותי בין הדפים
+                marginTop: 3,  // רווח משמעותי בין הדפים
                 display: 'flex',
                 justifyContent: 'center',  // למרכז את התוכן
                 alignItems: 'flex-start',  // לוודא שהם מתחילים מאותה שורה

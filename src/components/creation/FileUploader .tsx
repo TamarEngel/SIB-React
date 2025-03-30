@@ -17,7 +17,7 @@ const FileUploader = ({ challengeId, setCreations }: { challengeId: number; setC
       setFile(e.target.files[0]);
     }
   };
-  const handleDragOver = (e:React.DragEvent<HTMLDivElement>) => {
+  const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     setDragActive(true);
   };
@@ -144,7 +144,7 @@ const FileUploader = ({ challengeId, setCreations }: { challengeId: number; setC
         }}
       >
         <CloudUploadIcon style={{ fontSize: "50px", color: "#ffffff" }} />
-        <p>Drag a file here or select from your computer using the button below.</p>
+        <p style={{ fontSize: "15px" }}>Drag a file here or select from your computer using the button below.</p>
       </div>
 
       <input
@@ -155,21 +155,22 @@ const FileUploader = ({ challengeId, setCreations }: { challengeId: number; setC
       />
 
       <label htmlFor="file-upload" className="custom-button" style={buttonStyle}>
-      Select a file
+        Select a file
       </label>
 
       {file && <p style={{ marginTop: "10px", fontSize: "14px" }}>{file.name}</p>}
 
       <button onClick={handleUpload} className="custom-button" style={buttonStyle}>
-      Upload a file
+        Upload a file
       </button>
-     {progress > 0 && <Typography sx={{ color: "#ffffff", marginTop: '8px' }}>progress: {progress}%</Typography>}
+      {progress > 0 && <Typography sx={{ color: "#ffffff", marginTop: '8px' }}>progress: {progress}%</Typography>}
 
     </div>
 
   );
 };
 const buttonStyle = {
+  width: "135px",
   height: "43px",
   display: "inline-flex",
   alignItems: "center",
@@ -177,7 +178,7 @@ const buttonStyle = {
   gap: "10px",
   backgroundColor: "#000000",
   color: "#ffffff",
-  fontSize: "16px",
+  fontSize: "15px",
   fontWeight: "600",
   border: "1px solid #26272c",
   borderRadius: "38px",
