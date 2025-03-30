@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import './HomePage.css';
 import { Container, Grid, Typography, Card, CardContent } from '@mui/material';
+import Footer from './Footer';
 
 const sections = [
 
@@ -136,6 +137,7 @@ const HomePage = () => {
                 paddingBottom: "35px", // הקטנתי את ה-padding התחתון
                 paddingTop: "35px", // הקטנתי את ה-padding העליון
                 margin: "0 auto", // למרכז את הקונטיינר
+                marginBottom:"70px",
             }}>
                 {/* קטע המספרים */}
                 <Typography variant="h6" sx={{ fontSize: "1rem", fontWeight: "400", marginBottom: "20px" }}>
@@ -233,7 +235,7 @@ const HomePage = () => {
                     ))}
                 </Grid>
             </Container>
-            {/* <Footer /> */}
+            <Footer />
         </>
     );
 }
