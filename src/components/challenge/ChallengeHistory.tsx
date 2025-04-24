@@ -1,5 +1,5 @@
 import { observer } from "mobx-react-lite";
-import { Box, Typography, Grid, Paper, Chip, Divider } from "@mui/material";
+import { Box, Typography, Grid, Paper, Chip } from "@mui/material";
 import challengeStore from "../../store/challengeStore";
 import WinningCreation from "../creation/WinningCreation";
 
