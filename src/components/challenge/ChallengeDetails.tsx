@@ -8,6 +8,7 @@ import challengeStore from "../../store/challengeStore";
 import CreationRating from "../creation/CreationRating";
 import CreationView from "../creation/CreationView";
 import FileUploader from "../creation/FileUploader ";
+import PromptSuggestionsButton from "./PromptSuggestionsButton";
 
 const ChallengeDetails = observer(() => {
     const { id } = useParams();
@@ -160,7 +161,10 @@ const ChallengeDetails = observer(() => {
             </Grid>
             {/* הוספת תמונה לאתגר */}
             {!currentChallenge.isDeleted && (
+                <>
                 <FileUploader challengeId={currentChallenge.id} setCreations={setCreations} />
+                <PromptSuggestionsButton challengeTopic={currentChallenge.title} challengeDescription={currentChallenge.description} />
+                </>
             )}
 
 
