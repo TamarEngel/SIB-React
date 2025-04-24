@@ -144,28 +144,15 @@ export default function ChatPromptBot({
     zIndex: 1000,
     transition: 'all 0.3s ease',
     border: '1px solid rgba(255, 255, 255, 0.08)',
-    '&::before': {
-      content: '""',
-      position: 'absolute',
-      top: '-2px',
-      left: '-2px',
-      right: '-2px',
-      bottom: '-2px',
-      borderRadius: '50%',
-      background: 'transparent',
-      border: '1px solid transparent',
-      transition: 'all 0.3s ease',
-      zIndex: -1,
-    },
+    // במצב רגיל - אין גרדיאנט
     '&:hover': {
       transform: 'scale(1.05)',
       boxShadow: '0 6px 20px rgba(0, 0, 0, 0.25)',
       backgroundColor: 'rgba(20, 20, 22, 0.95)',
-      '&::before': {
-        borderColor: 'transparent',
-        background: 'linear-gradient(81.02deg, #f1535d 7.47%, #ffffff 45.52%, #edc106 114.8%)',
-        opacity: 0.8,
-      }
+      // במצב hover - מוסיף מסגרת גרדיאנט
+      borderImage: 'linear-gradient(81.02deg, #f1535d 7.47%, #ffffff 45.52%, #edc106 114.8%) 1',
+      borderStyle: 'solid',
+      borderWidth: '2px'
     }
   }}
   aria-label="Chat assistant"
