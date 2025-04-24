@@ -148,9 +148,8 @@ export default function ChatPromptBot({
     '&:hover': {
       transform: 'scale(1.05)',
       boxShadow: '0 6px 20px rgba(0, 0, 0, 0.25)',
-      backgroundColor: 'rgba(20, 20, 22, 0.95)',
       // במצב hover - מוסיף מסגרת גרדיאנט
-      borderColor: 'linear-gradient(81.02deg, #f1535d 7.47%, #ffffff 45.52%, #edc106 114.8%) 1 ',
+      backgroundColor: 'linear-gradient(81.02deg, #f1535d 7.47%, #ffffff 45.52%, #edc106 114.8%) 1 ',
       borderStyle: 'solid',
       borderWidth: '2px'
     }
