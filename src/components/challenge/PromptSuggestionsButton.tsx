@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { Box, Button, Modal, CircularProgress, Typography, List, ListItem } from "@mui/material"
+import axios from "axios";
 const apiUrl=import.meta.env.VITE_APP_API_URL ;    // קישור לשרת
 
 export default function PromptSuggestionsModal({ challengeTopic ,challengeDescription}: { challengeTopic: string ,challengeDescription:string}) {
@@ -7,25 +8,55 @@ export default function PromptSuggestionsModal({ challengeTopic ,challengeDescri
   const [loading, setLoading] = useState(false)
   const [suggestions, setSuggestions] = useState<string[]>([])
 
+  // const handleClick = async () => {
+  //   setOpen(true)
+  //   setLoading(true)
+
+  //   try {
+  //     const response = await fetch(`${apiUrl}/api/PromptSuggestions`, {
+  //       method: "POST",
+  //       headers: { "Content-Type": "application/json" },
+  //       body: JSON.stringify({ topic: challengeTopic , description: challengeDescription})
+  //     })
+
+  //     const data = await response.json()
+  //     setSuggestions(data.prompts)
+  //     console.log("🚀 שולח בקשה ל-OpenAI עם התיאור: ", data.prompts);
+  //   } catch (err) {
+  //     console.error("Error fetching prompts:", err)
+  //   } finally {
+  //     setLoading(false)
+  //   }
+  // }
   const handleClick = async () => {
-    setOpen(true)
-    setLoading(true)
-
     try {
-      const response = await fetch(`${apiUrl}/api/PromptSuggestions`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ topic: challengeTopic , description: challengeDescription})
-      })
+        const res = await axios.post(`${apiUrl}/api/PromptSuggestions`, {
+            Topic: challengeTopic,
+            Description: challengeDescription
+        }, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            }
+        });
 
-      const data = await response.json()
-      setSuggestions(data.prompts)
-    } catch (err) {
-      console.error("Error fetching prompts:", err)
-    } finally {
-      setLoading(false)
+        if (res.data) {
+            console.log("🎯 Prompts received:", res.data);
+            setSuggestions(res.data.prompts)
+        } else {
+            console.log("⚠️ No prompts received");
+        }
+    } catch (e: any) {
+        console.error("❌ Error fetching prompts:", e);
+        if (e.response) {
+            console.error("Server response:", e.response.data);
+        }
+        alert("בעיה בשליפת ההצעות. נסי שוב מאוחר יותר.");
+    }finally {
+        setLoading(false)
     }
-  }
+    
+};
 
   return (
     <>
