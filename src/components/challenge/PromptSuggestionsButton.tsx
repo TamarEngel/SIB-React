@@ -109,7 +109,7 @@ export default function ChatPromptBot({
     if (role === "user" || role === "system") {
       setLoading(true);
       try {
-        const response = await axios.post(`${apiUrl}/api/ChatPromptBot`, {
+        const response = await axios.post(`${apiUrl}/api/PromptSuggestions`, {
           messages: [...chat, { role, content }]
         });
         const botReply = response.data.reply;
