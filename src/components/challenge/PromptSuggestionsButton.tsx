@@ -152,16 +152,14 @@ export default function ChatPromptBot({
               right: '-2px',
               bottom: '-2px',
               borderRadius: '50%',
-              // background: 'linear-gradient(81.02deg, #f1535d 7.47%, #ffffff 45.52%, #edc106 114.8%)',
-              // background: 'linear-gradient(81.02deg, #f1535d 7.47%, #ffffff 45.52%, #edc106 114.8%)',
               opacity: 0.6,
               transition: 'opacity 0.3s ease',
               zIndex: -1,
             },
             '&:hover': {
               transform: 'scale(1.05)',
-              boxShadow: '0 6px 20px rgba(255, 255, 255, 0.15), 0 3px 10px rgba(0, 0, 0, 0.2)',
-              background: 'linear-gradient(81.02deg, #f1535d 7.47%, #ffffff 45.52%, #edc106 114.8%)',
+              boxShadow: '0 6px 20px linear-gradient(81.02deg, #f1535d 7.47%, #ffffff 45.52%, #edc106 114.8%)',
+              // background: 'linear-gradient(81.02deg, #f1535d 7.47%, #ffffff 45.52%, #edc106 114.8%)',
               // backgroundColor: 'linear-gradient(81.02deg, #f1535d 7.47%, #ffffff 45.52%, #edc106 114.8%)',
               '&::before': {
                 opacity: 0.8,
