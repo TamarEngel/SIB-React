@@ -1,63 +1,30 @@
-// import { useState } from "react"
-// import { Box, Button, Modal, CircularProgress, Typography, List, ListItem } from "@mui/material"
-// import axios from "axios";
-// const apiUrl = import.meta.env.VITE_APP_API_URL;    // קישור לשרת
+// import { useState } from "react";
+// import axios from "axios"; 
+// import { Box, Button, Modal, CircularProgress, Typography, List, ListItem } from "@mui/material";
 
-// export default function PromptSuggestionsModal({ challengeTopic, challengeDescription }: { challengeTopic: string, challengeDescription: string }) {
-//   const [open, setOpen] = useState(false)
-//   const [loading, setLoading] = useState(false)
-//   const [suggestions, setSuggestions] = useState<string[]>([])
+// const apiUrl = import.meta.env.VITE_APP_API_URL;
 
-//   // const handleClick = async () => {
-//   //   setOpen(true)
-//   //   setLoading(true)
+// export default function SendPrompt({ challengeTopic, challengeDescription }: { challengeTopic: string; challengeDescription: string; }) {
+//   const [open, setOpen] = useState(false);
+//   const [loading, setLoading] = useState(false);
+//   const [suggestions, setSuggestions] = useState<string[]>([]);
 
-//   //   try {
-//   //     const response = await fetch(`${apiUrl}/api/PromptSuggestions`, {
-//   //       method: "POST",
-//   //       headers: { "Content-Type": "application/json" },
-//   //       body: JSON.stringify({ topic: challengeTopic , description: challengeDescription})
-//   //     })
-
-//   //     const data = await response.json()
-//   //     setSuggestions(data.prompts)
-//   //     console.log("🚀 שולח בקשה ל-OpenAI עם התיאור: ", data.prompts);
-//   //   } catch (err) {
-//   //     console.error("Error fetching prompts:", err)
-//   //   } finally {
-//   //     setLoading(false)
-//   //   }
-//   // }
 //   const handleClick = async () => {
-//     setOpen(true)
-//     setLoading(true)
+//     setOpen(true);
+//     setLoading(true);
+
 //     try {
-//       const res = await axios.post(`${apiUrl}/api/PromptSuggestions`, {
-//         Topic: challengeTopic,
-//         Description: challengeDescription
-//       }, {
-//         headers: {
-//           'Content-Type': 'application/json',
-//           'Accept': 'application/json'
-//         }
+//       const response = await axios.post(`${apiUrl}/api/PromptSuggestions`, {
+//         topic: challengeTopic,
+//         description: challengeDescription,
 //       });
 
-//       if (res.data) {
-//         console.log("🎯 Prompts received:", res.data);
-//         setSuggestions(res.data.prompts ?? []) // הגנה
-//       } else {
-//         console.log("⚠️ No prompts received");
-//       }
-//     } catch (e: any) {
-//       console.error("❌ Error fetching prompts:", e);
-//       if (e.response) {
-//         console.error("Server response:", e.response.data);
-//       }
-//       alert("בעיה בשליפת ההצעות. נסי שוב מאוחר יותר.");
+//       setSuggestions(response.data.prompts); // Access data from Axios response
+//     } catch (err) {
+//       console.error("Error fetching prompts:", err);
 //     } finally {
-//       setLoading(false)
+//       setLoading(false);
 //     }
-
 //   };
 
 //   return (
@@ -97,42 +64,73 @@
 //         </Box>
 //       </Modal>
 //     </>
-//   )
+//   );
 // }
 
 
 import { useState } from "react";
-import axios from "axios"; 
-import { Box, Button, Modal, CircularProgress, Typography, List, ListItem } from "@mui/material";
+import axios from "axios";
+import {
+  Box,
+  Button,
+  Modal,
+  CircularProgress,
+  Typography,
+  TextField,
+  List,
+  ListItem,
+  IconButton
+} from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
 
 const apiUrl = import.meta.env.VITE_APP_API_URL;
 
-export default function SendPrompt({ challengeTopic, challengeDescription }: { challengeTopic: string; challengeDescription: string; }) {
+export default function ChatPromptBot({
+  challengeTopic,
+  challengeDescription
+}: {
+  challengeTopic: string;
+  challengeDescription: string;
+}) {
   const [open, setOpen] = useState(false);
+  const [chat, setChat] = useState<{ role: string; content: string }[]>([]);
+  const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
-  const [suggestions, setSuggestions] = useState<string[]>([]);
 
-  const handleClick = async () => {
+  const handleOpen = async () => {
     setOpen(true);
-    setLoading(true);
+    setChat([]); // אתחול שיחה
+    await sendMessage("system", `אתה עוזר יצירתי באתר SIB, שבו יוצרים מעלים תמונות AI לפי אתגרים. דבר רק על האתר, האתגרים, השראה, יצירתיות ודירוגים.`);
+    await sendMessage("user", `האתגר הנוכחי הוא: "${challengeTopic}". תיאור האתגר: "${challengeDescription}". תן לי רעיונות לפרומפטים.`);
+  };
 
-    try {
-      const response = await axios.post(`${apiUrl}/api/PromptSuggestions`, {
-        topic: challengeTopic,
-        description: challengeDescription,
-      });
-
-      setSuggestions(response.data.prompts); // Access data from Axios response
-    } catch (err) {
-      console.error("Error fetching prompts:", err);
-    } finally {
-      setLoading(false);
+  const sendMessage = async (role: string, content: string) => {
+    setChat((prev) => [...prev, { role, content }]);
+    if (role === "user" || role === "system") {
+      setLoading(true);
+      try {
+        const response = await axios.post(`${apiUrl}/api/ChatPromptBot`, {
+          messages: [...chat, { role, content }]
+        });
+        const botReply = response.data.reply;
+        setChat((prev) => [...prev, { role: "assistant", content: botReply }]);
+      } catch (err) {
+        console.error("Error during chat:", err);
+      } finally {
+        setLoading(false);
+      }
     }
+  };
+
+  const handleSend = async () => {
+    if (!input.trim()) return;
+    await sendMessage("user", input.trim());
+    setInput("");
   };
 
   return (
     <>
-      <Button onClick={handleClick} variant="outlined" sx={{
+      <Button onClick={handleOpen} variant="outlined" sx={{
         textTransform: 'none',
         borderColor: 'pink',
         color: 'black',
@@ -144,26 +142,53 @@ export default function SendPrompt({ challengeTopic, challengeDescription }: { c
 
       <Modal open={open} onClose={() => setOpen(false)}>
         <Box sx={{
-          padding: 4,
+          p: 2,
           backgroundColor: 'white',
-          width: 400,
-          maxHeight: 500,
+          width: 500,
+          maxHeight: '80vh',
           overflowY: 'auto',
           margin: 'auto',
-          marginTop: 10,
-          borderRadius: 2
+          mt: 10,
+          borderRadius: 2,
+          display: 'flex',
+          flexDirection: 'column'
         }}>
-          <Typography variant="h6" mb={2}>הצעות לפרומפטים לאתגר:</Typography>
+          <Box display="flex" justifyContent="space-between" alignItems="center">
+            <Typography variant="h6">צ'אט עם הבוט</Typography>
+            <IconButton onClick={() => setOpen(false)}><CloseIcon /></IconButton>
+          </Box>
 
-          {loading ? (
-            <Box display="flex" justifyContent="center"><CircularProgress /></Box>
-          ) : (
-            <List>
-              {suggestions.map((s, i) => (
-                <ListItem key={i} sx={{ paddingLeft: 0 }}>{i + 1}. {s}</ListItem>
-              ))}
-            </List>
-          )}
+          <List sx={{ flexGrow: 1, overflowY: 'auto' }}>
+            {chat.map((m, i) => (
+              <ListItem
+                key={i}
+                sx={{
+                  alignSelf: m.role === "user" ? "flex-end" : "flex-start",
+                  backgroundColor: m.role === "user" ? "#ffe6f0" : "#f0f0f0",
+                  borderRadius: 2,
+                  mb: 1,
+                  maxWidth: "90%"
+                }}
+              >
+                {m.content}
+              </ListItem>
+            ))}
+            {loading && <ListItem><CircularProgress size={20} /></ListItem>}
+          </List>
+
+          <Box display="flex" gap={1} mt={2}>
+            <TextField
+              fullWidth
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              onKeyDown={(e) => e.key === "Enter" && handleSend()}
+              placeholder="כתוב משהו לבוט..."
+              size="small"
+            />
+            <Button variant="contained" onClick={handleSend} disabled={loading}>
+              שלח
+            </Button>
+          </Box>
         </Box>
       </Modal>
     </>
