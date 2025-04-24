@@ -129,47 +129,49 @@ export default function ChatPromptBot({
     <>
       {/* Floating Chat Icon Button - positioned at bottom right */}
       <Tooltip title="Get Creative Ideas" placement="left">
-        <IconButton 
-          onClick={handleOpen} 
-          sx={{
-            position: 'fixed',
-            bottom: '20px',
-            right: '20px',
-            width: '65px',
-            height: '65px',
-            borderRadius: '50%',
-            backgroundColor: 'rgba(24, 24, 26, 0.95)',
-            color: 'white',
-            boxShadow: '0 3px 10px rgba(0, 0, 0, 0.2)',
-            zIndex: 1000,
-            transition: 'all 0.3s ease',
-            border: '1px solid rgba(255, 255, 255, 0.08)',
-            '&::before': {
-              content: '""',
-              position: 'absolute',
-              top: '-2px',
-              left: '-2px',
-              right: '-2px',
-              bottom: '-2px',
-              borderRadius: '50%',
-              opacity: 0.6,
-              transition: 'opacity 0.3s ease',
-              zIndex: -1,
-            },
-            '&:hover': {
-              transform: 'scale(1.05)',
-              boxShadow: '0 6px 20px linear-gradient(81.02deg, #f1535d 7.47%, #ffffff 45.52%, #edc106 114.8%)',
-              // background: 'linear-gradient(81.02deg, #f1535d 7.47%, #ffffff 45.52%, #edc106 114.8%)',
-              // backgroundColor: 'linear-gradient(81.02deg, #f1535d 7.47%, #ffffff 45.52%, #edc106 114.8%)',
-              '&::before': {
-                opacity: 0.8,
-              }
-            }
-          }}
-          aria-label="Chat assistant"
-        >
-          <ChatIcon sx={{ fontSize: 30 }} />
-        </IconButton>
+      <IconButton 
+  onClick={handleOpen} 
+  sx={{
+    position: 'fixed',
+    bottom: '20px',
+    right: '20px',
+    width: '65px',
+    height: '65px',
+    borderRadius: '50%',
+    backgroundColor: 'rgba(24, 24, 26, 0.95)',
+    color: 'white',
+    boxShadow: '0 3px 10px rgba(0, 0, 0, 0.2)',
+    zIndex: 1000,
+    transition: 'all 0.3s ease',
+    border: '1px solid rgba(255, 255, 255, 0.08)',
+    '&::before': {
+      content: '""',
+      position: 'absolute',
+      top: '-2px',
+      left: '-2px',
+      right: '-2px',
+      bottom: '-2px',
+      borderRadius: '50%',
+      background: 'transparent',
+      border: '1px solid transparent',
+      transition: 'all 0.3s ease',
+      zIndex: -1,
+    },
+    '&:hover': {
+      transform: 'scale(1.05)',
+      boxShadow: '0 6px 20px rgba(0, 0, 0, 0.25)',
+      backgroundColor: 'rgba(20, 20, 22, 0.95)',
+      '&::before': {
+        borderColor: 'transparent',
+        background: 'linear-gradient(81.02deg, #f1535d 7.47%, #ffffff 45.52%, #edc106 114.8%)',
+        opacity: 0.8,
+      }
+    }
+  }}
+  aria-label="Chat assistant"
+>
+  <ChatIcon sx={{ fontSize: 30 }} />
+</IconButton>
       </Tooltip>
 
       {/* Chat Modal */}
