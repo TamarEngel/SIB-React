@@ -125,7 +125,6 @@
 //   );
 // }
 
-
 import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import {
@@ -146,24 +145,11 @@ import {
 import CloseIcon from "@mui/icons-material/Close";
 import SendIcon from "@mui/icons-material/Send";
 import SmartToyIcon from "@mui/icons-material/SmartToy";
-import LightbulbIcon from "@mui/icons-material/Lightbulb";
+import ChatIcon from "@mui/icons-material/Chat";
 import PersonIcon from "@mui/icons-material/Person";
-import { keyframes } from "@emotion/react";
+import React from "react";
 
 const apiUrl = import.meta.env.VITE_APP_API_URL;
-
-// Keyframes animations
-const pulse = keyframes`
-  0% { box-shadow: 0 0 0 0 rgba(255, 46, 255, 0.7); }
-  70% { box-shadow: 0 0 0 10px rgba(255, 46, 255, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(255, 46, 255, 0); }
-`;
-
-const glowing = keyframes`
-  0% { text-shadow: 0 0 5px #fff, 0 0 10px #ff2eff, 0 0 15px #ff2eff; }
-  50% { text-shadow: 0 0 20px #fff, 0 0 30px #ff2eff, 0 0 40px #ff2eff; }
-  100% { text-shadow: 0 0 5px #fff, 0 0 10px #ff2eff, 0 0 15px #ff2eff; }
-`;
 
 export default function ChatPromptBot({
   challengeTopic,
@@ -231,73 +217,72 @@ export default function ChatPromptBot({
   const TypingIndicator = () => (
     <Box sx={{ display: 'flex', gap: 0.5, p: 1, alignItems: 'center' }}>
       <div className="dot" style={{ 
-        width: 8, 
-        height: 8, 
+        width: 6, 
+        height: 6, 
         borderRadius: '50%', 
-        backgroundColor: '#ff2eff',
-        animation: `${pulse} 1.5s infinite`,
+        backgroundColor: '#f1535d',
+        opacity: 0.7,
+        animation: 'pulse 1.5s infinite',
         animationDelay: '0s'
       }}></div>
       <div className="dot" style={{ 
-        width: 8, 
-        height: 8, 
+        width: 6, 
+        height: 6, 
         borderRadius: '50%', 
-        backgroundColor: '#ff2eff',
-        animation: `${pulse} 1.5s infinite`,
+        backgroundColor: '#f1535d',
+        opacity: 0.7,
+        animation: 'pulse 1.5s infinite',
         animationDelay: '0.3s'
       }}></div>
       <div className="dot" style={{ 
-        width: 8, 
-        height: 8, 
+        width: 6, 
+        height: 6, 
         borderRadius: '50%', 
-        backgroundColor: '#ff2eff',
-        animation: `${pulse} 1.5s infinite`,
+        backgroundColor: '#f1535d',
+        opacity: 0.7,
+        animation: 'pulse 1.5s infinite',
         animationDelay: '0.6s'
       }}></div>
+      <style >{`
+        @keyframes pulse {
+          0% { transform: scale(0.8); opacity: 0.5; }
+          50% { transform: scale(1.2); opacity: 1; }
+          100% { transform: scale(0.8); opacity: 0.5; }
+        }
+      `}</style>
     </Box>
   );
 
   return (
     <>
-      {/* Trigger Button with Neon Effect */}
+      {/* Floating Chat Button - positioned at bottom right */}
       <Button 
         onClick={handleOpen} 
-        variant="outlined"
-        startIcon={<LightbulbIcon />}
+        variant="contained"
+        startIcon={<ChatIcon />}
         sx={{
+          position: 'fixed',
+          bottom: '20px',
+          right: '20px',
+          borderRadius: '16px',
+          padding: '8px 16px',
+          fontSize: '14px',
+          fontWeight: '500',
+          boxShadow: '0px 3px 8px rgba(0, 0, 0, 0.15)',
+          background: 'linear-gradient(81.02deg, #f1535d 7.47%, #ffffff 45.52%, #edc106 114.8%)',
+          color: '#000',
           textTransform: 'none',
-          borderColor: '#ff2eff',
-          color: '#ffffff',
-          backgroundColor: 'rgba(0,0,0,0.5)',
-          borderRadius: '24px',
-          padding: '10px 20px',
-          fontSize: '16px',
-          fontWeight: 'bold',
-          position: 'relative',
-          transition: 'all 0.3s ease',
-          '&::before': {
-            content: '""',
-            position: 'absolute',
-            inset: '-3px',
-            padding: '3px',
-            borderRadius: '28px',
-            background: 'linear-gradient(135deg, #ff2eff, #00e5ff)',
-            WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
-            WebkitMaskComposite: 'xor',
-            maskComposite: 'exclude',
-            opacity: 0.7
-          },
-          '&:hover': { 
-            transform: 'translateY(-3px)',
-            boxShadow: '0 0 15px #ff2eff, 0 0 30px rgba(255, 46, 255, 0.3)',
-            '&::before': {
-              opacity: 1
-            }
-          },
-          animation: `${glowing} 2s infinite alternate`
+          zIndex: 1000,
+          transition: 'all 0.2s ease',
+          '&:hover': {
+            transform: 'translateY(-2px)',
+            boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)',
+            background: 'linear-gradient(81.02deg, #f1535d 7.47%, #ffffff 45.52%, #edc106 114.8%)',
+            opacity: 0.9
+          }
         }}
       >
-        צריך השראה למשימה?
+        Need Ideas?
       </Button>
 
       {/* Chat Modal */}
@@ -308,77 +293,76 @@ export default function ChatPromptBot({
       >
         <Fade in={open}>
           <Paper sx={{
-            width: { xs: '90%', sm: '550px' },
+            width: { xs: '85%', sm: '400px' },
+            height: '500px',
             maxHeight: '80vh',
-            margin: 'auto',
-            mt: { xs: 5, sm: 8 },
-            borderRadius: 4,
+            position: 'fixed',
+            bottom: '80px',
+            right: '20px',
+            borderRadius: '16px',
             overflow: 'hidden',
-            boxShadow: '0 10px 30px rgba(0,0,0,0.5), 0 0 20px #ff2eff',
-            position: 'relative',
+            boxShadow: '0 4px 20px rgba(0,0,0,0.2)',
             display: 'flex',
             flexDirection: 'column',
-            background: 'linear-gradient(180deg, #000000, #111122)',
-            border: '1px solid #333',
-            '&::before': {
-              content: '""',
-              position: 'absolute',
-              inset: '-1px',
-              padding: '1px',
-              borderRadius: '16px',
-              background: 'linear-gradient(135deg, #ff2eff, #00e5ff)',
-              WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
-              WebkitMaskComposite: 'xor',
-              maskComposite: 'exclude',
-            }
+            background: '#111',
+            border: '1px solid #333'
           }}>
             {/* Header */}
             <Box sx={{
-              p: 2,
+              p: 1.5,
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
-              borderBottom: '1px solid rgba(255,255,255,0.1)',
-              backdropFilter: 'blur(10px)',
-              background: 'rgba(0,0,0,0.6)',
+              borderBottom: '1px solid rgba(255,255,255,0.08)',
+              background: 'rgba(0,0,0,0.5)',
             }}>
               <Box display="flex" alignItems="center" gap={1.5}>
                 <Avatar sx={{ 
-                  bgcolor: '#000', 
-                  border: '2px solid #ff2eff',
-                  boxShadow: '0 0 10px #ff2eff'
+                  bgcolor: '#f1535d', 
+                  width: 32,
+                  height: 32
                 }}>
-                  <SmartToyIcon sx={{ color: '#ff2eff' }} />
+                  <SmartToyIcon sx={{ color: '#fff', fontSize: '18px' }} />
                 </Avatar>
                 <Box>
-                  <Typography variant="h6" sx={{ 
+                  <Typography variant="subtitle1" sx={{ 
                     color: '#fff',
-                    fontWeight: 'bold',
-                    textShadow: '0 0 10px #ff2eff'
+                    fontWeight: 500,
+                    fontFamily: '"Inter", "Roboto", sans-serif',
+                    fontSize: '16px'
                   }}>
-                    SIB Prompt Assistant
+                    AI Prompt Assistant
                   </Typography>
-                  <Typography variant="body2" sx={{ color: '#ccc', fontStyle: 'italic' }}>
-                    מחולל רעיונות לתחרות
+                  <Typography variant="caption" sx={{ 
+                    color: '#aaa', 
+                    fontFamily: '"Inter", "Roboto", sans-serif',
+                    fontSize: '12px'
+                  }}>
+                    Get creative ideas for your challenge
                   </Typography>
                 </Box>
               </Box>
               <IconButton onClick={() => setOpen(false)} sx={{ 
-                color: '#fff', 
-                '&:hover': { color: '#ff2eff' } 
+                color: '#aaa', 
+                padding: '4px',
+                '&:hover': { color: '#fff' } 
               }}>
-                <CloseIcon />
+                <CloseIcon fontSize="small" />
               </IconButton>
             </Box>
             
             {/* Challenge Info Banner */}
             <Box sx={{ 
-              p: 2, 
-              background: 'linear-gradient(90deg, rgba(255,46,255,0.1), rgba(0,229,255,0.1))',
+              p: 1.5, 
+              background: 'rgba(241, 83, 93, 0.05)',
               borderBottom: '1px solid rgba(255,255,255,0.05)'
             }}>
-              <Typography variant="body2" sx={{ color: '#ccc' }}>
-                <span style={{ fontWeight: 'bold', color: '#fff' }}>האתגר הנוכחי:</span> {challengeTopic}
+              <Typography variant="caption" sx={{ 
+                color: '#ccc',
+                fontSize: '12px',
+                fontFamily: '"Inter", "Roboto", sans-serif',
+              }}>
+                <span style={{ fontWeight: 'bold', color: '#eee' }}>Current Challenge:</span> {challengeTopic}
               </Typography>
             </Box>
 
@@ -386,19 +370,19 @@ export default function ChatPromptBot({
             <List sx={{ 
               flexGrow: 1, 
               overflowY: 'auto', 
-              p: 2, 
+              p: 1.5, 
               display: 'flex', 
               flexDirection: 'column', 
               gap: 1.5,
               '&::-webkit-scrollbar': {
-                width: '6px',
+                width: '4px',
               },
               '&::-webkit-scrollbar-thumb': {
-                backgroundColor: 'rgba(255,46,255,0.5)',
-                borderRadius: '6px',
+                backgroundColor: 'rgba(241, 83, 93, 0.5)',
+                borderRadius: '4px',
               },
               '&::-webkit-scrollbar-track': {
-                backgroundColor: 'rgba(0,0,0,0.3)',
+                backgroundColor: 'rgba(0,0,0,0.2)',
               }
             }}>
               {chat.filter(m => m.role !== 'system').map((message, i) => (
@@ -414,51 +398,57 @@ export default function ChatPromptBot({
                   <Box
                     sx={{
                       display: 'flex',
-                      gap: 1.5,
+                      gap: 1,
                       alignItems: 'flex-start',
                       flexDirection: message.role === "user" ? 'row-reverse' : 'row',
-                      maxWidth: '85%',
+                      maxWidth: '90%',
                     }}
                   >
                     <Avatar
                       sx={{
-                        width: 36,
-                        height: 36,
-                        bgcolor: message.role === "user" ? '#333' : '#000',
-                        border: message.role === "user" 
-                          ? '2px solid #00e5ff'
-                          : '2px solid #ff2eff',
-                        boxShadow: message.role === "user"
-                          ? '0 0 5px #00e5ff'
-                          : '0 0 5px #ff2eff'
+                        width: 28,
+                        height: 28,
+                        bgcolor: message.role === "user" ? '#333' : '#f1535d',
+                        fontSize: '14px'
                       }}
                     >
                       {message.role === "user" ? (
-                        <PersonIcon sx={{ color: '#00e5ff' }} />
+                        <PersonIcon sx={{ color: '#fff', fontSize: '16px' }} />
                       ) : (
-                        <SmartToyIcon sx={{ color: '#ff2eff' }} />
+                        <SmartToyIcon sx={{ color: '#fff', fontSize: '16px' }} />
                       )}
                     </Avatar>
                     <Paper
-                      elevation={3}
+                      elevation={0}
                       sx={{
                         p: 1.5,
                         borderRadius: 2,
                         backgroundColor: message.role === "user" 
-                          ? 'rgba(0, 229, 255, 0.15)'
-                          : 'rgba(255, 46, 255, 0.15)',
+                          ? 'rgba(255, 255, 255, 0.05)'
+                          : 'rgba(241, 83, 93, 0.08)',
                         border: message.role === "user"
-                          ? '1px solid rgba(0, 229, 255, 0.3)'
-                          : '1px solid rgba(255, 46, 255, 0.3)',
+                          ? '1px solid rgba(255, 255, 255, 0.1)'
+                          : '1px solid rgba(241, 83, 93, 0.2)',
                         color: '#fff',
-                        backdropFilter: 'blur(5px)',
                         direction: 'rtl',
                         maxWidth: '100%',
                         wordBreak: 'break-word'
                       }}
                     >
-                      <Typography variant="body1" sx={{ whiteSpace: 'pre-wrap' }}>
-                        {message.content}
+                      <Typography 
+                        variant="body2" 
+                        sx={{ 
+                          whiteSpace: 'pre-wrap',
+                          fontFamily: '"Heebo", "Roboto", sans-serif',
+                          fontSize: '14px',
+                          textAlign: 'right',
+                          lineHeight: 1.5
+                        }}
+                      >
+                        {message.role === "assistant" 
+                          ? formatNumberedIdeas(message.content)
+                          : message.content
+                        }
                       </Typography>
                     </Paper>
                   </Box>
@@ -467,24 +457,22 @@ export default function ChatPromptBot({
               
               {showTypingIndicator && (
                 <ListItem sx={{ p: 0, justifyContent: "flex-start" }}>
-                  <Box sx={{ display: 'flex', gap: 1.5, alignItems: 'flex-end' }}>
+                  <Box sx={{ display: 'flex', gap: 1, alignItems: 'flex-end' }}>
                     <Avatar
                       sx={{
-                        width: 36,
-                        height: 36,
-                        bgcolor: '#000',
-                        border: '2px solid #ff2eff',
-                        boxShadow: '0 0 5px #ff2eff'
+                        width: 28,
+                        height: 28,
+                        bgcolor: '#f1535d',
                       }}
                     >
-                      <SmartToyIcon sx={{ color: '#ff2eff' }} />
+                      <SmartToyIcon sx={{ color: '#fff', fontSize: '16px' }} />
                     </Avatar>
                     <Paper
-                      elevation={2}
+                      elevation={0}
                       sx={{
                         borderRadius: 2,
-                        backgroundColor: 'rgba(255, 46, 255, 0.15)',
-                        border: '1px solid rgba(255, 46, 255, 0.3)',
+                        backgroundColor: 'rgba(241, 83, 93, 0.08)',
+                        border: '1px solid rgba(241, 83, 93, 0.2)',
                       }}
                     >
                       <TypingIndicator />
@@ -497,9 +485,9 @@ export default function ChatPromptBot({
 
             {/* Input Area */}
             <Box sx={{ 
-              p: 2, 
-              backgroundColor: 'rgba(0,0,0,0.7)',
-              borderTop: '1px solid rgba(255,255,255,0.1)',
+              p: 1.5, 
+              backgroundColor: 'rgba(0,0,0,0.3)',
+              borderTop: '1px solid rgba(255,255,255,0.05)',
               display: 'flex',
               gap: 1
             }}>
@@ -510,53 +498,59 @@ export default function ChatPromptBot({
                 onKeyDown={(e) => e.key === "Enter" && !e.shiftKey && handleSend()}
                 placeholder="שאל על רעיונות לפרומפט..."
                 multiline
-                maxRows={3}
+                maxRows={2}
+                size="small"
                 sx={{
                   '& .MuiOutlinedInput-root': {
                     color: 'white',
-                    borderRadius: 3,
-                    backgroundColor: 'rgba(255,255,255,0.05)',
+                    borderRadius: 2,
+                    backgroundColor: 'rgba(255,255,255,0.03)',
+                    fontSize: '14px',
                     '& fieldset': {
-                      borderColor: 'rgba(255,255,255,0.2)',
+                      borderColor: 'rgba(255,255,255,0.1)',
                     },
                     '&:hover fieldset': {
-                      borderColor: '#ff2eff',
+                      borderColor: '#f1535d',
                     },
                     '&.Mui-focused fieldset': {
-                      borderColor: '#ff2eff',
-                      borderWidth: '2px',
+                      borderColor: '#f1535d',
+                      borderWidth: '1px',
                     },
                   },
                   '& .MuiInputBase-input::placeholder': {
-                    color: 'rgba(255,255,255,0.5)',
+                    color: 'rgba(255,255,255,0.4)',
                     opacity: 1,
+                    fontSize: '14px',
                   },
                 }}
                 InputProps={{
-                  sx: { color: '#fff', direction: 'rtl' }
+                  sx: { 
+                    color: '#fff', 
+                    direction: 'rtl',
+                    fontFamily: '"Heebo", "Roboto", sans-serif',
+                  }
                 }}
               />
-              <Tooltip title="שלח הודעה">
+              <Tooltip title="Send Message">
                 <span>
                   <IconButton 
                     onClick={handleSend} 
                     disabled={loading || !input.trim()} 
                     sx={{
-                      backgroundColor: loading ? 'rgba(255,46,255,0.2)' : 'rgba(255,46,255,0.7)',
+                      backgroundColor: '#f1535d',
                       color: 'white',
-                      height: '100%',
-                      width: '56px',
+                      height: '40px',
+                      width: '40px',
                       '&:hover': { 
-                        backgroundColor: loading ? 'rgba(255,46,255,0.2)' : '#ff2eff',
-                        boxShadow: '0 0 10px #ff2eff'
+                        backgroundColor: '#d84550',
                       },
                       '&.Mui-disabled': {
-                        backgroundColor: 'rgba(255,255,255,0.1)',
-                        color: 'rgba(255,255,255,0.3)'
+                        backgroundColor: 'rgba(255,255,255,0.05)',
+                        color: 'rgba(255,255,255,0.2)'
                       }
                     }}
                   >
-                    {loading ? <CircularProgress size={24} sx={{ color: '#fff' }} /> : <SendIcon />}
+                    {loading ? <CircularProgress size={20} sx={{ color: '#fff' }} /> : <SendIcon fontSize="small" />}
                   </IconButton>
                 </span>
               </Tooltip>
@@ -566,4 +560,51 @@ export default function ChatPromptBot({
       </Modal>
     </>
   );
+}
+
+// Helper function to format numbered ideas
+function formatNumberedIdeas(content: string): React.ReactNode {
+  // Check if the content has numbered ideas like "1.", "2.", etc.
+  const lines = content.split('\n');
+  const numberedPattern = /^\d+\.\s/;
+  
+  // If there are no numbered lines, return the content as is
+  if (!lines.some(line => numberedPattern.test(line))) {
+    return content;
+  }
+  
+  // Process the text to properly format numbered ideas
+  return lines.map((line, index) => {
+    const match = line.match(numberedPattern);
+    if (match) {
+      return (
+        <React.Fragment key={index}>
+          {index > 0 && <br />}
+          <Box sx={{ display: 'flex', marginBottom: '8px' }}>
+            <Typography 
+              component="span" 
+              sx={{ 
+                color: '#f1535d', 
+                fontWeight: 'bold', 
+                marginRight: '8px',
+                minWidth: '20px'
+              }}
+            >
+              {match[0]}
+            </Typography>
+            <Typography component="span">
+              {line.replace(numberedPattern, '')}
+            </Typography>
+          </Box>
+        </React.Fragment>
+      );
+    } else {
+      return (
+        <React.Fragment key={index}>
+          {index > 0 && <br />}
+          {line}
+        </React.Fragment>
+      );
+    }
+  });
 }
