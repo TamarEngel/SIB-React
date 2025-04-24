@@ -117,7 +117,7 @@ export default function SendPrompt({ challengeTopic, challengeDescription }: { c
     setLoading(true);
 
     try {
-      const response = await axios.post(`${apiUrl}/api/OpenAiPrompt`, {
+      const response = await axios.post(`${apiUrl}/api/PromptSuggestions`, {
         topic: challengeTopic,
         description: challengeDescription,
       });
