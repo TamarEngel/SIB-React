@@ -176,6 +176,7 @@
 
 
 // ChallengeHistory.tsx
+// ChallengeHistory.tsx
 import { observer } from "mobx-react-lite";
 import { Box, Typography } from "@mui/material";
 import { useState, useEffect } from "react";
@@ -197,32 +198,32 @@ const ChallengeHistory = observer(() => {
 
     return (
         <Box sx={{ 
-            padding: { xs: 2, md: 4 }, 
+            padding: { xs: 2, md: 5 }, 
             backgroundColor: "#000000", 
             color: "#ffffff",
             minHeight: "100vh",
-            backgroundImage: "radial-gradient(circle at 10% 30%, rgba(30, 0, 0, 0.4) 0%, rgba(0, 0, 0, 1) 70%)",
+            backgroundImage: "linear-gradient(to bottom, #000000, #0a0a0a)",
             overflow: "hidden"
         }}>
-            {/* Enhanced header with subtle gradient animation */}
+            {/* Title with subtle gradient */}
             <Typography sx={{
-                fontSize: "clamp(1.75rem, 1rem + 3vw, 2.5rem)",
+                fontSize: "clamp(2rem, 1.5rem + 3vw, 3rem)",
                 fontWeight: 600,
                 lineHeight: 1.2,
                 fontFamily: '"Plus Jakarta Sans", Arial, sans-serif',
-                marginTop: { xs: "30px", md: "40px" },
+                marginTop: { xs: "30px", md: "50px" },
                 textAlign: "center",
-                marginBottom: { xs: "40px", md: "60px" },
+                marginBottom: { xs: "50px", md: "70px" },
                 position: "relative",
-                maxWidth: "1200px",
+                maxWidth: "1400px",
                 marginLeft: "auto",
                 marginRight: "auto",
-                backgroundImage: "linear-gradient(90deg, #ff3a3a 0%, #ffffff 25%, #ffe100 50%, #ffffff 75%, #ff3a3a 100%)",
+                backgroundImage: "linear-gradient(90deg, #ff3a3a 0%, #ffffff 50%, #ffe100 100%)",
                 backgroundSize: "200% auto",
                 color: "transparent",
                 WebkitBackgroundClip: "text",
                 backgroundClip: "text",
-                animation: "shine 6s linear infinite",
+                animation: "shine 8s linear infinite",
                 "@keyframes shine": {
                     "0%": { backgroundPosition: "0% center" },
                     "100%": { backgroundPosition: "200% center" },
@@ -230,61 +231,52 @@ const ChallengeHistory = observer(() => {
                 "&::after": {
                     content: '""',
                     position: "absolute",
-                    bottom: "-15px",
+                    bottom: "-20px",
                     left: "50%",
                     transform: "translateX(-50%)",
-                    width: "80px",
+                    width: "120px",
                     height: "3px",
-                    background: "linear-gradient(90deg, rgba(255, 58, 58, 0.1), rgba(255, 58, 58, 0.6), rgba(255, 58, 58, 0.1))",
+                    background: "linear-gradient(90deg, rgba(255, 58, 58, 0.1), rgba(255, 58, 58, 0.4), rgba(255, 58, 58, 0.1))",
                     borderRadius: "2px"
                 }
             }}>
                 Challenge Collection
             </Typography>
             
-            {/* Expanded layout with larger image section */}
+            {/* Refactored layout - Challenge content takes more space */}
             <Box sx={{ 
                 display: "flex",
                 flexDirection: { xs: "column", md: "row" },
-                maxWidth: "1400px",
+                maxWidth: "1800px",
                 margin: "0 auto",
-                gap: { xs: 4, md: 0 },
-                height: { md: "calc(100vh - 180px)" },
-                minHeight: { md: "600px" }
+                gap: { xs: 5, md: 6 },
+                height: { md: "calc(100vh - 200px)" },
+                minHeight: { md: "700px" },
+                position: "relative",
+                pb: { xs: 4, md: 0 }
             }}>
-                {/* Left side - Challenge list */}
+                {/* Left side - Challenge list - Now smaller, more subtle and lower */}
                 <Box sx={{ 
-                    flex: { xs: "1 1 100%", md: "0 0 300px" },
-                    mr: { md: 4 },
+                    flex: { xs: "1 1 100%", md: "0 0 240px" },
+                    order: { xs: 2, md: 1 },
                     position: "relative",
                     height: { xs: "auto", md: "100%" },
+                    maxHeight: { md: "90%" },
                     overflow: { xs: "visible", md: "auto" },
                     scrollbarWidth: "thin",
-                    scrollbarColor: "rgba(255, 58, 58, 0.3) transparent",
+                    scrollbarColor: "rgba(100, 100, 100, 0.3) transparent",
+                    mt: { md: "60px" }, // Move down
                     "&::-webkit-scrollbar": {
-                        width: "5px",
+                        width: "4px",
                     },
                     "&::-webkit-scrollbar-track": {
                         background: "rgba(0, 0, 0, 0.1)",
                     },
                     "&::-webkit-scrollbar-thumb": {
-                        background: "rgba(255, 58, 58, 0.3)",
+                        background: "rgba(100, 100, 100, 0.3)",
                         borderRadius: "3px",
                     }
                 }}>
-                    {/* Decorative element */}
-                    <Box sx={{
-                        position: "absolute",
-                        left: { xs: "-50px", md: "-70px" },
-                        top: "-40px",
-                        width: "150px",
-                        height: "150px",
-                        background: "radial-gradient(circle, rgba(255, 58, 58, 0.08) 0%, rgba(255, 58, 58, 0) 70%)",
-                        borderRadius: "50%",
-                        zIndex: 0,
-                        pointerEvents: "none"
-                    }} />
-                    
                     {notActiveCallenges.length > 0 ? (
                         notActiveCallenges.map((challenge, index) => (
                             <Box 
@@ -295,72 +287,59 @@ const ChallengeHistory = observer(() => {
                                 sx={{
                                     borderRadius: "12px",
                                     backgroundColor: selectedChallenge?.id === challenge.id 
-                                        ? "rgba(40, 0, 0, 0.9)" 
-                                        : "rgba(20, 20, 20, 0.6)",
-                                    padding: "16px 20px",
-                                    margin: "0 0 15px 0",
+                                        ? "rgba(20, 20, 20, 0.9)" 
+                                        : "rgba(10, 10, 10, 0.5)",
+                                    padding: "16px 18px",
+                                    margin: "0 0 12px 0",
                                     cursor: "pointer",
                                     border: selectedChallenge?.id === challenge.id 
-                                        ? "1px solid rgba(255, 58, 58, 0.3)" 
-                                        : "1px solid rgba(60, 60, 60, 0.3)",
+                                        ? "1px solid rgba(100, 100, 100, 0.3)" 
+                                        : "1px solid rgba(40, 40, 40, 0.3)",
                                     position: "relative",
                                     overflow: "hidden",
                                     transition: "all 0.3s ease",
-                                    transform: hoverIndex === index ? "translateY(-3px)" : "translateY(0)",
+                                    transform: hoverIndex === index ? "translateY(-2px)" : "translateY(0)",
                                     boxShadow: hoverIndex === index || selectedChallenge?.id === challenge.id 
-                                        ? "0 8px 24px rgba(0, 0, 0, 0.2), 0 2px 8px rgba(255, 58, 58, 0.12)" 
+                                        ? "0 6px 16px rgba(0, 0, 0, 0.15)" 
                                         : "none",
                                     "&::before": {
                                         content: '""',
                                         position: "absolute",
                                         top: 0,
                                         left: 0,
-                                        width: "3px",
+                                        width: "2px",
                                         height: "100%",
                                         background: selectedChallenge?.id === challenge.id 
-                                            ? "linear-gradient(180deg, rgba(255, 58, 58, 0.8), rgba(255, 225, 0, 0.3))" 
+                                            ? "rgba(150, 150, 150, 0.4)" 
                                             : "transparent",
-                                        borderRadius: "3px 0 0 3px",
+                                        borderRadius: "2px 0 0 2px",
                                         transition: "all 0.3s ease"
-                                    },
-                                    "&::after": {
-                                        content: '""',
-                                        position: "absolute",
-                                        top: 0,
-                                        left: 0,
-                                        right: 0,
-                                        bottom: 0,
-                                        background: hoverIndex === index && selectedChallenge?.id !== challenge.id
-                                            ? "linear-gradient(135deg, rgba(255, 58, 58, 0.05) 0%, transparent 100%)"
-                                            : "transparent",
-                                        zIndex: 0,
-                                        pointerEvents: "none"
                                     }
                                 }}
                             >
-                                {/* Challenge number pill */}
+                                {/* Challenge number */}
                                 <Box sx={{
                                     position: "absolute",
                                     top: "14px",
-                                    right: "16px",
-                                    backgroundColor: "rgba(20, 20, 20, 0.7)",
-                                    borderRadius: "12px",
-                                    padding: "2px 8px",
+                                    right: "14px",
+                                    backgroundColor: "rgba(10, 10, 10, 0.7)",
+                                    borderRadius: "10px",
+                                    padding: "2px 6px",
                                     fontSize: "0.65rem",
-                                    color: "rgba(255, 225, 0, 0.9)",
-                                    border: "1px solid rgba(255, 225, 0, 0.15)"
+                                    color: "rgba(200, 200, 200, 0.7)",
+                                    border: "1px solid rgba(50, 50, 50, 0.3)"
                                 }}>
                                     #{challenge.id}
                                 </Box>
                                 
-                                {/* Challenge info */}
+                                {/* Challenge info - Simple and subtle */}
                                 <Box sx={{ position: "relative", zIndex: 1 }}>
                                     <Typography variant="h6" sx={{ 
                                         color: selectedChallenge?.id === challenge.id 
                                             ? "rgba(255, 255, 255, 1)" 
-                                            : "rgba(255, 255, 255, 0.9)",
-                                        fontWeight: 600,
-                                        fontSize: "1rem",
+                                            : "rgba(255, 255, 255, 0.8)",
+                                        fontWeight: 500,
+                                        fontSize: "0.9rem",
                                         mb: 1,
                                         pr: 4
                                     }}>
@@ -370,38 +349,21 @@ const ChallengeHistory = observer(() => {
                                     <Box sx={{ 
                                         display: "flex", 
                                         alignItems: "center", 
-                                        justifyContent: "space-between"
+                                        gap: 2
                                     }}>
-                                        <Box sx={{
-                                            display: "flex",
-                                            alignItems: "center",
-                                            color: "rgba(255, 255, 255, 0.7)"
+                                        <Typography variant="body2" sx={{ 
+                                            color: "rgba(180, 180, 180, 0.7)",
+                                            fontSize: "0.75rem"
                                         }}>
-                                            <Box component="span" sx={{
-                                                width: "6px",
-                                                height: "6px",
-                                                borderRadius: "50%",
-                                                backgroundColor: "rgba(255, 58, 58, 0.7)",
-                                                mr: 1
-                                            }} />
-                                            <Typography variant="body2" sx={{ 
-                                                color: "rgba(255, 255, 255, 0.7)",
-                                                fontSize: "0.8rem"
-                                            }}>
-                                                {challenge.countCreations} Entries
-                                            </Typography>
-                                        </Box>
+                                            {challenge.countCreations} Entries
+                                        </Typography>
                                         
-                                        <Box sx={{
-                                            padding: "3px 8px",
-                                            backgroundColor: "rgba(20, 20, 20, 0.5)",
-                                            color: "rgba(255, 225, 0, 0.9)",
-                                            borderRadius: "4px",
+                                        <Typography sx={{
                                             fontSize: "0.7rem",
-                                            border: "1px solid rgba(255, 225, 0, 0.2)"
+                                            color: "rgba(180, 180, 180, 0.7)"
                                         }}>
                                             Completed
-                                        </Box>
+                                        </Typography>
                                     </Box>
                                 </Box>
                             </Box>
@@ -410,14 +372,13 @@ const ChallengeHistory = observer(() => {
                         <Box sx={{ 
                             padding: "30px", 
                             textAlign: "center",
-                            backgroundColor: "rgba(20, 20, 20, 0.6)",
+                            backgroundColor: "rgba(10, 10, 10, 0.5)",
                             borderRadius: "12px",
-                            border: "1px solid rgba(60, 60, 60, 0.3)"
+                            border: "1px solid rgba(40, 40, 40, 0.3)"
                         }}>
                             <Typography sx={{ 
                                 color: "rgba(255, 255, 255, 0.7)",
-                                fontSize: "1rem",
-                                mb: 2
+                                fontSize: "0.9rem"
                             }}>
                                 No completed challenges found
                             </Typography>
@@ -425,81 +386,21 @@ const ChallengeHistory = observer(() => {
                     )}
                 </Box>
                 
-                {/* Right side - Winner showcase - EXPANDED */}
+                {/* Right side - GREATLY ENLARGED winning showcase */}
                 <Box sx={{ 
-                    flex: { xs: "1 1 100%", md: "1 1 calc(100% - 340px)" },
-                    height: { xs: "500px", sm: "600px", md: "calc(100vh - 200px)" },
+                    flex: { xs: "1 1 100%", md: "1 1 calc(100% - 300px)" },
+                    order: { xs: 1, md: 2 },
+                    height: { xs: "600px", sm: "700px", md: "calc(100vh - 200px)" },
                     position: "relative",
-                    borderRadius: "16px",
+                    borderRadius: "18px",
                     overflow: "hidden",
-                    backgroundColor: "rgba(10, 10, 10, 0.7)",
-                    border: "1px solid rgba(60, 60, 60, 0.3)",
-                    boxShadow: "0 20px 40px rgba(0, 0, 0, 0.3)",
+                    backgroundColor: "rgba(8, 8, 8, 0.7)",
+                    border: "1px solid rgba(40, 40, 40, 0.3)",
+                    boxShadow: "0 25px 50px rgba(0, 0, 0, 0.2)",
                     display: "flex",
                     alignItems: "center",
-                    justifyContent: "center",
-                    backdropFilter: "blur(20px)"
+                    justifyContent: "center"
                 }}>
-                    {/* Background decorative elements */}
-                    <Box sx={{
-                        position: "absolute",
-                        right: "-100px",
-                        bottom: "-80px",
-                        width: "300px",
-                        height: "300px",
-                        background: "radial-gradient(circle, rgba(255, 58, 58, 0.06) 0%, rgba(255, 58, 58, 0) 70%)",
-                        borderRadius: "50%",
-                        zIndex: 0,
-                        pointerEvents: "none"
-                    }} />
-                    
-                    <Box sx={{
-                        position: "absolute",
-                        left: "15%",
-                        top: "10%",
-                        width: "200px",
-                        height: "200px",
-                        background: "radial-gradient(circle, rgba(255, 225, 0, 0.03) 0%, rgba(255, 225, 0, 0) 70%)",
-                        borderRadius: "50%",
-                        zIndex: 0,
-                        pointerEvents: "none"
-                    }} />
-                    
-                    {/* Trophy icon decorative element */}
-                    {selectedChallenge && (
-                        <Box sx={{
-                            position: "absolute",
-                            top: "20px",
-                            left: "20px",
-                            zIndex: 2,
-                            backgroundColor: "rgba(10, 10, 10, 0.7)",
-                            backdropFilter: "blur(4px)",
-                            padding: "12px 18px",
-                            borderRadius: "12px",
-                            display: "flex",
-                            alignItems: "center",
-                            gap: 1.5,
-                            boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
-                            border: "1px solid rgba(255, 58, 58, 0.2)"
-                        }}>
-                            <Typography 
-                                component="span" 
-                                role="img" 
-                                aria-label="trophy" 
-                                sx={{ fontSize: "1.2rem", color: "rgba(255, 225, 0, 0.9)" }}
-                            >
-                                🏆
-                            </Typography>
-                            <Typography sx={{ 
-                                color: "#fff", 
-                                fontWeight: 500,
-                                fontSize: "0.9rem"
-                            }}>
-                                Winning Creation
-                            </Typography>
-                        </Box>
-                    )}
-                    
                     {/* Main content */}
                     {selectedChallenge ? (
                         <Box sx={{ 

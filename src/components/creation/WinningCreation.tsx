@@ -181,15 +181,13 @@
 
 // export default WinningCreation;
 
-
-// WinningCreation.timport { Typography, Box, Avatar } from "@mui/material";
+import { Typography, Box, Avatar } from "@mui/material";
 import { observer } from "mobx-react-lite";
 import { useState, useEffect } from "react";
 import { CreationType } from "../../models/creation";
 import { UserType } from "../../models/user";
 import challengeStore from "../../store/challengeStore";
 import CreationView from "./CreationView";
-import { Box, Typography, Avatar } from "@mui/material";
 
 const WinningCreation = observer(({ challengeId }: { challengeId: number }) => {
     const [winningCreation, setWinningCreation] = useState<CreationType | null>(null);
@@ -226,14 +224,14 @@ const WinningCreation = observer(({ challengeId }: { challengeId: number }) => {
                 alignItems: "center",
                 justifyContent: "center",
                 flexDirection: "column",
-                background: "rgba(10, 10, 10, 0.4)"
+                background: "rgba(8, 8, 8, 0.4)"
             }}>
                 <Box sx={{
-                    width: "40px",
-                    height: "40px",
+                    width: "50px",
+                    height: "50px",
                     borderRadius: "50%",
-                    border: "2px solid rgba(255, 58, 58, 0.1)",
-                    borderTop: "2px solid rgba(255, 58, 58, 0.7)",
+                    border: "2px solid rgba(50, 50, 50, 0.2)",
+                    borderTop: "2px solid rgba(200, 200, 200, 0.7)",
                     animation: "spin 1s linear infinite",
                     mb: 3,
                     "@keyframes spin": {
@@ -243,8 +241,8 @@ const WinningCreation = observer(({ challengeId }: { challengeId: number }) => {
                 }} />
                 <Typography sx={{ 
                     color: "rgba(255, 255, 255, 0.6)",
-                    fontSize: "0.85rem",
-                    fontWeight: 500
+                    fontSize: "1rem",
+                    fontWeight: 400
                 }}>
                     Loading winner...
                 </Typography>
@@ -261,34 +259,36 @@ const WinningCreation = observer(({ challengeId }: { challengeId: number }) => {
                 alignItems: "center",
                 justifyContent: "center",
                 flexDirection: "column",
-                background: "rgba(10, 10, 10, 0.4)",
+                background: "rgba(8, 8, 8, 0.4)",
                 padding: "20px"
             }}>
                 <Box sx={{
-                    width: "60px",
-                    height: "60px",
+                    width: "80px",
+                    height: "80px",
                     borderRadius: "50%",
                     backgroundColor: "rgba(20, 20, 20, 0.6)",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    mb: 2
+                    mb: 3
                 }}>
-                    <Typography component="span" sx={{ fontSize: "1.8rem", opacity: 0.5 }}>
+                    <Typography component="span" sx={{ fontSize: "2.5rem", opacity: 0.5 }}>
                         🏆
                     </Typography>
                 </Box>
                 <Typography variant="body1" sx={{ 
                     color: "rgba(255, 255, 255, 0.7)",
                     textAlign: "center",
-                    mb: 1
+                    mb: 2,
+                    fontSize: "1.2rem"
                 }}>
                     No winning creation found
                 </Typography>
                 <Typography variant="body2" sx={{ 
                     color: "rgba(255, 255, 255, 0.5)",
                     textAlign: "center",
-                    maxWidth: "260px"
+                    maxWidth: "320px",
+                    fontSize: "1rem"
                 }}>
                     This challenge may not have any entries or the voting hasn't been completed yet
                 </Typography>
@@ -299,26 +299,10 @@ const WinningCreation = observer(({ challengeId }: { challengeId: number }) => {
     return (
         <Box 
             sx={{ width: "100%", height: "100%", position: "relative" }}
-            onMouseEnter={() => setIsHovered(true)}
+            onMouseEnter={() => setIsHovered(true) }
             onMouseLeave={() => setIsHovered(false)}
         >
-            {/* Dramatic spotlight effect on hover */}
-            <Box sx={{ 
-                position: "absolute",
-                top: 0,
-                left: 0,
-                right: 0,
-                bottom: 0,
-                background: isHovered 
-                    ? "radial-gradient(circle at center, rgba(0,0,0,0), rgba(0,0,0,0.7))" 
-                    : "none",
-                opacity: isHovered ? 1 : 0,
-                transition: "opacity 0.7s ease",
-                pointerEvents: "none",
-                zIndex: 2
-            }} />
-            
-            {/* Creation image display - EXPANDED */}
+            {/* MUCH LARGER creation image display */}
             <Box sx={{ 
                 position: "absolute",
                 top: 0,
@@ -334,7 +318,7 @@ const WinningCreation = observer(({ challengeId }: { challengeId: number }) => {
                     justifyContent: "center",
                     "& img": {
                         maxWidth: "100%",
-                        maxHeight: "100%",
+                        maxHeight: "calc(100% - 30px)", // Ensure there's space for the info bar
                         objectFit: "contain"
                     }
                 }
@@ -342,7 +326,39 @@ const WinningCreation = observer(({ challengeId }: { challengeId: number }) => {
                 <CreationView fileName={winningCreation.fileName} />
             </Box>
             
-            {/* Vote badge - enhanced for better visibility */}
+            {/* Subtle trophy indicator */}
+            <Box sx={{
+                position: "absolute",
+                top: "20px",
+                left: "20px",
+                zIndex: 3,
+                display: "flex",
+                alignItems: "center",
+                gap: 1.5,
+                background: "rgba(12, 12, 12, 0.7)",
+                backdropFilter: "blur(10px)",
+                padding: "10px 16px",
+                borderRadius: "12px",
+                border: "1px solid rgba(60, 60, 60, 0.3)"
+            }}>
+                <Typography 
+                    component="span" 
+                    role="img" 
+                    aria-label="trophy" 
+                    sx={{ fontSize: "1.2rem", color: "rgba(255, 225, 0, 0.7)" }}
+                >
+                    🏆
+                </Typography>
+                <Typography sx={{
+                    fontWeight: 400,
+                    fontSize: "0.95rem",
+                    color: "#ffffff",
+                }}>
+                    Winner
+                </Typography>
+            </Box>
+            
+            {/* Vote indicator - very subtle */}
             <Box sx={{
                 position: "absolute",
                 top: "20px",
@@ -350,133 +366,92 @@ const WinningCreation = observer(({ challengeId }: { challengeId: number }) => {
                 zIndex: 3,
                 display: "flex",
                 alignItems: "center",
-                gap: 1,
-                background: "linear-gradient(to right, rgba(10, 10, 10, 0.85), rgba(40, 0, 0, 0.85))",
-                backdropFilter: "blur(8px)",
-                padding: "8px 14px",
-                borderRadius: "20px",
-                border: "1px solid rgba(255, 58, 58, 0.2)",
-                boxShadow: "0 4px 12px rgba(0, 0, 0, 0.2)",
-                transition: "all 0.3s ease",
-                transform: isHovered ? "scale(1.05)" : "scale(1)"
+                gap: 1.5,
+                background: "rgba(12, 12, 12, 0.7)",
+                backdropFilter: "blur(10px)",
+                padding: "10px 16px",
+                borderRadius: "12px",
+                border: "1px solid rgba(60, 60, 60, 0.3)"
             }}>
-                <Box component="span" sx={{
-                    width: "8px",
-                    height: "8px",
-                    borderRadius: "50%",
-                    backgroundColor: "rgba(255, 225, 0, 0.9)",
-                    boxShadow: "0 0 10px rgba(255, 225, 0, 0.5)"
-                }} />
                 <Typography sx={{
-                    fontWeight: 600,
-                    fontSize: "0.9rem",
+                    fontWeight: 400,
+                    fontSize: "0.95rem",
                     color: "#ffffff",
                 }}>
-                    {winningCreation.votes || 0} Votes
+                    {winningCreation.votes || 0 || isHovered} Votes
                 </Typography>
             </Box>
             
-            {/* Enhanced creator info bar - positioned lower */}
+            {/* LARGER, cleaner creator info bar */}
             <Box sx={{ 
                 position: "absolute",
                 bottom: 0,
                 left: 0,
                 right: 0,
-                backdropFilter: "blur(12px)",
-                background: "linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.8) 80%, rgba(0,0,0,0) 100%)",
-                padding: { xs: "24px 20px", md: "28px 24px" },
+                backdropFilter: "blur(15px)",
+                background: "rgba(0, 0, 0, 0.75)",
+                padding: { xs: "30px 24px", md: "32px 28px" },
                 zIndex: 4,
-                transform: isHovered ? "translateY(0)" : "translateY(40px)",
-                opacity: isHovered ? 1 : 0.85,
-                transition: "all 0.4s ease",
                 display: "flex",
-                flexDirection: "column"
+                justifyContent: "space-between",
+                alignItems: "center"
             }}>
-                {/* Top section with file name */}
-                <Box sx={{ 
-                    display: "flex", 
-                    justifyContent: "space-between", 
-                    alignItems: "center",
-                    mb: 1.5
-                }}>
-                    <Typography sx={{ 
-                        color: "#ffffff",
-                        fontWeight: 500,
-                        fontSize: "1rem",
-                        overflow: "hidden",
-                        textOverflow: "ellipsis",
-                        whiteSpace: "nowrap",
-                        maxWidth: "calc(100% - 10px)"
-                    }}>
-                        {winningCreation.fileName}
-                    </Typography>
-                </Box>
-                
-                {/* Bottom section with creator info */}
+                {/* Left side - Creator info */}
                 <Box sx={{ 
                     display: "flex", 
                     alignItems: "center", 
-                    justifyContent: "space-between"
+                    gap: 2.5
                 }}>
-                    <Box sx={{ 
-                        display: "flex", 
-                        alignItems: "center", 
-                        gap: 1.5
-                    }}>
-                        <Avatar 
-                            sx={{ 
-                                width: 36, 
-                                height: 36,
-                                border: "2px solid rgba(255, 58, 58, 0.3)",
-                                backgroundColor: "rgba(20, 20, 20, 0.6)",
-                                color: "#fff",
-                                fontSize: "1rem",
-                                fontWeight: 600
-                            }}
-                        >
-                            {user.name.charAt(0)}
-                        </Avatar>
-                        
-                        <Box>
-                            <Typography sx={{ 
-                                color: "#ffffff",
-                                fontSize: "0.9rem",
-                                fontWeight: 500,
-                                lineHeight: 1.3
-                            }}>
-                                {user.name}
-                            </Typography>
-                            <Typography sx={{ 
-                                color: "rgba(255, 225, 0, 0.9)",
-                                fontSize: "0.75rem",
-                                fontWeight: 400,
-                                lineHeight: 1.2
-                            }}>
-                                Winner • Challenge #{challengeId}
-                            </Typography>
-                        </Box>
-                    </Box>
+                    <Avatar 
+                        sx={{ 
+                            width: 48, 
+                            height: 48,
+                            border: "1px solid rgba(80, 80, 80, 0.4)",
+                            backgroundColor: "rgba(16, 16, 16, 0.8)",
+                            color: "#fff",
+                            fontSize: "1.3rem",
+                            fontWeight: 500
+                        }}
+                    >
+                        {user.name.charAt(0)}
+                    </Avatar>
                     
-                    {/* View profile button that appears on hover */}
-                    <Box sx={{
-                        padding: "6px 12px",
-                        backgroundColor: "rgba(255, 58, 58, 0.15)",
-                        color: "rgba(255, 255, 255, 0.9)",
-                        borderRadius: "6px",
-                        fontSize: "0.75rem",
-                        fontWeight: 500,
-                        border: "1px solid rgba(255, 58, 58, 0.3)",
-                        cursor: "pointer",
-                        transition: "all 0.2s ease",
-                        opacity: isHovered ? 1 : 0,
-                        transform: isHovered ? "translateX(0)" : "translateX(10px)",
-                        "&:hover": {
-                            backgroundColor: "rgba(255, 58, 58, 0.2)",
-                            border: "1px solid rgba(255, 58, 58, 0.4)",
-                        }
-                    }}>
-                        View Profile
+                    <Box>
+                        <Typography sx={{ 
+                            color: "#ffffff",
+                            fontSize: "1.1rem",
+                            fontWeight: 500,
+                            lineHeight: 1.3,
+                            mb: 0.5
+                        }}>
+                            {user.name}
+                        </Typography>
+                        <Typography sx={{ 
+                            color: "rgba(200, 200, 200, 0.8)",
+                            fontSize: "0.9rem",
+                            fontWeight: 400,
+                            lineHeight: 1.2
+                        }}>
+                            Challenge #{challengeId}
+                        </Typography>
                     </Box>
+                </Box>
+                
+                {/* Right side - File name */}
+                <Box sx={{
+                    maxWidth: "50%",
+                    textAlign: "right"
+                }}>
+                    <Typography sx={{ 
+                        color: "rgba(255, 255, 255, 0.9)",
+                        fontSize: "0.95rem",
+                        fontWeight: 400,
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        whiteSpace: "nowrap"
+                    }}>
+                        {winningCreation.fileName}
+                    </Typography>
                 </Box>
             </Box>
         </Box>
