@@ -177,7 +177,7 @@
 
 // ChallengeHistory.tsx
 import { observer } from "mobx-react-lite";
-import { Box, Typography, Button } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { useState, useEffect } from "react";
 import challengeStore from "../../store/challengeStore";
 import WinningCreation from "../creation/WinningCreation";
@@ -198,10 +198,10 @@ const ChallengeHistory = observer(() => {
     return (
         <Box sx={{ 
             padding: { xs: 2, md: 4 }, 
-            backgroundColor: "#080808", 
+            backgroundColor: "#000000", 
             color: "#ffffff",
             minHeight: "100vh",
-            backgroundImage: "radial-gradient(circle at 10% 30%, rgba(40, 40, 60, 0.4) 0%, rgba(8, 8, 8, 1) 70%)",
+            backgroundImage: "radial-gradient(circle at 10% 30%, rgba(30, 0, 0, 0.4) 0%, rgba(0, 0, 0, 1) 70%)",
             overflow: "hidden"
         }}>
             {/* Enhanced header with subtle gradient animation */}
@@ -217,7 +217,7 @@ const ChallengeHistory = observer(() => {
                 maxWidth: "1200px",
                 marginLeft: "auto",
                 marginRight: "auto",
-                backgroundImage: "linear-gradient(90deg, #e2e2ff 0%, #ffffff 25%, #c9c9ff 50%, #ffffff 75%, #e2e2ff 100%)",
+                backgroundImage: "linear-gradient(90deg, #ff3a3a 0%, #ffffff 25%, #ffe100 50%, #ffffff 75%, #ff3a3a 100%)",
                 backgroundSize: "200% auto",
                 color: "transparent",
                 WebkitBackgroundClip: "text",
@@ -235,32 +235,32 @@ const ChallengeHistory = observer(() => {
                     transform: "translateX(-50%)",
                     width: "80px",
                     height: "3px",
-                    background: "linear-gradient(90deg, rgba(140, 140, 255, 0.1), rgba(180, 180, 255, 0.6), rgba(140, 140, 255, 0.1))",
+                    background: "linear-gradient(90deg, rgba(255, 58, 58, 0.1), rgba(255, 58, 58, 0.6), rgba(255, 58, 58, 0.1))",
                     borderRadius: "2px"
                 }
             }}>
                 Challenge Collection
             </Typography>
             
-            {/* Innovative split layout */}
+            {/* Expanded layout with larger image section */}
             <Box sx={{ 
                 display: "flex",
                 flexDirection: { xs: "column", md: "row" },
-                maxWidth: "1300px",
+                maxWidth: "1400px",
                 margin: "0 auto",
                 gap: { xs: 4, md: 0 },
-                height: { md: "calc(100vh - 240px)" },
-                minHeight: { md: "500px" }
+                height: { md: "calc(100vh - 180px)" },
+                minHeight: { md: "600px" }
             }}>
                 {/* Left side - Challenge list */}
                 <Box sx={{ 
-                    flex: { xs: "1 1 100%", md: "0 0 320px" },
+                    flex: { xs: "1 1 100%", md: "0 0 300px" },
                     mr: { md: 4 },
                     position: "relative",
                     height: { xs: "auto", md: "100%" },
                     overflow: { xs: "visible", md: "auto" },
                     scrollbarWidth: "thin",
-                    scrollbarColor: "rgba(120, 120, 255, 0.3) transparent",
+                    scrollbarColor: "rgba(255, 58, 58, 0.3) transparent",
                     "&::-webkit-scrollbar": {
                         width: "5px",
                     },
@@ -268,7 +268,7 @@ const ChallengeHistory = observer(() => {
                         background: "rgba(0, 0, 0, 0.1)",
                     },
                     "&::-webkit-scrollbar-thumb": {
-                        background: "rgba(120, 120, 255, 0.3)",
+                        background: "rgba(255, 58, 58, 0.3)",
                         borderRadius: "3px",
                     }
                 }}>
@@ -279,7 +279,7 @@ const ChallengeHistory = observer(() => {
                         top: "-40px",
                         width: "150px",
                         height: "150px",
-                        background: "radial-gradient(circle, rgba(120, 120, 255, 0.08) 0%, rgba(120, 120, 255, 0) 70%)",
+                        background: "radial-gradient(circle, rgba(255, 58, 58, 0.08) 0%, rgba(255, 58, 58, 0) 70%)",
                         borderRadius: "50%",
                         zIndex: 0,
                         pointerEvents: "none"
@@ -295,20 +295,20 @@ const ChallengeHistory = observer(() => {
                                 sx={{
                                     borderRadius: "12px",
                                     backgroundColor: selectedChallenge?.id === challenge.id 
-                                        ? "rgba(40, 40, 70, 0.9)" 
-                                        : "rgba(25, 25, 35, 0.6)",
+                                        ? "rgba(40, 0, 0, 0.9)" 
+                                        : "rgba(20, 20, 20, 0.6)",
                                     padding: "16px 20px",
                                     margin: "0 0 15px 0",
                                     cursor: "pointer",
                                     border: selectedChallenge?.id === challenge.id 
-                                        ? "1px solid rgba(140, 140, 255, 0.3)" 
-                                        : "1px solid rgba(60, 60, 80, 0.3)",
+                                        ? "1px solid rgba(255, 58, 58, 0.3)" 
+                                        : "1px solid rgba(60, 60, 60, 0.3)",
                                     position: "relative",
                                     overflow: "hidden",
                                     transition: "all 0.3s ease",
                                     transform: hoverIndex === index ? "translateY(-3px)" : "translateY(0)",
                                     boxShadow: hoverIndex === index || selectedChallenge?.id === challenge.id 
-                                        ? "0 8px 24px rgba(0, 0, 0, 0.2), 0 2px 8px rgba(80, 80, 150, 0.12)" 
+                                        ? "0 8px 24px rgba(0, 0, 0, 0.2), 0 2px 8px rgba(255, 58, 58, 0.12)" 
                                         : "none",
                                     "&::before": {
                                         content: '""',
@@ -318,7 +318,7 @@ const ChallengeHistory = observer(() => {
                                         width: "3px",
                                         height: "100%",
                                         background: selectedChallenge?.id === challenge.id 
-                                            ? "linear-gradient(180deg, rgba(120, 120, 255, 0.8), rgba(160, 160, 255, 0.3))" 
+                                            ? "linear-gradient(180deg, rgba(255, 58, 58, 0.8), rgba(255, 225, 0, 0.3))" 
                                             : "transparent",
                                         borderRadius: "3px 0 0 3px",
                                         transition: "all 0.3s ease"
@@ -331,7 +331,7 @@ const ChallengeHistory = observer(() => {
                                         right: 0,
                                         bottom: 0,
                                         background: hoverIndex === index && selectedChallenge?.id !== challenge.id
-                                            ? "linear-gradient(135deg, rgba(100, 100, 255, 0.05) 0%, transparent 100%)"
+                                            ? "linear-gradient(135deg, rgba(255, 58, 58, 0.05) 0%, transparent 100%)"
                                             : "transparent",
                                         zIndex: 0,
                                         pointerEvents: "none"
@@ -343,12 +343,12 @@ const ChallengeHistory = observer(() => {
                                     position: "absolute",
                                     top: "14px",
                                     right: "16px",
-                                    backgroundColor: "rgba(30, 30, 50, 0.7)",
+                                    backgroundColor: "rgba(20, 20, 20, 0.7)",
                                     borderRadius: "12px",
                                     padding: "2px 8px",
                                     fontSize: "0.65rem",
-                                    color: "rgba(180, 180, 255, 0.9)",
-                                    border: "1px solid rgba(100, 100, 255, 0.15)"
+                                    color: "rgba(255, 225, 0, 0.9)",
+                                    border: "1px solid rgba(255, 225, 0, 0.15)"
                                 }}>
                                     #{challenge.id}
                                 </Box>
@@ -381,7 +381,7 @@ const ChallengeHistory = observer(() => {
                                                 width: "6px",
                                                 height: "6px",
                                                 borderRadius: "50%",
-                                                backgroundColor: "rgba(140, 140, 255, 0.7)",
+                                                backgroundColor: "rgba(255, 58, 58, 0.7)",
                                                 mr: 1
                                             }} />
                                             <Typography variant="body2" sx={{ 
@@ -394,11 +394,11 @@ const ChallengeHistory = observer(() => {
                                         
                                         <Box sx={{
                                             padding: "3px 8px",
-                                            backgroundColor: "rgba(20, 120, 60, 0.2)",
-                                            color: "rgba(100, 255, 150, 0.9)",
+                                            backgroundColor: "rgba(20, 20, 20, 0.5)",
+                                            color: "rgba(255, 225, 0, 0.9)",
                                             borderRadius: "4px",
                                             fontSize: "0.7rem",
-                                            border: "1px solid rgba(100, 255, 150, 0.2)"
+                                            border: "1px solid rgba(255, 225, 0, 0.2)"
                                         }}>
                                             Completed
                                         </Box>
@@ -410,9 +410,9 @@ const ChallengeHistory = observer(() => {
                         <Box sx={{ 
                             padding: "30px", 
                             textAlign: "center",
-                            backgroundColor: "rgba(25, 25, 35, 0.6)",
+                            backgroundColor: "rgba(20, 20, 20, 0.6)",
                             borderRadius: "12px",
-                            border: "1px solid rgba(60, 60, 80, 0.3)"
+                            border: "1px solid rgba(60, 60, 60, 0.3)"
                         }}>
                             <Typography sx={{ 
                                 color: "rgba(255, 255, 255, 0.7)",
@@ -421,32 +421,19 @@ const ChallengeHistory = observer(() => {
                             }}>
                                 No completed challenges found
                             </Typography>
-                            <Button 
-                                variant="outlined" 
-                                sx={{
-                                    color: "rgba(140, 140, 255, 0.9)",
-                                    borderColor: "rgba(140, 140, 255, 0.3)",
-                                    "&:hover": {
-                                        borderColor: "rgba(140, 140, 255, 0.6)",
-                                        backgroundColor: "rgba(140, 140, 255, 0.05)"
-                                    }
-                                }}
-                            >
-                                View Active Challenges
-                            </Button>
                         </Box>
                     )}
                 </Box>
                 
-                {/* Right side - Winner showcase */}
+                {/* Right side - Winner showcase - EXPANDED */}
                 <Box sx={{ 
-                    flex: { xs: "1 1 100%", md: "1 1 calc(100% - 360px)" },
-                    height: { xs: "400px", sm: "500px", md: "100%" },
+                    flex: { xs: "1 1 100%", md: "1 1 calc(100% - 340px)" },
+                    height: { xs: "500px", sm: "600px", md: "calc(100vh - 200px)" },
                     position: "relative",
                     borderRadius: "16px",
                     overflow: "hidden",
-                    backgroundColor: "rgba(15, 15, 22, 0.7)",
-                    border: "1px solid rgba(60, 60, 100, 0.3)",
+                    backgroundColor: "rgba(10, 10, 10, 0.7)",
+                    border: "1px solid rgba(60, 60, 60, 0.3)",
                     boxShadow: "0 20px 40px rgba(0, 0, 0, 0.3)",
                     display: "flex",
                     alignItems: "center",
@@ -460,7 +447,7 @@ const ChallengeHistory = observer(() => {
                         bottom: "-80px",
                         width: "300px",
                         height: "300px",
-                        background: "radial-gradient(circle, rgba(120, 120, 255, 0.06) 0%, rgba(120, 120, 255, 0) 70%)",
+                        background: "radial-gradient(circle, rgba(255, 58, 58, 0.06) 0%, rgba(255, 58, 58, 0) 70%)",
                         borderRadius: "50%",
                         zIndex: 0,
                         pointerEvents: "none"
@@ -472,7 +459,7 @@ const ChallengeHistory = observer(() => {
                         top: "10%",
                         width: "200px",
                         height: "200px",
-                        background: "radial-gradient(circle, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0) 70%)",
+                        background: "radial-gradient(circle, rgba(255, 225, 0, 0.03) 0%, rgba(255, 225, 0, 0) 70%)",
                         borderRadius: "50%",
                         zIndex: 0,
                         pointerEvents: "none"
@@ -485,7 +472,7 @@ const ChallengeHistory = observer(() => {
                             top: "20px",
                             left: "20px",
                             zIndex: 2,
-                            backgroundColor: "rgba(20, 20, 40, 0.7)",
+                            backgroundColor: "rgba(10, 10, 10, 0.7)",
                             backdropFilter: "blur(4px)",
                             padding: "12px 18px",
                             borderRadius: "12px",
@@ -493,13 +480,13 @@ const ChallengeHistory = observer(() => {
                             alignItems: "center",
                             gap: 1.5,
                             boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
-                            border: "1px solid rgba(140, 140, 255, 0.2)"
+                            border: "1px solid rgba(255, 58, 58, 0.2)"
                         }}>
                             <Typography 
                                 component="span" 
                                 role="img" 
                                 aria-label="trophy" 
-                                sx={{ fontSize: "1.2rem", color: "rgba(255, 215, 0, 0.9)" }}
+                                sx={{ fontSize: "1.2rem", color: "rgba(255, 225, 0, 0.9)" }}
                             >
                                 🏆
                             </Typography>
@@ -551,4 +538,3 @@ const ChallengeHistory = observer(() => {
 });
 
 export default ChallengeHistory;
-
