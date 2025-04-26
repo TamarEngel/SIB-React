@@ -13,15 +13,15 @@ const FooterContainer = styled(Box)(({ }) => ({
   fontFamily: '"Plus Jakarta Sans", Arial, Helvetica, sans-serif',
 }));
 
-const SocialIcon = styled(Box)(({ }) => ({
-  color: '#9094A6',
-  cursor: 'pointer',
-  transition: 'transform 0.5s ease-in-out, color 0.3s ease',
-  '&:hover': {
-    transform: 'scale(1.1)',
-    color: '#ffffff',
-  },
-}));
+// const SocialIcon = styled(Box)(({ }) => ({
+//   color: '#9094A6',
+//   cursor: 'pointer',
+//   transition: 'transform 0.5s ease-in-out, color 0.3s ease',
+//   '&:hover': {
+//     transform: 'scale(1.1)',
+//     color: '#ffffff',
+//   },
+// }));
 
 const FooterLink = styled(Link)(({ }) => ({
   color: '#9094A6',
