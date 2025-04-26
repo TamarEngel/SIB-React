@@ -181,6 +181,8 @@
 
 // export default WinningCreation;
 
+
+
 // import { Typography, Box, Avatar } from "@mui/material";
 // import { observer } from "mobx-react-lite";
 // import { useState, useEffect } from "react";
@@ -274,7 +276,13 @@
 //     }
 
 //     return (
-//         <Box sx={{ width: "100%", height: "100%", position: "relative" }}>
+//         <Box sx={{ 
+//             width: "100%", 
+//             height: "100%", 
+//             position: "relative",
+//             display: "flex",
+//             flexDirection: "column"
+//         }}>
 //             {/* Trophy badge */}
 //             <Box sx={{
 //                 position: "absolute",
@@ -327,38 +335,46 @@
 //                 </Typography>
 //             </Box>
             
-//             {/* Creation display */}
+//             {/* Creation display - Makes up most of the content area */}
 //             <Box sx={{ 
-//                 position: "absolute",
-//                 top: 0,
-//                 left: 0,
-//                 right: 0,
-//                 bottom: 0,
-//                 zIndex: 1,
+//                 flex: 1,
 //                 display: "flex",
 //                 alignItems: "center",
 //                 justifyContent: "center",
-//                 "& img": {
-//                     maxWidth: "100%",
-//                     maxHeight: "calc(100% - 80px)",
-//                     objectFit: "contain"
-//                 }
+//                 width: "100%",
+//                 position: "relative",
+//                 overflow: "hidden", // Prevent any content overflow
+//                 padding: "80px 20px 80px 20px", // Space for badges and info bar
 //             }}>
-//                 <CreationView fileName={winningCreation.fileName} />
+//                 <Box sx={{
+//                     width: "100%",
+//                     height: "100%",
+//                     display: "flex",
+//                     alignItems: "center",
+//                     justifyContent: "center",
+//                     "& img": {
+//                         maxWidth: "100%",
+//                         maxHeight: "100%",
+//                         objectFit: "contain" // Maintain aspect ratio
+//                     }
+//                 }}>
+//                     <CreationView fileName={winningCreation.fileName} />
+//                 </Box>
 //             </Box>
             
-//             {/* Creator info bar */}
+//             {/* Creator info bar - Fixed at bottom */}
 //             <Box sx={{ 
-//                 position: "absolute",
-//                 bottom: 0,
-//                 left: 0,
-//                 right: 0,
+//                 width: "100%",
 //                 background: "rgba(0, 0, 0, 0.8)",
 //                 padding: "16px 20px",
 //                 zIndex: 4,
 //                 display: "flex",
 //                 justifyContent: "space-between",
-//                 alignItems: "center"
+//                 alignItems: "center",
+//                 position: "absolute",
+//                 bottom: 0,
+//                 left: 0,
+//                 right: 0
 //             }}>
 //                 {/* Creator info */}
 //                 <Box sx={{ 
@@ -419,7 +435,6 @@
 // });
 
 // export default WinningCreation;
-
 
 
 import { Typography, Box, Avatar } from "@mui/material";
@@ -574,46 +589,33 @@ const WinningCreation = observer(({ challengeId }: { challengeId: number }) => {
                 </Typography>
             </Box>
             
-            {/* Creation display - Makes up most of the content area */}
+            {/* Creation display - Takes most of the height */}
             <Box sx={{ 
-                flex: 1,
+                flex: "1 1 auto",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                width: "100%",
+                overflow: "hidden",
                 position: "relative",
-                overflow: "hidden", // Prevent any content overflow
-                padding: "80px 20px 80px 20px", // Space for badges and info bar
+                width: "100%",
+                paddingTop: "20px",
+                paddingBottom: "60px" // Make space for info bar
             }}>
-                <Box sx={{
-                    width: "100%",
-                    height: "100%",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    "& img": {
-                        maxWidth: "100%",
-                        maxHeight: "100%",
-                        objectFit: "contain" // Maintain aspect ratio
-                    }
-                }}>
-                    <CreationView fileName={winningCreation.fileName} />
-                </Box>
+                <CreationView fileName={winningCreation.fileName} />
             </Box>
             
-            {/* Creator info bar - Fixed at bottom */}
+            {/* Creator info bar */}
             <Box sx={{ 
-                width: "100%",
+                position: "absolute",
+                bottom: 0,
+                left: 0,
+                right: 0,
                 background: "rgba(0, 0, 0, 0.8)",
                 padding: "16px 20px",
                 zIndex: 4,
                 display: "flex",
                 justifyContent: "space-between",
-                alignItems: "center",
-                position: "absolute",
-                bottom: 0,
-                left: 0,
-                right: 0
+                alignItems: "center"
             }}>
                 {/* Creator info */}
                 <Box sx={{ 
