@@ -1,20 +1,22 @@
-import { Box, Container, Typography, Link, Grid, styled } from '@mui/material';
+import { Box, Container, Typography, Link, styled } from '@mui/material';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import TwitterIcon from '@mui/icons-material/Twitter';
 
 // Styled components
-const FooterContainer = styled(Box)(({  }) => ({
-  backgroundColor: '#0b0f17',
+const FooterContainer = styled(Box)(({ }) => ({
+  backgroundColor: '#000000', // Changed to pure black
   color: 'white',
-  padding: '20px 0 10px',
+  padding: '40px 0 20px',
   position: 'relative',
   left: 0,
+  right: 0,
+  width: '100%',
   fontFamily: '"Plus Jakarta Sans", Arial, Helvetica, sans-serif',
 }));
 
-const SocialIcon = styled(Box)(({  }) => ({
+const SocialIcon = styled(Box)(({ }) => ({
   color: '#9094A6',
   cursor: 'pointer',
   transition: 'transform 0.5s ease-in-out, color 0.3s ease',
@@ -24,7 +26,7 @@ const SocialIcon = styled(Box)(({  }) => ({
   },
 }));
 
-const FooterLink = styled(Link)(({  }) => ({
+const FooterLink = styled(Link)(({ }) => ({
   color: '#9094A6',
   cursor: 'pointer',
   textDecoration: 'none',
@@ -34,67 +36,72 @@ const FooterLink = styled(Link)(({  }) => ({
   },
 }));
 
-const FooterDivider = styled(Box)(({  }) => ({
+const FooterDivider = styled(Box)(({ }) => ({
   borderBottom: '1px solid rgba(255, 255, 255, 0.2)',
   width: '100%',
-  margin: '10px 0',
+  margin: '20px 0',
+}));
+
+const HorizontalDivider = styled(Box)(({ }) => ({
+  borderRight: '1px solid rgba(255, 255, 255, 0.2)',
+  height: '20px',
+  margin: '0 15px',
+  display: 'inline-block',
+  verticalAlign: 'middle',
 }));
 
 const MinimalFooter = () => {
   return (
     <FooterContainer>
       <Container maxWidth="lg">
-        {/* Main footer content */}
-        <Grid container spacing={2} sx={{ pb: 1 }}>
-          {/* Social Icons */}
-          <Grid item xs={12} sm={6} md={4} sx={{ display: 'flex', justifyContent: { xs: 'center', sm: 'flex-start' }, alignItems: 'center' }}>
-            <Box sx={{ display: 'flex', gap: 2 }}>
-              <SocialIcon>
-                <FacebookIcon />
-              </SocialIcon>
-              <SocialIcon>
-                <InstagramIcon />
-              </SocialIcon>
-              <SocialIcon>
-                <YouTubeIcon />
-              </SocialIcon>
-              <SocialIcon>
-                <TwitterIcon />
-              </SocialIcon>
-            </Box>
-          </Grid>
-          
-          {/* Key Links */}
-          <Grid item xs={12} sm={6} md={8} sx={{ display: 'flex', justifyContent: { xs: 'center', sm: 'flex-end' }, alignItems: 'center' }}>
-            <Box sx={{ display: 'flex', gap: { xs: 1, sm: 2 }, flexWrap: 'wrap', justifyContent: 'center' }}>
-              <FooterLink href="#">About</FooterLink>
-              <Typography sx={{ color: '#9094A6' }}>|</Typography>
-              <FooterLink href="#">Solutions</FooterLink>
-              <Typography sx={{ color: '#9094A6' }}>|</Typography>
-              <FooterLink href="#">Support</FooterLink>
-              <Typography sx={{ color: '#9094A6' }}>|</Typography>
-              <FooterLink href="#">Contact</FooterLink>
-            </Box>
-          </Grid>
-        </Grid>
-        
+        {/* Logo Section - Centered at the top */}
+        <Box sx={{ display: 'flex', justifyContent: 'center', mb: 4 }}>
+          <Box component="img" src="/images/profile/1.1.png" alt="SIB Logo" sx={{ height: 60 }} />
+        </Box>
+
         <FooterDivider />
-        
-        {/* Footer bottom */}
-        <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, justifyContent: 'space-between', alignItems: 'center', pt: 1 }}>
-          <Box sx={{ display: 'flex', alignItems: 'center', mb: { xs: 1, sm: 0 } }}>
-            <Box component="img" src="/images/profile/1.1.png" alt="SIB Logo" sx={{ height: 40, mr: 1 }} />
-            <Typography variant="body2" sx={{ color: '#9094A6', fontSize: '12px' }}>
-              © 2025 All Rights Reserved, SIB
-            </Typography>
-          </Box>
+
+        {/* Main Links - Horizontally centered */}
+        <Box sx={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', my: 3 }}>
+          <FooterLink href="#" sx={{ mx: 1 }}>About</FooterLink>
+          <HorizontalDivider />
+          <FooterLink href="#" sx={{ mx: 1 }}>Solutions</FooterLink>
+          <HorizontalDivider />
+          <FooterLink href="#" sx={{ mx: 1 }}>Support</FooterLink>
+          <HorizontalDivider />
+          <FooterLink href="#" sx={{ mx: 1 }}>Contact</FooterLink>
+        </Box>
+
+        {/* Social Icons - Centered */}
+        <Box sx={{ display: 'flex', justifyContent: 'center', gap: 3, my: 3 }}>
+          <SocialIcon>
+            <FacebookIcon />
+          </SocialIcon>
+          <SocialIcon>
+            <InstagramIcon />
+          </SocialIcon>
+          <SocialIcon>
+            <YouTubeIcon />
+          </SocialIcon>
+          <SocialIcon>
+            <TwitterIcon />
+          </SocialIcon>
+        </Box>
+
+        <FooterDivider />
+
+        {/* Legal Links and Copyright */}
+        <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, justifyContent: 'center', alignItems: 'center', pt: 2 }}>
+          <Typography variant="body2" sx={{ color: '#9094A6', fontSize: '12px', textAlign: 'center', mb: { xs: 2, sm: 0 } }}>
+            © 2025 All Rights Reserved, SIB
+          </Typography>
           
-          <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap', justifyContent: 'center' }}>
-            <FooterLink href="#" sx={{ fontSize: '12px' }}>Legal Notice</FooterLink>
-            <Typography sx={{ color: '#9094A6', fontSize: '12px' }}>|</Typography>
-            <FooterLink href="#" sx={{ fontSize: '12px' }}>Terms</FooterLink>
-            <Typography sx={{ color: '#9094A6', fontSize: '12px' }}>|</Typography>
-            <FooterLink href="#" sx={{ fontSize: '12px' }}>Privacy</FooterLink>
+          <Box sx={{ display: 'flex', ml: { xs: 0, sm: 4 }, gap: 0, flexWrap: 'wrap', justifyContent: 'center' }}>
+            <FooterLink href="#" sx={{ fontSize: '12px', mx: 1 }}>Legal Notice</FooterLink>
+            <HorizontalDivider sx={{ height: '14px' }} />
+            <FooterLink href="#" sx={{ fontSize: '12px', mx: 1 }}>Terms</FooterLink>
+            <HorizontalDivider sx={{ height: '14px' }} />
+            <FooterLink href="#" sx={{ fontSize: '12px', mx: 1 }}>Privacy</FooterLink>
           </Box>
         </Box>
       </Container>
