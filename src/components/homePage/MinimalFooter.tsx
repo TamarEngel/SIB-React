@@ -1,8 +1,5 @@
 import { Box, Container, Typography, Link, styled } from '@mui/material';
-import FacebookIcon from '@mui/icons-material/Facebook';
-import InstagramIcon from '@mui/icons-material/Instagram';
-import YouTubeIcon from '@mui/icons-material/YouTube';
-import TwitterIcon from '@mui/icons-material/Twitter';
+
 
 // Styled components
 const FooterContainer = styled(Box)(({ }) => ({
@@ -59,10 +56,10 @@ const MinimalFooter = () => {
           <Box component="img" src="/images/profile/1.1.png" alt="SIB Logo" sx={{ height: 60 }} />
         </Box>
 
-        <FooterDivider />
+        {/* <FooterDivider /> */}
 
         {/* Main Links - Horizontally centered */}
-        <Box sx={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', my: 3 }}>
+        {/* <Box sx={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', my: 3 }}>
           <FooterLink href="#" sx={{ mx: 1 }}>About</FooterLink>
           <HorizontalDivider />
           <FooterLink href="#" sx={{ mx: 1 }}>Solutions</FooterLink>
@@ -70,10 +67,10 @@ const MinimalFooter = () => {
           <FooterLink href="#" sx={{ mx: 1 }}>Support</FooterLink>
           <HorizontalDivider />
           <FooterLink href="#" sx={{ mx: 1 }}>Contact</FooterLink>
-        </Box>
+        </Box> */}
 
         {/* Social Icons - Centered */}
-        <Box sx={{ display: 'flex', justifyContent: 'center', gap: 3, my: 3 }}>
+        {/* <Box sx={{ display: 'flex', justifyContent: 'center', gap: 3, my: 3 }}>
           <SocialIcon>
             <FacebookIcon />
           </SocialIcon>
@@ -86,7 +83,7 @@ const MinimalFooter = () => {
           <SocialIcon>
             <TwitterIcon />
           </SocialIcon>
-        </Box>
+        </Box> */}
 
         <FooterDivider />
 
