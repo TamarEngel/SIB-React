@@ -591,8 +591,7 @@ const LoginButton = styled(Button)({
     transform: "scale(1.03)", // Slight grow effect
     borderWidth: "1px",
     borderStyle: "solid",
-    // borderImage: "linear-gradient(81.02deg, #f1535d 7.47%, #ffffff 45.52%, #edc106 114.8%) 1", // Gradient border
-    boxShadow: "0 4px 12px linear-gradient(81.02deg, #f1535d 7.47%, #ffffff 45.52%, #edc106 114.8%)",
+    borderColor: "rgb(226 153 157)",
   },
   "&:active": {
     backgroundColor: "rgba(255, 255, 255, 0.05)",
