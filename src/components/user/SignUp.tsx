@@ -308,7 +308,6 @@ const SignUp = ({
           style: {
             backgroundColor: "rgba(0, 0, 0, 0.8)",
             backdropFilter: "blur(3px)",
-            marginBottom: "20px",
           },
         }}
       >
@@ -478,29 +477,7 @@ const SignUp = ({
                 </SocialButton>
               </Box>
               
-              {/* <Box sx={{ textAlign: "center", mt: 3 }}>
-                <Typography variant="body2" sx={{ color: "rgba(255, 255, 255, 0.6)" }}>
-                  Already have an account?{" "}
-                  <Typography
-                    component="span"
-                    variant="body2"
-                    sx={{
-                      color: "rgba(255, 255, 255, 0.9)",
-                      fontWeight: "600",
-                      cursor: "pointer",
-                      "&:hover": {
-                        textDecoration: "underline",
-                      }
-                    }}
-                    onClick={() => {
-                      setOpen(false);
-                      // Implement logic to switch to Login component
-                    }}
-                  >
-                    Sign in
-                  </Typography>
-                </Typography>
-              </Box> */}
+
             </Box>
           </SignUpContainer>
         </Fade>

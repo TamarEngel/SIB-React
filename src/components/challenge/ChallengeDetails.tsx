@@ -80,7 +80,7 @@ const ChallengeDetails = observer(() => {
 
 
             {currentChallenge.isDeleted && (
-                <Typography variant="h6" sx={{ color: "#ffffff" }}>This Challenge s fininshed</Typography>
+                <Typography variant="h6" sx={{ color: "#ffffff" }}>This Challenge is fininshed</Typography>
             )}
             {/* הצגת התמונה הזוכה אם האתגר הסתיים */}
             {/* {currentChallenge.isDeleted && winningCreation && (
@@ -154,7 +154,7 @@ const ChallengeDetails = observer(() => {
                             color: "#ffffff",
                             fontSize: "0.9rem"  // כיתוב קטן יותר כאשר אין יצירות
                         }}>
-                            לאתגר זה לא נשמרו תמונות, היה הראשון להתחרות
+                           Loading........
                         </Typography>
                     </Grid>
                 )}
