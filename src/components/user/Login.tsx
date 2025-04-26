@@ -57,8 +57,8 @@
 //         </div>
 //     </>)
 // }
-// export default Login
-import { useState, useRef, FormEvent } from "react";
+// export default Loginimport { useState, useRef, FormEvent } from "react";
+
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { 
@@ -84,20 +84,21 @@ import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import GoogleIcon from "@mui/icons-material/Google";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import AppleIcon from "@mui/icons-material/Apple";
+import { FormEvent, useRef, useState } from "react";
 
 const apiUrl = import.meta.env.VITE_APP_API_URL;
 
 // Custom styled components
-const LoginContainer = styled(Box)(({  }) => ({
+const LoginContainer = styled(Box)(({ }) => ({
   position: "relative",
   borderRadius: "12px",
   overflow: "hidden",
   backgroundColor: "#111",
   color: "#fff",
-  width: "360px",
+  width: "420px",
   maxWidth: "95vw",
   margin: "auto",
-  marginTop: "10vh",
+  marginTop: "5vh", // Moved higher up
   boxShadow: "0 15px 25px -5px rgba(0, 0, 0, 0.5)",
   padding: 0,
   border: "1px solid rgba(255, 255, 255, 0.08)",
@@ -130,65 +131,48 @@ const StyledTextField = styled(TextField)({
   },
 });
 
+// Updated login button with outline only and gradient border on hover
 const LoginButton = styled(Button)({
   textTransform: "none",
   borderRadius: "8px",
   padding: "10px",
-  background: "linear-gradient(81.02deg, #f1535d 7.47%, #ffffff 45.52%, #edc106 114.8%)",
-  backgroundSize: "200% 100%",
-  color: "#000",
-  fontWeight: "600",
+  backgroundColor: "transparent",
+  color: "#fff",
+  fontWeight: "500",
   fontSize: "16px",
-  boxShadow: "0 4px 10px rgba(0, 0, 0, 0.2)",
+  border: "1px solid rgba(255, 255, 255, 0.15)",
   "&:hover": {
-    backgroundPosition: "right center",
-    transition: "all 0.4s ease",
-    boxShadow: "0 6px 12px rgba(0, 0, 0, 0.3)",
+    backgroundColor: "transparent",
+    borderImage: "linear-gradient(90deg, #e0e0e0, #a0a0a0, #e0e0e0) 1",
+    boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
   },
   "&:active": {
-    boxShadow: "0 2px 5px rgba(0, 0, 0, 0.2)",
+    backgroundColor: "rgba(255, 255, 255, 0.05)",
     transform: "translateY(1px)",
   },
   transition: "all 0.3s ease",
 });
 
-// Social buttons with their brand colors
-const GoogleButton = styled(Button)({
+// Unified social button style in grayscale
+const SocialButton = styled(Button)({
   textTransform: "none",
   borderRadius: "8px",
-  padding: "8px",
-  backgroundColor: "#ffffff",
-  color: "#000",
-  border: "1px solid rgba(0, 0, 0, 0.1)",
-  "&:hover": {
-    backgroundColor: "#f1f1f1",
-  },
-  flex: 1,
-});
-
-const FacebookButton = styled(Button)({
-  textTransform: "none",
-  borderRadius: "8px",
-  padding: "8px",
-  backgroundColor: "#1877F2",
+  padding: "6px",
+  minWidth: "40px",
+  height: "40px",
+  backgroundColor: "rgba(255, 255, 255, 0.03)",
   color: "#fff",
+  border: "1px solid rgba(255, 255, 255, 0.08)",
   "&:hover": {
-    backgroundColor: "#0a61d6",
+    backgroundColor: "rgba(255, 255, 255, 0.08)",
+    borderColor: "rgba(255, 255, 255, 0.15)",
   },
-  flex: 1,
-});
-
-const AppleButton = styled(Button)({
-  textTransform: "none",
-  borderRadius: "8px",
-  padding: "8px",
-  backgroundColor: "#000",
-  color: "#fff",
-  border: "1px solid rgba(255, 255, 255, 0.1)",
-  "&:hover": {
-    backgroundColor: "#333",
+  "& .MuiButton-startIcon": {
+    margin: 0,
   },
-  flex: 1,
+  "& .MuiSvgIcon-root": {
+    fontSize: "20px",
+  }
 });
 
 const CloseIconButton = styled(IconButton)({
@@ -305,7 +289,7 @@ const Login = ({
               <CloseIcon />
             </CloseIconButton>
             
-            <Box sx={{ position: "relative", zIndex: 1, p: 3 }}>
+            <Box sx={{ position: "relative", zIndex: 1, p: 4 }}>
               <Box sx={{ textAlign: "center", mb: 2 }}>
                 <Box 
                   sx={{ 
@@ -386,7 +370,7 @@ const Login = ({
                         sx={{ 
                           color: "rgba(255, 255, 255, 0.4)",
                           '&.Mui-checked': {
-                            color: "#f1535d",
+                            color: "rgba(255, 255, 255, 0.7)",
                           },
                         }}
                       />
@@ -401,7 +385,7 @@ const Login = ({
                   <Typography 
                     variant="body2" 
                     sx={{ 
-                      color: "#f1535d", 
+                      color: "rgba(255, 255, 255, 0.7)", 
                       cursor: "pointer",
                       "&:hover": {
                         textDecoration: "underline",
@@ -416,12 +400,13 @@ const Login = ({
                   <Typography 
                     variant="body2" 
                     sx={{ 
-                      color: "#ff4d4f", 
+                      color: "#e0e0e0", 
                       mb: 2, 
                       textAlign: "center",
                       padding: "8px",
-                      backgroundColor: "rgba(255, 77, 79, 0.1)",
+                      backgroundColor: "rgba(255, 255, 255, 0.05)",
                       borderRadius: "8px",
+                      border: "1px solid rgba(255, 255, 255, 0.1)",
                     }}
                   >
                     {error}
@@ -453,16 +438,16 @@ const Login = ({
                 <Divider sx={{ flex: 1, borderColor: "rgba(255, 255, 255, 0.1)" }} />
               </Box>
               
-              <Box sx={{ display: "flex", gap: 2 }}>
-                <GoogleButton startIcon={<GoogleIcon />}>
-                  Google
-                </GoogleButton>
-                <FacebookButton startIcon={<FacebookIcon />}>
-                  Facebook
-                </FacebookButton>
-                <AppleButton startIcon={<AppleIcon />}>
-                  Apple
-                </AppleButton>
+              <Box sx={{ display: "flex", justifyContent: "center", gap: 3 }}>
+                <SocialButton>
+                  <GoogleIcon />
+                </SocialButton>
+                <SocialButton>
+                  <FacebookIcon />
+                </SocialButton>
+                <SocialButton>
+                  <AppleIcon />
+                </SocialButton>
               </Box>
               
               <Box sx={{ textAlign: "center", mt: 3 }}>
@@ -472,7 +457,7 @@ const Login = ({
                     component="span"
                     variant="body2"
                     sx={{
-                      color: "#f1535d",
+                      color: "rgba(255, 255, 255, 0.9)",
                       fontWeight: "600",
                       cursor: "pointer",
                       "&:hover": {
