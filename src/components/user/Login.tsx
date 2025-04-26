@@ -58,7 +58,6 @@
 //     </>)
 // }
 // export default Login
-
 import { useState, useRef, FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -91,49 +90,39 @@ const apiUrl = import.meta.env.VITE_APP_API_URL;
 // Custom styled components
 const LoginContainer = styled(Box)(({  }) => ({
   position: "relative",
-  borderRadius: "16px",
+  borderRadius: "12px",
   overflow: "hidden",
   backgroundColor: "#111",
   color: "#fff",
-  width: "400px",
+  width: "360px",
   maxWidth: "95vw",
   margin: "auto",
   marginTop: "10vh",
-  boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.7)",
+  boxShadow: "0 15px 25px -5px rgba(0, 0, 0, 0.5)",
   padding: 0,
+  border: "1px solid rgba(255, 255, 255, 0.08)",
 }));
-
-const GlowEffect = styled(Box)({
-  position: "absolute",
-  top: "-50%",
-  left: "-50%",
-  width: "200%",
-  height: "200%",
-  background: "radial-gradient(circle, rgba(128, 0, 255, 0.15) 0%, rgba(0, 0, 0, 0) 70%)",
-  pointerEvents: "none",
-  zIndex: 0,
-});
 
 const StyledTextField = styled(TextField)({
   "& .MuiOutlinedInput-root": {
     color: "#fff",
-    backgroundColor: "rgba(255, 255, 255, 0.05)",
-    borderRadius: "12px",
+    backgroundColor: "rgba(255, 255, 255, 0.03)",
+    borderRadius: "8px",
     "& fieldset": {
       borderColor: "rgba(255, 255, 255, 0.1)",
       transition: "border-color 0.3s ease",
     },
     "&:hover fieldset": {
-      borderColor: "rgba(128, 0, 255, 0.5)",
+      borderColor: "rgba(255, 255, 255, 0.2)",
     },
     "&.Mui-focused fieldset": {
-      borderColor: "#8000ff",
+      borderColor: "rgba(255, 255, 255, 0.3)",
     },
   },
   "& .MuiInputLabel-root": {
     color: "rgba(255, 255, 255, 0.6)",
     "&.Mui-focused": {
-      color: "#8000ff",
+      color: "rgba(255, 255, 255, 0.8)",
     },
   },
   "& .MuiInputAdornment-root": {
@@ -143,43 +132,69 @@ const StyledTextField = styled(TextField)({
 
 const LoginButton = styled(Button)({
   textTransform: "none",
-  borderRadius: "12px",
-  padding: "12px",
-  backgroundColor: "#8000ff",
-  color: "#fff",
+  borderRadius: "8px",
+  padding: "10px",
+  background: "linear-gradient(81.02deg, #f1535d 7.47%, #ffffff 45.52%, #edc106 114.8%)",
+  backgroundSize: "200% 100%",
+  color: "#000",
   fontWeight: "600",
   fontSize: "16px",
-  boxShadow: "0 4px 12px rgba(128, 0, 255, 0.3)",
+  boxShadow: "0 4px 10px rgba(0, 0, 0, 0.2)",
   "&:hover": {
-    backgroundColor: "#9533ff",
-    boxShadow: "0 6px 16px rgba(128, 0, 255, 0.4)",
-    transform: "translateY(-2px)",
+    backgroundPosition: "right center",
+    transition: "all 0.4s ease",
+    boxShadow: "0 6px 12px rgba(0, 0, 0, 0.3)",
   },
   "&:active": {
-    boxShadow: "0 2px 8px rgba(128, 0, 255, 0.2)",
-    transform: "translateY(0)",
+    boxShadow: "0 2px 5px rgba(0, 0, 0, 0.2)",
+    transform: "translateY(1px)",
   },
-  transition: "all 0.2s ease",
+  transition: "all 0.3s ease",
 });
 
-const SocialButton = styled(Button)({
+// Social buttons with their brand colors
+const GoogleButton = styled(Button)({
   textTransform: "none",
-  borderRadius: "12px",
-  padding: "10px",
-  backgroundColor: "rgba(255, 255, 255, 0.05)",
+  borderRadius: "8px",
+  padding: "8px",
+  backgroundColor: "#ffffff",
+  color: "#000",
+  border: "1px solid rgba(0, 0, 0, 0.1)",
+  "&:hover": {
+    backgroundColor: "#f1f1f1",
+  },
+  flex: 1,
+});
+
+const FacebookButton = styled(Button)({
+  textTransform: "none",
+  borderRadius: "8px",
+  padding: "8px",
+  backgroundColor: "#1877F2",
+  color: "#fff",
+  "&:hover": {
+    backgroundColor: "#0a61d6",
+  },
+  flex: 1,
+});
+
+const AppleButton = styled(Button)({
+  textTransform: "none",
+  borderRadius: "8px",
+  padding: "8px",
+  backgroundColor: "#000",
   color: "#fff",
   border: "1px solid rgba(255, 255, 255, 0.1)",
   "&:hover": {
-    backgroundColor: "rgba(255, 255, 255, 0.1)",
-    borderColor: "rgba(255, 255, 255, 0.2)",
+    backgroundColor: "#333",
   },
   flex: 1,
 });
 
 const CloseIconButton = styled(IconButton)({
   position: "absolute",
-  top: "16px",
-  right: "16px",
+  top: "12px",
+  right: "12px",
   color: "rgba(255, 255, 255, 0.6)",
   zIndex: 2,
   "&:hover": {
@@ -280,39 +295,37 @@ const Login = ({
           timeout: 500,
           style: {
             backgroundColor: "rgba(0, 0, 0, 0.8)",
-            backdropFilter: "blur(5px)",
+            backdropFilter: "blur(3px)",
           },
         }}
       >
         <Fade in={open}>
           <LoginContainer>
-            <GlowEffect />
-            
             <CloseIconButton onClick={() => setOpen(false)}>
               <CloseIcon />
             </CloseIconButton>
             
-            <Box sx={{ position: "relative", zIndex: 1, p: 4 }}>
-              <Box sx={{ textAlign: "center", mb: 3 }}>
+            <Box sx={{ position: "relative", zIndex: 1, p: 3 }}>
+              <Box sx={{ textAlign: "center", mb: 2 }}>
                 <Box 
                   sx={{ 
-                    width: 70, 
-                    height: 70, 
+                    width: 56, 
+                    height: 56, 
                     borderRadius: "50%", 
-                    backgroundColor: "rgba(128, 0, 255, 0.1)",
+                    background: "linear-gradient(140deg, #333 0%, #111 100%)",
                     display: "flex", 
                     alignItems: "center", 
                     justifyContent: "center",
                     margin: "0 auto 16px",
-                    border: "1px solid rgba(128, 0, 255, 0.3)",
+                    border: "1px solid rgba(255, 255, 255, 0.1)",
                   }}
                 >
-                  <LockOutlinedIcon sx={{ fontSize: 32, color: "#8000ff" }} />
+                  <LockOutlinedIcon sx={{ fontSize: 26, color: "#fff" }} />
                 </Box>
-                <Typography variant="h5" fontWeight="600" sx={{ mb: 1 }}>
+                <Typography variant="h6" fontWeight="600" sx={{ mb: 0.5 }}>
                   Welcome back
                 </Typography>
-                <Typography variant="body2" color="rgba(255, 255, 255, 0.6)" sx={{ mb: 3 }}>
+                <Typography variant="body2" color="rgba(255, 255, 255, 0.6)" sx={{ mb: 2 }}>
                   Please enter your details to sign in
                 </Typography>
               </Box>
@@ -364,7 +377,7 @@ const Login = ({
                   autoComplete="current-password"
                 />
                 
-                <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", mt: 1, mb: 3 }}>
+                <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", mt: 1, mb: 2 }}>
                   <FormControlLabel
                     control={
                       <Checkbox 
@@ -373,7 +386,7 @@ const Login = ({
                         sx={{ 
                           color: "rgba(255, 255, 255, 0.4)",
                           '&.Mui-checked': {
-                            color: "#8000ff",
+                            color: "#f1535d",
                           },
                         }}
                       />
@@ -388,7 +401,7 @@ const Login = ({
                   <Typography 
                     variant="body2" 
                     sx={{ 
-                      color: "#8000ff", 
+                      color: "#f1535d", 
                       cursor: "pointer",
                       "&:hover": {
                         textDecoration: "underline",
@@ -441,15 +454,15 @@ const Login = ({
               </Box>
               
               <Box sx={{ display: "flex", gap: 2 }}>
-                <SocialButton startIcon={<GoogleIcon />}>
+                <GoogleButton startIcon={<GoogleIcon />}>
                   Google
-                </SocialButton>
-                <SocialButton startIcon={<FacebookIcon />}>
+                </GoogleButton>
+                <FacebookButton startIcon={<FacebookIcon />}>
                   Facebook
-                </SocialButton>
-                <SocialButton startIcon={<AppleIcon />}>
+                </FacebookButton>
+                <AppleButton startIcon={<AppleIcon />}>
                   Apple
-                </SocialButton>
+                </AppleButton>
               </Box>
               
               <Box sx={{ textAlign: "center", mt: 3 }}>
@@ -459,7 +472,7 @@ const Login = ({
                     component="span"
                     variant="body2"
                     sx={{
-                      color: "#8000ff",
+                      color: "#f1535d",
                       fontWeight: "600",
                       cursor: "pointer",
                       "&:hover": {
