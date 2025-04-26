@@ -36,6 +36,7 @@ const FooterLink = styled(Link)(({ }) => ({
 const FooterDivider = styled(Box)(({ }) => ({
   borderBottom: '1px solid rgba(255, 255, 255, 0.2)',
   width: '100%',
+  margin: "13px"
 }));
 
 const HorizontalDivider = styled(Box)(({ }) => ({
@@ -51,7 +52,7 @@ const MinimalFooter = () => {
     <FooterContainer>
       <Container maxWidth="lg">
         {/* Logo Section - Centered at the top */}
-        <Box sx={{ display: 'flex', justifyContent: 'center', mb: 4 }}>
+        <Box sx={{ display: 'flex', justifyContent: 'center', mb: 4 ,marginBottom: "14px"}}>
           <Box component="img" src="/images/profile/1.1.png" alt="SIB Logo" sx={{     height: 91 }} />
         </Box>
 
