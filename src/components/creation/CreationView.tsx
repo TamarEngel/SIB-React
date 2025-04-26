@@ -30,7 +30,7 @@ const CreationView = ({ fileName }: { fileName: string }) => {
             src={imageUrl}
             alt="Uploaded Image"
             style={{
-                width: '90%',
+                width: '76%',
                 marginTop: "10px",
                 borderRadius: '8px',
                 transition: "transform 0.2s ease-in-out, opacity 0.5s",
