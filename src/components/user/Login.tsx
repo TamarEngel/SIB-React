@@ -511,6 +511,7 @@ import GoogleIcon from "@mui/icons-material/Google";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import AppleIcon from "@mui/icons-material/Apple";
 import { FormEvent, useRef, useState } from "react";
+import SignUp from "./SignUp";
 
 const apiUrl = import.meta.env.VITE_APP_API_URL;
 
@@ -591,7 +592,7 @@ const LoginButton = styled(Button)({
     transform: "scale(1.03)", // Slight grow effect
     borderWidth: "1px",
     borderStyle: "solid",
-    borderImage: "linear-gradient(81.02deg, #f1535d 7.47%, #ffffff 45.52%, #edc106 114.8%) 1",
+    borderImage: "linear-gradient(81.02deg, #f1535d 7.47%, #ffffff 45.52%, #edc106 114.8%) text",
     boxShadow: "0 4px 12px rgba(0, 0, 0, 0.25)",
   },
   "&:active": {
@@ -915,8 +916,7 @@ const Login = ({
                     }}
                     onClick={() => {
                       setOpen(false);
-                      // Replace with your signup handler
-                      // openSignup();
+                      <SignUp setSignUp={setOpen} open={false} setOpen={setOpen} />
                     }}
                   >
                     Sign up
