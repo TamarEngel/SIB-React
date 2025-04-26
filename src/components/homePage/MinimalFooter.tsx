@@ -3,7 +3,7 @@ import { Box, Container, Typography, Link, styled } from '@mui/material';
 
 // Styled components
 const FooterContainer = styled(Box)(({ }) => ({
-  backgroundColor: '#000000', // Changed to pure black
+  backgroundColor: '#06080D', // Changed to pure black
   color: 'white',
   padding: '40px 0 20px',
   position: 'relative',
@@ -36,7 +36,6 @@ const FooterLink = styled(Link)(({ }) => ({
 const FooterDivider = styled(Box)(({ }) => ({
   borderBottom: '1px solid rgba(255, 255, 255, 0.2)',
   width: '100%',
-  margin: '20px 0',
 }));
 
 const HorizontalDivider = styled(Box)(({ }) => ({
@@ -53,7 +52,7 @@ const MinimalFooter = () => {
       <Container maxWidth="lg">
         {/* Logo Section - Centered at the top */}
         <Box sx={{ display: 'flex', justifyContent: 'center', mb: 4 }}>
-          <Box component="img" src="/images/profile/1.1.png" alt="SIB Logo" sx={{ height: 60 }} />
+          <Box component="img" src="/images/profile/1.1.png" alt="SIB Logo" sx={{     height: 91 }} />
         </Box>
 
         {/* <FooterDivider /> */}
