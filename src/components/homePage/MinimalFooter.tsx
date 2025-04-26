@@ -53,7 +53,7 @@ const MinimalFooter = () => {
       <Container maxWidth="lg">
         {/* Logo Section - Centered at the top */}
         <Box sx={{ display: 'flex', justifyContent: 'center', mb: 4 ,marginBottom: "14px"}}>
-          <Box component="img" src="/images/profile/1.1.png" alt="SIB Logo" sx={{     height: 91 }} />
+          <Box component="img" src="/images/profile/1.1.png" alt="SIB Logo" sx={{     height: 91 ,marginLeft:"-131px"}} />
         </Box>
 
         {/* <FooterDivider /> */}
@@ -88,7 +88,7 @@ const MinimalFooter = () => {
         <FooterDivider />
 
         {/* Legal Links and Copyright */}
-        <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, justifyContent: 'center', alignItems: 'center', pt: 2 }}>
+        <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, justifyContent: 'center', alignItems: 'center', pt: 2,marginRight: "83px" }}>
           <Typography variant="body2" sx={{ color: '#9094A6', fontSize: '12px', textAlign: 'center', mb: { xs: 2, sm: 0 } }}>
             © 2025 All Rights Reserved, SIB
           </Typography>
