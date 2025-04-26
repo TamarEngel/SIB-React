@@ -17,6 +17,8 @@
     "@mui/icons-material": "^6.4.8",
     "@mui/material": "^6.4.8",
     "axios": "^1.8.2",
+    "framer-motion": "^12.9.2",
+    "lucide-react": "^0.503.0",
     "mobx": "^6.13.7",
     "mobx-react-lite": "^4.1.0",
     "react": "^19.0.0",
