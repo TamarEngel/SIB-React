@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 const apiUrl=import.meta.env.VITE_APP_API_URL ;    // קישור לשרת
 
-const CreationView = ({ fileName }: { fileName: string }) => {
+const CreationView2 = ({ fileName }: { fileName: string }) => {
 
     const [imageUrl, setImageUrl] = useState(null);
 
@@ -30,7 +30,7 @@ const CreationView = ({ fileName }: { fileName: string }) => {
             src={imageUrl}
             alt="Uploaded Image"
             style={{
-                width: '90%',
+                width: '76%',
                 marginTop: "10px",
                 borderRadius: '8px',
                 transition: "transform 0.2s ease-in-out, opacity 0.5s",
@@ -64,4 +64,4 @@ const CreationView = ({ fileName }: { fileName: string }) => {
     );
 };
 
-export default CreationView;
+export default CreationView2;
