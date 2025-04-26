@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import challengeStore from "../../store/challengeStore";
 import WinningCreation from "../creation/WinningCreation";
 import { ChallengeType } from "../../models/challenge";
+import MinimalFooter from "../homePage/MinimalFooter";
 
 const ChallengeHistory = observer(() => {
     const notActiveCallenges = challengeStore.getNotActiveCallenges;
@@ -184,6 +185,7 @@ const ChallengeHistory = observer(() => {
                     )}
                 </Box>
             </Box>
+            <MinimalFooter/>
         </Box>
     );
 });
