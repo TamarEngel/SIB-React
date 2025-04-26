@@ -5,7 +5,8 @@ import { Box, Container, Typography, Link, styled } from '@mui/material';
 const FooterContainer = styled(Box)(({ }) => ({
   backgroundColor: '#06080D', // Changed to pure black
   color: 'white',
-  padding: '40px 0 20px',
+  marginTop: "52px",
+  padding: '12px 0 20px',
   position: 'relative',
   left: 0,
   right: 0,
