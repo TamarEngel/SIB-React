@@ -41,7 +41,7 @@ const FooterDivider = styled(Box)(({  }) => ({
   margin: '10px 0',
 }));
 
-const Footer = () => {
+const MinimalFooter = () => {
   return (
     <FooterContainer>
       <Container maxWidth="lg">
@@ -103,4 +103,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default MinimalFooter;
