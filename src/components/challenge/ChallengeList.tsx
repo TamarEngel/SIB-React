@@ -5,7 +5,7 @@ import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import challengeStore from "../../store/challengeStore";
 import { useEffect, useState } from "react";
-import MinimalFooter from "../homePage/MinimalFooter";
+// import MinimalFooter from "../homePage/MinimalFooter";
 
 const challengeImages = [
     "/images/more/2.jpeg",
@@ -199,7 +199,7 @@ const ChallengeList = observer(() => {
                     <Typography sx={{ padding: 2, color: "#ffffff" }}>אין אתגרים זמינים.</Typography>
                 )}
             </Grid>
-            <MinimalFooter />
+            {/* <MinimalFooter /> */}
         </Box>
     );
 });
