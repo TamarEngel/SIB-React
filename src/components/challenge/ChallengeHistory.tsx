@@ -18,7 +18,7 @@ const ChallengeHistory = observer(() => {
         }
     }, [notActiveCallenges, selectedChallenge]);
 
-    return (
+    return (<>
         <Box sx={{
             width: "100%",
             minHeight: "100vh",
@@ -185,8 +185,10 @@ const ChallengeHistory = observer(() => {
                     )}
                 </Box>
             </Box>
-            <MinimalFooter/>
+            
         </Box>
+        <MinimalFooter />
+        </>
     );
 });
 

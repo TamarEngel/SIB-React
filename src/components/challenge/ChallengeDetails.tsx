@@ -9,6 +9,7 @@ import CreationRating from "../creation/CreationRating";
 import CreationView from "../creation/CreationView";
 import FileUploader from "../creation/FileUploader ";
 import PromptSuggestionsButton from "./PromptSuggestionsButton";
+import MinimalFooter from "../homePage/MinimalFooter";
 
 const ChallengeDetails = observer(() => {
     const { id } = useParams();
@@ -47,7 +48,7 @@ const ChallengeDetails = observer(() => {
         return <div>טוען את פרטי האתגר...</div>;
     }
 
-    return (
+    return (<>
         <Box sx={{ padding: 3,marginTop:"50px",marginLeft:"60px",width:"80%" }}>
             {/* כותרת מעוצבת */}
             <Typography sx={{
@@ -167,8 +168,9 @@ const ChallengeDetails = observer(() => {
                 </>
             )}
 
-
         </Box>
+        <MinimalFooter/>
+        </>
     );
 });
 

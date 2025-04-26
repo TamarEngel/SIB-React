@@ -41,7 +41,8 @@ const ChallengeList = observer(() => {
     // חישוב האתגרים להציג בדף הנוכחי
     const challengesToShow = challenges.slice((page - 1) * 3, page * 3);
 
-    return (
+    return (<>
+  
         <Box sx={{
             backgroundColor: "#06080d",
             marginTop:"20px",
@@ -199,8 +200,9 @@ const ChallengeList = observer(() => {
                     <Typography sx={{ padding: 2, color: "#ffffff" }}>אין אתגרים זמינים.</Typography>
                 )}
             </Grid>
-            <MinimalFooter />
         </Box>
+        <MinimalFooter />
+        </>
     );
 });
 
