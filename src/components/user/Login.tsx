@@ -511,7 +511,6 @@ import GoogleIcon from "@mui/icons-material/Google";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import AppleIcon from "@mui/icons-material/Apple";
 import { FormEvent, useRef, useState } from "react";
-import SignUp from "./SignUp";
 
 const apiUrl = import.meta.env.VITE_APP_API_URL;
 
@@ -579,28 +578,53 @@ const GradientText = styled(Typography)({
 
 // Updated login button with grow effect and gradient border on hover
 const LoginButton = styled(Button)({
-  textTransform: "none",
-  borderRadius: "8px",
-  padding: "10px",
-  backgroundColor: "transparent",
-  color: "#fff",
-  fontWeight: "500",
-  fontSize: "16px",
-  border: "1px solid rgba(255, 255, 255, 0.15)",
-  "&:hover": {
-    backgroundColor: "transparent",
-    transform: "scale(1.03)", // Slight grow effect
-    borderWidth: "1px",
-    borderStyle: "solid",
-    borderImage: "linear-gradient(81.02deg, #f1535d 7.47%, #ffffff 45.52%, #edc106 114.8%) text",
-    boxShadow: "0 4px 12px rgba(0, 0, 0, 0.25)",
-  },
-  "&:active": {
-    backgroundColor: "rgba(255, 255, 255, 0.05)",
-    transform: "translateY(1px) scale(1.02)",
-  },
-  transition: "all 0.3s ease",
-});
+    textTransform: "none",
+    borderRadius: "8px",
+    padding: "10px 20px",
+    background: "transparent",
+    color: "#fff",
+    fontWeight: 500,
+    fontSize: "16px",
+    border: "1px solid rgba(255, 255, 255, 0.15)",
+    position: "relative",
+    overflow: "hidden",
+    transition: "all 0.3s ease",
+  
+    "&::before": {
+      content: '""',
+      position: "absolute",
+      top: "-2px",
+      left: "-2px",
+      right: "-2px",
+      bottom: "-2px",
+      borderRadius: "10px",
+      background: "linear-gradient(81.02deg, #f1535d 7.47%, #ffffff 45.52%, #edc106 114.8%)",
+      zIndex: 0,
+      opacity: 0,
+      transition: "opacity 0.3s ease",
+    },
+  
+    "&:hover::before": {
+      opacity: 1,
+    },
+  
+    "& > *": {
+      position: "relative",
+      zIndex: 1,
+    },
+  
+    "&:hover": {
+      transform: "scale(1.03)",
+      background: "transparent",
+      borderColor: "transparent",
+    },
+  
+    "&:active": {
+      transform: "translateY(1px) scale(1.02)",
+      backgroundColor: "rgba(255, 255, 255, 0.05)",
+    },
+  });
+  
 
 // Unified social button style in grayscale
 const SocialButton = styled(Button)({
@@ -898,7 +922,7 @@ const Login = ({
                 </SocialButton>
               </Box>
               
-              <Box sx={{ textAlign: "center", mt: 3 }}>
+              {/* <Box sx={{ textAlign: "center", mt: 3 }}>
                 <Typography variant="body2" sx={{ color: "rgba(255, 255, 255, 0.6)" }}>
                   <GradientText className="span" variant="body2">
                     Don't have an account?
@@ -922,7 +946,7 @@ const Login = ({
                     Sign up
                   </Typography>
                 </Typography>
-              </Box>
+              </Box> */}
             </Box>
           </LoginContainer>
         </Fade>
