@@ -594,7 +594,7 @@ const LoginButton = styled(Button)({
     borderColor: "rgb(226 153 157)",
   },
   "&:active": {
-    backgroundColor: "rgba(255, 255, 255, 0.05)",
+    backgroundColor: "0.5px solid rgba(255, 255, 255, 0.05)",
     transform: "translateY(1px) scale(1.02)",
   },
   transition: "all 0.3s ease",
