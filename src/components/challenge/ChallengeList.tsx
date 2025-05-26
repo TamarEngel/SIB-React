@@ -232,12 +232,16 @@ const getRandomImage = () => challengeImages[Math.floor(Math.random() * challeng
 
 
 const ChallengeProgressSection = () => (
-    <Box sx={{ marginBottom: "40px" }}>
+    <Box sx={{ marginBottom: "40px",marginTop: "50px" }}>
         <Box sx={{ display: "flex", alignItems: "center", marginBottom: "25px" }}>
             <FlashOnIcon sx={{ color: "#fff9ca", marginRight: "12px", fontSize: "2rem" }} />
             <Typography variant="h4" sx={{ 
                 color: "#ffffff", 
                 fontWeight: 700,
+                background: "linear-gradient(81.02deg, #f1535d -22.47%, #ffffff 45.52%, #edc106 180.8%) text",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                display: "inline-block",
                 fontFamily: '"Plus Jakarta Sans", Arial, Helvetica, sans-serif'
             }}>
                 Active Challenges Progress
@@ -252,14 +256,14 @@ const ChallengeProgressSection = () => (
                 <Grid item xs={12} md={4} key={index}>
                     <Card sx={{
                         background: "linear-gradient(135deg, rgba(241, 83, 93, 0.08) 0%, rgba(255, 249, 202, 0.05) 50%, rgba(237, 193, 6, 0.08) 100%)",
-                        border: "1px solid rgba(255, 249, 202, 0.15)",
-                        borderRadius: "18px",
+                        border: "0.2px solid white",
+                        borderRadius: "15px",
                         padding: "28px",
                         backdropFilter: "blur(12px)",
                         transition: "all 0.3s ease",
                         "&:hover": {
                             transform: "translateY(-3px)",
-                            border: "1px solid rgba(255, 249, 202, 0.25)",
+                            border: "1px solid white",
                             boxShadow: "0 12px 35px rgba(241, 83, 93, 0.15)"
                         }
                     }}>
@@ -297,7 +301,7 @@ const ChallengeProgressSection = () => (
                                     borderRadius: "5px",
                                     backgroundColor: "rgba(255, 255, 255, 0.08)",
                                     "& .MuiLinearProgress-bar": {
-                                        background: "linear-gradient(81.02deg, #f1535d -22.47%, #ffffff 45.52%, #edc106 180.8%)",
+                                        background: "linear-gradient(81.02deg, #f1535d -4.47%, #ffffff 65.52%, #edc106 283.8%)",
                                         borderRadius: "5px"
                                     }
                                 }}
@@ -312,7 +316,7 @@ const ChallengeProgressSection = () => (
                                 {challenge.participants} participants
                             </Typography>
                             <Typography sx={{ 
-                                color: "#edc106", 
+                                color: "#efbec1", 
                                 fontSize: "0.9rem", 
                                 fontWeight: 600,
                                 fontFamily: '"Plus Jakarta Sans", Arial, Helvetica, sans-serif'
