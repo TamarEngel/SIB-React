@@ -1,9 +1,7 @@
 import { Box, Container, Typography, Link, styled } from '@mui/material';
 
-
-// Styled components
 const FooterContainer = styled(Box)(({ }) => ({
-  backgroundColor: '#06080D', // Changed to pure black
+  backgroundColor: '#020202', 
   color: 'white',
   marginTop: "52px",
   padding: '12px 0 20px',
@@ -13,16 +11,6 @@ const FooterContainer = styled(Box)(({ }) => ({
   width: '100%',
   fontFamily: '"Plus Jakarta Sans", Arial, Helvetica, sans-serif',
 }));
-
-// const SocialIcon = styled(Box)(({ }) => ({
-//   color: '#9094A6',
-//   cursor: 'pointer',
-//   transition: 'transform 0.5s ease-in-out, color 0.3s ease',
-//   '&:hover': {
-//     transform: 'scale(1.1)',
-//     color: '#ffffff',
-//   },
-// }));
 
 const FooterLink = styled(Link)(({ }) => ({
   color: '#9094A6',
@@ -52,43 +40,12 @@ const MinimalFooter = () => {
   return (
     <FooterContainer>
       <Container maxWidth="lg">
-        {/* Logo Section - Centered at the top */}
         <Box sx={{ display: 'flex', justifyContent: 'center', mb: 4 ,marginBottom: "14px"}}>
           <Box component="img" src="/images/profile/1.1.png" alt="SIB Logo" sx={{     height: 91 ,marginLeft:"-131px"}} />
         </Box>
 
-        {/* <FooterDivider /> */}
-
-        {/* Main Links - Horizontally centered */}
-        {/* <Box sx={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', my: 3 }}>
-          <FooterLink href="#" sx={{ mx: 1 }}>About</FooterLink>
-          <HorizontalDivider />
-          <FooterLink href="#" sx={{ mx: 1 }}>Solutions</FooterLink>
-          <HorizontalDivider />
-          <FooterLink href="#" sx={{ mx: 1 }}>Support</FooterLink>
-          <HorizontalDivider />
-          <FooterLink href="#" sx={{ mx: 1 }}>Contact</FooterLink>
-        </Box> */}
-
-        {/* Social Icons - Centered */}
-        {/* <Box sx={{ display: 'flex', justifyContent: 'center', gap: 3, my: 3 }}>
-          <SocialIcon>
-            <FacebookIcon />
-          </SocialIcon>
-          <SocialIcon>
-            <InstagramIcon />
-          </SocialIcon>
-          <SocialIcon>
-            <YouTubeIcon />
-          </SocialIcon>
-          <SocialIcon>
-            <TwitterIcon />
-          </SocialIcon>
-        </Box> */}
-
         <FooterDivider />
 
-        {/* Legal Links and Copyright */}
         <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, justifyContent: 'center', alignItems: 'center', pt: 2,marginRight: "83px" }}>
           <Typography variant="body2" sx={{ color: '#9094A6', fontSize: '12px', textAlign: 'center', mb: { xs: 2, sm: 0 } }}>
             © 2025 All Rights Reserved, SIB
