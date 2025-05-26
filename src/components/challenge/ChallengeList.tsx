@@ -87,7 +87,7 @@ const ChallengeProgressSection = () => (
                                 sx={{
                                     height: "4px",
                                     borderRadius: "5px",
-                                    backgroundColor: "rgba(255, 255, 255, 0.08)",
+                                    // backgroundColor: "rgba(255, 255, 255, 0.08)",
                                     "& .MuiLinearProgress-bar": {
                                         background: "linear-gradient(81.02deg, #f1535d -4.47%, #ffffff 65.52%, #edc106 283.8%)",
                                         borderRadius: "5px"
