@@ -249,21 +249,21 @@ const ChallengeProgressSection = () => (
         </Box>
         <Grid container spacing={4}>
             {[
-                { title: "Futuristic Cities", progress: 85, timeLeft: "2 days", participants: 342 },
-                { title: "Digital Portraits", progress: 65, timeLeft: "5 days", participants: 198 },
-                { title: "Abstract Dreams", progress: 45, timeLeft: "1 week", participants: 156 }
+                { title: "Overall Participation", progress: 85, timeLeft: "2 days", participants: 342 },
+                { title: "Submission Rate", progress: 65, timeLeft: "5 days", participants: 198 },
+                { title: "Voting Activity", progress: 45, timeLeft: "1 week", participants: 156 }
             ].map((challenge, index) => (
                 <Grid item xs={12} md={4} key={index}>
                     <Card sx={{
                         background: "linear-gradient(135deg, rgba(241, 83, 93, 0.08) 0%, rgba(255, 249, 202, 0.05) 50%, rgba(237, 193, 6, 0.08) 100%)",
-                        border: "0.2px solid white",
+                        border: "1px solid #ffffff26",
                         borderRadius: "15px",
                         padding: "28px",
                         backdropFilter: "blur(12px)",
                         transition: "all 0.3s ease",
                         "&:hover": {
                             transform: "translateY(-3px)",
-                            border: "1px solid white",
+                            border: "1px solid #ffffff26",
                             boxShadow: "0 12px 35px rgba(241, 83, 93, 0.15)"
                         }
                     }}>
@@ -297,7 +297,7 @@ const ChallengeProgressSection = () => (
                                 variant="determinate" 
                                 value={challenge.progress}
                                 sx={{
-                                    height: "10px",
+                                    height: "4px",
                                     borderRadius: "5px",
                                     backgroundColor: "rgba(255, 255, 255, 0.08)",
                                     "& .MuiLinearProgress-bar": {
