@@ -10,7 +10,7 @@ export const myRouter = createBrowserRouter([
         path: '/',
         element: <AppLayout />,
         children: [
-            { index: true, element: <HomePage /> }, // יטען כשנכנסים ל־"/"
+            { index: true, element: <HomePage /> },
             {path: 'allChallenges', element: <ChallengeList />},
             {path: "allChallenges/:id", element: <ChallengeDetails />},
             {path: "challengeHistory", element: <ChallengeHistory />}

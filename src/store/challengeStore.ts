@@ -1,7 +1,7 @@
 import { makeAutoObservable, action } from "mobx";
 import axios from "axios";
 import { ChallengeType } from "../models/challenge";
-const apiUrl=import.meta.env.VITE_APP_API_URL ;    // קישור לשרת
+const apiUrl=import.meta.env.VITE_APP_API_URL ;   
 class ChallengeStore {
     challenges: ChallengeType[] = [];
     sortChallenges:ChallengeType[] = [];
@@ -14,7 +14,6 @@ class ChallengeStore {
         this.fetchActiveChallenges();
         this.fetchNotActiveChallenges();
         this.fetchSortedChallenges();
-        //this.getSortedCreationsByChallenge(1);
     }
 
     fetchChallenges = action(async () => {
@@ -83,7 +82,6 @@ class ChallengeStore {
         }
     });
 
-    // שליפת היצירה המנצחת עבור אתגר מסוים
     getWinningCreation = action(async (challengeId: number) => {
         try {
             const res = await axios.get(`${apiUrl}/api/challenge/winner/${challengeId}`);

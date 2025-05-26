@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Button, Typography } from "@mui/material";
 import axios from "axios";
 import { getUserDataFromToken } from "../../utils/authUtils";
-const apiUrl=import.meta.env.VITE_APP_API_URL ;    // קישור לשרת
+const apiUrl = import.meta.env.VITE_APP_API_URL;
 
 const CreationRating = ({ creationId, initialVotes }: { creationId: number; initialVotes: number }) => {
 
@@ -10,7 +10,7 @@ const CreationRating = ({ creationId, initialVotes }: { creationId: number; init
     const token = sessionStorage.getItem("token");
     const [voteCount, setVoteCount] = useState<number>(initialVotes);
     const [userHasVoted, setUserHasVoted] = useState<boolean>(false);
-    
+
     useEffect(() => {
         if (!id || !token) return;
         const checkUserVote = async () => {
@@ -24,7 +24,7 @@ const CreationRating = ({ creationId, initialVotes }: { creationId: number; init
                     }
 
                 });
-                setUserHasVoted(response.data); // אם true - המשתמש כבר הצביע
+                setUserHasVoted(response.data);
             } catch (error) {
                 console.error("Error checking vote status", error);
             }
@@ -32,15 +32,14 @@ const CreationRating = ({ creationId, initialVotes }: { creationId: number; init
         checkUserVote();
     }, [id, creationId, token]);
 
-    // הוספת הצבעה
     const clickAddVote = async () => {
         const token = sessionStorage.getItem("token");
         if (!token) {
-            alert("עליך להתחבר כדי להצביע");
+            alert("You must be logged in to vote.");
             return;
         }
         if (!id) {
-            alert("אירעה שגיאה בטעינת הנתונים, נסה לרענן את הדף.");
+            alert("An error occurred while loading data. Please refresh the page and try again.");
             return;
         }
         try {
@@ -61,22 +60,21 @@ const CreationRating = ({ creationId, initialVotes }: { creationId: number; init
                 })
         } catch (error: any) {
             if (error.response?.status === 400) {
-                alert(error.response.data);  // הצגת הודעת שגיאה מותאמת מהשרת
+                alert(error.response.data);
             } else {
-                alert("שגיאה בהצבעה, נסה שוב מאוחר יותר.");
+                alert("An error occurred while voting. Please try again later.");
             }
         }
     };
 
-    // ביטול הצבעה
     const clickDeleteVote = async () => {
         const token = sessionStorage.getItem("token");
         if (!token) {
-            alert("עליך להתחבר כדי להצביע");
+            alert("You must be logged in to vote.");
             return;
         }
         if (!id) {
-            alert("אירעה שגיאה בטעינת הנתונים, נסה לרענן את הדף.");
+            alert("An error occurred while loading data. Please refresh the page and try again.");
             return;
         }
         try {
@@ -86,7 +84,7 @@ const CreationRating = ({ creationId, initialVotes }: { creationId: number; init
                     creationId: creationId
                 },
                 headers: {
-                    'Authorization': `Bearer ${token}`, // אם נדרש טוקן גישה
+                    'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json'
                 }
             })
@@ -98,16 +96,16 @@ const CreationRating = ({ creationId, initialVotes }: { creationId: number; init
 
         } catch (error: any) {
             if (error.response?.status === 400) {
-                alert(error.response.data);  // הצגת הודעת שגיאה מותאמת מהשרת
+                alert(error.response.data);
             } else {
-                alert("שגיאה בביטול ההצבעה, נסה שוב מאוחר יותר.");
+                alert("An error occurred while canceling the vote. Please try again later.");
             }
         }
     };
 
     return (
         <>
-            <Typography variant="h6" sx={{color:"white"}}>count #{voteCount}</Typography>
+            <Typography variant="h6" sx={{ color: "white" }}>count #{voteCount}</Typography>
             <Button onClick={clickAddVote} disabled={userHasVoted} sx={{ fontSize: "1.4rem" }}>👍</Button>
             <Button onClick={clickDeleteVote} disabled={!userHasVoted} sx={{ fontSize: "1.4rem" }}>👎</Button>
         </>

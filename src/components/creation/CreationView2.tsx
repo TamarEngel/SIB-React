@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-const apiUrl=import.meta.env.VITE_APP_API_URL ;    // קישור לשרת
+const apiUrl=import.meta.env.VITE_APP_API_URL ;  
 
 const CreationView2 = ({ fileName }: { fileName: string }) => {
 
@@ -12,16 +12,16 @@ const CreationView2 = ({ fileName }: { fileName: string }) => {
                         
                 const response = await axios.get(`${apiUrl}/api/Creation/download-url/${fileName}`, {});
         
-                setImageUrl(response.data.downloadUrl);  // הגדרת ה-URL לקבלת התמונה
+                setImageUrl(response.data.downloadUrl);  
         
             } catch (error) {
-                console.error('שגיאה בהבאת ה-URL:', error);
+                console.error('ERORR IMPORT URL:', error);
             }
         };
         
         fetchImageUrl();
 
-    }, [fileName]); // מבצע את הקריאה כל פעם ששם הקובץ משתנה
+    }, [fileName]); 
 
     return (
 <div>
@@ -38,29 +38,21 @@ const CreationView2 = ({ fileName }: { fileName: string }) => {
                 marginLeft: 'auto',
                 marginRight: 'auto',
                 cursor: 'pointer',
-                opacity: '0.85', // ברירת מחדל קצת שקוף
+                opacity: '0.85', 
             }}
             onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'scale(1.03)'; // הגדלה ממש עדינה
-                e.currentTarget.style.opacity = '1'; // השקיפות יורדת לאפס (תמונה נראית בבהירות מלאה)
+                e.currentTarget.style.transform = 'scale(1.03)';
+                e.currentTarget.style.opacity = '1';
             }}
             onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'scale(1)'; // חוזר לגודל המקורי
-                // e.currentTarget.style.opacity = '0.85'; // חוזר לשקיפות המקורית
+                e.currentTarget.style.transform = 'scale(1)'; 
             }}
         />
     ) : (
-        <p>טוען תמונה...</p>
+        <p>Loading image...</p>
     )}
 </div>
 
-        // <div>
-        //     {imageUrl ? (
-        //         <img src={imageUrl} alt="Uploaded Image" style={{ width: '90%',marginTop:"10px", borderRadius: '8px' }} />
-        //     ) : (
-        //         <p>טוען תמונה...</p>
-        //     )}
-        // </div>
     );
 };
 

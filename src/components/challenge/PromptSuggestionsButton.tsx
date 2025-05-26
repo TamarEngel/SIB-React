@@ -37,7 +37,6 @@ export default function ChatPromptBot({
   const [showTypingIndicator, setShowTypingIndicator] = useState(false);
   const messagesEndRef = useRef<null | HTMLDivElement>(null);
 
-  // Scroll to bottom when messages change
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
@@ -48,7 +47,7 @@ export default function ChatPromptBot({
 
   const handleOpen = async () => {
     setOpen(true);
-    setChat([]); // Reset chat
+    setChat([]); 
     await sendMessage("system", `אתה עוזר יצירתי באתר SIB, שבו יוצרים מעלים תמונות AI לפי אתגרים. דבר רק על האתר, האתגרים, השראה, יצירתיות ודירוגים.`);
     await sendMessage("user", `האתגר הנוכחי הוא: "${challengeTopic}". תיאור האתגר: "${challengeDescription}". תן לי רעיונות לפרומפטים.`);
   };
@@ -63,7 +62,6 @@ export default function ChatPromptBot({
           messages: [...chat, { role, content }]
         });
 
-        // Small delay to make it feel more natural
         setTimeout(() => {
           setShowTypingIndicator(false);
           const botReply = response.data.reply;
@@ -85,7 +83,6 @@ export default function ChatPromptBot({
     setInput("");
   };
 
-  // Typing indicator component
   const TypingIndicator = () => (
     <Box sx={{ display: 'flex', gap: 0.5, p: 1, alignItems: 'center' }}>
       <div className="dot" style={{
@@ -127,7 +124,6 @@ export default function ChatPromptBot({
 
   return (
     <>
-      {/* Floating Chat Icon Button - positioned at bottom right */}
       <Tooltip title="Get Creative Ideas" placement="left">
         <IconButton
           onClick={handleOpen}
@@ -144,11 +140,9 @@ export default function ChatPromptBot({
             zIndex: 1000,
             transition: 'all 0.3s ease',
             border: '1px solid rgba(255, 255, 255, 0.08)',
-            // במצב רגיל - אין גרדיאנט
             '&:hover': {
               transform: 'scale(1.05)',
               boxShadow: '0 6px 20px rgba(0, 0, 0, 0.25)',
-              // במצב hover - מוסיף מסגרת גרדיאנט
               backgroundColor: 'linear-gradient(81.02deg, #f1535d 7.47%, #ffffff 45.52%, #edc106 114.8%) 1 ',
               borderStyle: 'solid',
               borderWidth: '2px'
@@ -160,7 +154,6 @@ export default function ChatPromptBot({
         </IconButton>
       </Tooltip>
 
-      {/* Chat Modal */}
       <Modal
         open={open}
         onClose={() => setOpen(false)}
@@ -182,7 +175,6 @@ export default function ChatPromptBot({
             background: '#111215',
             border: '1px solid rgba(255, 255, 255, 0.06)'
           }}>
-            {/* Header */}
             <Box sx={{
               p: 2,
               display: "flex",
@@ -243,7 +235,6 @@ export default function ChatPromptBot({
               </IconButton>
             </Box>
 
-            {/* Challenge Info Banner */}
             <Box sx={{
               p: 2,
               py: 1.2,
@@ -260,7 +251,6 @@ export default function ChatPromptBot({
               </Typography>
             </Box>
 
-            {/* Messages Area */}
             <List sx={{
               flexGrow: 1,
               overflowY: 'auto',
@@ -426,7 +416,7 @@ export default function ChatPromptBot({
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={(e) => e.key === "Enter" && !e.shiftKey && handleSend()}
-                placeholder="שאל על רעיונות לפרומפט..."
+                placeholder="Ask for creative prompt ideas..."
                 multiline
                 maxRows={2}
                 size="small"
@@ -514,18 +504,14 @@ export default function ChatPromptBot({
   );
 }
 
-// Helper function to format numbered ideas
 function formatNumberedIdeas(content: string): React.ReactNode {
-  // Check if the content has numbered ideas like "1.", "2.", etc.
   const lines = content.split('\n');
   const numberedPattern = /^\d+\.\s/;
 
-  // If there are no numbered lines, return the content as is
   if (!lines.some(line => numberedPattern.test(line))) {
     return content;
   }
 
-  // Process the text to properly format numbered ideas
   return lines.map((line, index) => {
     const match = line.match(numberedPattern);
     if (match) {

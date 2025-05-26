@@ -514,14 +514,12 @@ import { FormEvent, useRef, useState } from "react";
 
 const apiUrl = import.meta.env.VITE_APP_API_URL;
 
-// Animation keyframes for gradient text
 const animateGradient = keyframes`
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 `;
 
-// Custom styled components
 const LoginContainer = styled(Box)(({ }) => ({
   position: "relative",
   borderRadius: "12px",
@@ -531,7 +529,7 @@ const LoginContainer = styled(Box)(({ }) => ({
   width: "420px",
   maxWidth: "95vw",
   margin: "auto",
-  marginTop: "5vh", // Moved higher up
+  marginTop: "5vh", 
   boxShadow: "0 15px 25px -5px rgba(0, 0, 0, 0.5)",
   padding: 0,
   border: "1px solid rgba(255, 255, 255, 0.08)",
@@ -564,7 +562,6 @@ const StyledTextField = styled(TextField)({
   },
 });
 
-// Gradient Text component
 const GradientText = styled(Typography)({
   background: "linear-gradient(81.02deg, #f1535d 7.47%, #ffffff 45.52%, #edc106 114.8%)",
   backgroundSize: "200% 200%",
@@ -576,7 +573,6 @@ const GradientText = styled(Typography)({
   display: "inline-block",
 });
 
-// Updated login button with grow effect and gradient border on hover
 const LoginButton = styled(Button)({
   textTransform: "none",
   borderRadius: "8px",
@@ -588,7 +584,7 @@ const LoginButton = styled(Button)({
   border: "1px solid rgba(255, 255, 255, 0.15)",
   "&:hover": {
     backgroundColor: "transparent",
-    transform: "scale(1.03)", // Slight grow effect
+    transform: "scale(1.03)", 
     borderWidth: "1px",
     borderStyle: "solid",
     borderColor: "rgb(226 153 157)",
@@ -600,7 +596,6 @@ const LoginButton = styled(Button)({
   transition: "all 0.3s ease",
 });
 
-// Unified social button style in grayscale
 const SocialButton = styled(Button)({
   textTransform: "none",
   borderRadius: "8px",
@@ -691,7 +686,6 @@ const Login = ({
         
         console.log("Login successful:", res.data.token);
         
-        // Add success animation before redirecting
         setLoading(false);
         setLog(true);
         
@@ -896,31 +890,7 @@ const Login = ({
                 </SocialButton>
               </Box>
               
-              {/* <Box sx={{ textAlign: "center", mt: 3 }}>
-                <Typography variant="body2" sx={{ color: "rgba(255, 255, 255, 0.6)" }}>
-                  <GradientText className="span" variant="body2">
-                    Don't have an account?
-                  </GradientText>{" "}
-                  <Typography
-                    component="span"
-                    variant="body2"
-                    sx={{
-                      color: "rgba(255, 255, 255, 0.9)",
-                      fontWeight: "600",
-                      cursor: "pointer",
-                      "&:hover": {
-                        textDecoration: "underline",
-                      }
-                    }}
-                    onClick={() => {
-                      setOpen(false);
-                      <SignUp setSignUp={setOpen} open={false} setOpen={setOpen} />
-                    }}
-                  >
-                    Sign up
-                  </Typography>
-                </Typography>
-              </Box> */}
+             
             </Box>
           </LoginContainer>
         </Fade>

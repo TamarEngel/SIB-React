@@ -4,7 +4,7 @@ import { getUserDataFromToken } from '../../utils/authUtils';
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import { Typography } from '@mui/material';
 
-const apiUrl = import.meta.env.VITE_APP_API_URL;    // קישור לשרת
+const apiUrl = import.meta.env.VITE_APP_API_URL; 
 
 const FileUploader = ({ challengeId, setCreations }: { challengeId: number; setCreations: React.Dispatch<React.SetStateAction<any[]>> }) => {
   const [file, setFile] = useState<File | null>(null);
@@ -39,10 +39,9 @@ const FileUploader = ({ challengeId, setCreations }: { challengeId: number; setC
     try {
       const token = sessionStorage.getItem('token')
       if (!token) {
-        alert("אין אפשרות להעלות קובץ ללא התחברות.");
+        alert("You must be logged in to upload files.");
         return;
       }
-      // שלב 1: קבלת Presigned URL מהשרת
       let presignedUrl;
       try {
         const res = await axios.get(`${apiUrl}/api/Creation/upload-url`, {
@@ -58,21 +57,20 @@ const FileUploader = ({ challengeId, setCreations }: { challengeId: number; setC
 
         presignedUrl = res.data.url;
       } catch (error) {
-        console.error('שגיאה בקבלת Presigned URL:', error);
+        console.error('Error fetching Presigned URL:', error);
         if (axios.isAxiosError(error) && error.response) {
           const errorMessage = error.response.data;
           if (errorMessage === "Can`t Upload 2 creations!") {
-            alert("❌ אינך יכול להעלות יותר משתי יצירות לאתגר זה!");
+            alert("❌ You can't upload more than two creations for this challenge!");
           } else {
-            alert(errorMessage || "שגיאה בקבלת קישור להעלאה.");
+            alert(errorMessage || "Error getting upload link.");
           }
         } else {
-          alert("שגיאה בלתי צפויה. נסה שוב מאוחר יותר.");
+          alert("Unexpected error. Please try again later.");
         }
         return;
       }
 
-      // שלב 2: העלאת הקובץ ישירות ל-S3
       await axios.put(presignedUrl, file, {
         headers: {
           'Content-Type': file.type,
@@ -85,14 +83,6 @@ const FileUploader = ({ challengeId, setCreations }: { challengeId: number; setC
         },
       });
 
-      // שלב 3: שמירת הקובץ בדאטה בייס
-      console.log("📦 נתונים שנשלחים:", {
-        UserId: userId,
-        FileName: file.name,
-        FileType: file.type,
-        ChallengeId: challengeId,
-        ImageUrl: presignedUrl
-      });
       const res2 = await axios.post(`${apiUrl}/api/Creation`, {
         UserId: userId,
         FileName: file.name,
@@ -109,16 +99,15 @@ const FileUploader = ({ challengeId, setCreations }: { challengeId: number; setC
         }
       );
 
-      const newCreation = res2.data.creation;  // התמונה החדשה שנשמרה
-      console.log("📦 תמונה חדשה:", newCreation);
+      const newCreation = res2.data.creation; 
 
       setCreations((prevCreations) => [...prevCreations, newCreation]);
 
-      alert(res2.data.message || "התמונה נשמרה בהצלחה!");
+      alert(res2.data.message || "✅ Your image has been uploaded successfully!");
 
     } catch (error) {
-      console.error('שגיאה בשמירת התמונה :', error);
-      alert('הייתה שגיאה במהלך ההעלאה. אנא נסה שוב מאוחר יותר.');
+      console.error('Error saving the image:', error);
+      alert('An error occurred during the upload. Please try again later.');
     }
   };
 

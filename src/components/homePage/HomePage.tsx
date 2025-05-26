@@ -114,10 +114,8 @@ const cardData = [
 const HomePage = () => {
     const navigate = useNavigate();
     useEffect(() => {
-        // להוסיף את הקלאס 'home-page' ל-body רק בעמוד הבית
         document.body.classList.add('home-page');
 
-        // להסיר את הקלאס 'home-page' כשעוזבים את הדף
         return () => {
             document.body.classList.remove('home-page');
         };
@@ -139,12 +137,11 @@ const HomePage = () => {
                 textAlign: "center",
                 color: "white",
                 mt: 10,
-                paddingBottom: "35px", // הקטנתי את ה-padding התחתון
-                paddingTop: "35px", // הקטנתי את ה-padding העליון
-                margin: "0 auto", // למרכז את הקונטיינר
+                paddingBottom: "35px",
+                paddingTop: "35px", 
+                margin: "0 auto", 
                 marginBottom:"70px",
             }}>
-                {/* קטע המספרים */}
                 <Typography variant="h6" sx={{ fontSize: "1rem", fontWeight: "400", marginBottom: "20px" }}>
                 Millions of creators compete in SIB, uploading AI-generated masterpieces:</Typography>
                 <Grid container spacing={2} justifyContent="center">
@@ -154,14 +151,14 @@ const HomePage = () => {
                         { number: "2.7M+", text: "votes and ratings ", more: "cast in competitions SIB" }
                     ].map((item, index) => (
                         <Grid item xs={12} sm={4} key={index} sx={{
-                            borderLeft: index !== 0 ? "1px solid #26272c" : "none", // קו דק יותר
+                            borderLeft: index !== 0 ? "1px solid #26272c" : "none", 
                             padding: "10px",
-                            width: "100%", // רוחב אלמנט קטן יותר
-                            maxWidth: "200px", // רוחב מקסימלי לכל אלמנט
+                            width: "100%", 
+                            maxWidth: "200px", 
                         }}>
                             <Typography variant="h4" sx={{
                                 fontWeight: "bold",
-                                fontSize: "1.7rem",  // גודל טקסט קטן יותר
+                                fontSize: "1.7rem", 
                                 background: "linear-gradient(81.02deg, #e79ca1 40.47%, #ffffff 45.52%, #edd87b 60.8%)",
                                 WebkitBackgroundClip: "text",
                                 WebkitTextFillColor: "transparent",
@@ -208,23 +205,20 @@ const HomePage = () => {
                     <p className="gg">
                     SIB has transformed the way creators engage with AI art. Weekly challenges, global competition, and a supportive community push artists to evolve and refine their skills. It’s a platform for showcasing creativity, receiving feedback, and connecting with talented individuals. Whether it's the thrill of competition or personal growth, SIB provides an unmatched experience for all artists. Here's what some of our users have to say about how SIB has impacted their creative journey:</p>
                 </div>
-                {/* קטע הריבועים */}
                 <Grid container spacing={2} justifyContent="center" sx={{ mt: 4 }}>
                     {cardData.map((card, index) => (
                         <Grid item xs={12} sm={6} md={6} key={index}>
                             <Card sx={{
-                                width: "500px", // הקטנתי את הרוחב של ה-Card
-                                height: "150px", // גובה קטן יותר
+                                width: "500px", 
+                                height: "150px", 
                                 background: "linear-gradient(0deg, #000000 0%, #0e0e0e 100%)",
-                                border: "1px solid #26272c", // גבול בצבע שביקשת
-                                borderRadius: "15px", // קצוות מעוגלים יותר
+                                border: "1px solid #26272c", 
+                                borderRadius: "15px",
                                 color: "white",
-                                p: 2, // הפחתתי את הפדינג
+                                p: 2, 
                             }}>
                                 <CardContent sx={{ paddingTop: "5px", paddingBottom: "0", display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
-                                    {/* אייקון צבעוני וגדול יותר */}
                                     {card.icon}
-                                    {/* טקסט עברי עם סידור שמאל לימין */}
                                     <Typography variant="h6" sx={{ fontWeight: "bold", color: "white", textAlign: "left" }}>
                                         {card.title}
                                     </Typography>

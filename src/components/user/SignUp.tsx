@@ -1,73 +1,3 @@
-// import { Box, Button, Modal, TextField } from "@mui/material"
-// import axios from "axios";
-// import { FormEvent, useRef } from "react";
-// const apiUrl=import.meta.env.VITE_APP_API_URL ;    // קישור לשרת
-
-// const SignUp = ({ setSignUp, open, setOpen }: { setSignUp: (log: boolean) => void, open: boolean, setOpen: (open: boolean) => void }) => {
-//     //const [open, setOpen] = useState(false);
-//     const userIdRef = useRef<HTMLInputElement>(null);
-//     const nameRef = useRef<HTMLInputElement>(null);
-//     const emailRef = useRef<HTMLInputElement>(null);
-//     const PasswordHashRef = useRef<HTMLInputElement>(null);
-
-//     const handleLogin = async (e: FormEvent) => {
-//         e.preventDefault();
-
-//         try {
-//             const res = await axios.post(`${apiUrl}/api/User/registerUser`, {
-//                 UserId:userIdRef.current?.value,
-//                 Name:nameRef.current?.value,
-//                 Email: emailRef.current?.value,
-//                 PasswordHash: PasswordHashRef.current?.value,
-//             }, 
-//             {
-//                 headers: {
-//                     'Content-Type': 'application/json',
-//                     'Accept': 'application/json' 
-//                 }
-//             });
-
-//             if (res.data && res.data.token) {
-//                 sessionStorage.setItem('token', res.data.token);
-//                 console.log('Token stored:', res.data.token); // Log the token being stored
-//                 setSignUp(true)
-//             }
-//             else {
-//                 console.log('Token not found in response');
-//             }
-
-//             setOpen(false);
-//         }
-//         catch (e: any) {
-//             console.log(e)
-//             if ((e.response && e.status === 401) || e.status === 400) {
-//                 alert('email or password are not correct')
-//             }
-//         }
-//     }
-//     return (<>
-//         <div style={{position: 'absolute', top: 0, left: 0, marginLeft: '120px', marginTop: '20px' }}>
-//             <Modal open={open} onClose={() => { setOpen(false) }}>
-//                 <Box sx={{ padding: 4, backgroundColor: 'white', width: 300, margin: 'auto', marginTop: 10 }}>
-//                     <h2>Sign Up</h2>
-
-//                     <TextField label="UserId" type='number' variant="outlined" fullWidth margin="normal" inputRef={userIdRef} sx={{ '& .MuiOutlinedInput-root': { '& fieldset': { borderColor: '#B0B0B0' }, '&:hover fieldset': { borderColor: 'pink' }, '&.Mui-focused fieldset': { borderColor: 'pink' } }, '& .MuiInputLabel-root': { color: '#B0B0B0' }, '& .MuiInputLabel-root.Mui-focused': { color: 'black' } }} />
-//                     <TextField label="Name" type='text' variant="outlined" fullWidth margin="normal" inputRef={nameRef} sx={{ '& .MuiOutlinedInput-root': { '& fieldset': { borderColor: '#B0B0B0' }, '&:hover fieldset': { borderColor: 'pink' }, '&.Mui-focused fieldset': { borderColor: 'pink' } }, '& .MuiInputLabel-root': { color: '#B0B0B0' }, '& .MuiInputLabel-root.Mui-focused': { color: 'black' } }} />
-//                     <TextField label="email" type='email' variant="outlined" fullWidth margin="normal" inputRef={emailRef} sx={{ '& .MuiOutlinedInput-root': { '& fieldset': { borderColor: '#B0B0B0' }, '&:hover fieldset': { borderColor: 'pink' }, '&.Mui-focused fieldset': { borderColor: 'pink' } }, '& .MuiInputLabel-root': { color: '#B0B0B0' }, '& .MuiInputLabel-root.Mui-focused': { color: 'black' } }} />
-//                     <TextField label="Password" type="password" variant="outlined" fullWidth margin="normal" inputRef={PasswordHashRef} sx={{ '& .MuiOutlinedInput-root': { '& fieldset': { borderColor: '#B0B0B0' }, '&:hover fieldset': { borderColor: 'pink' }, '&.Mui-focused fieldset': { borderColor: 'pink' } }, '& .MuiInputLabel-root': { color: '#B0B0B0' }, '& .MuiInputLabel-root.Mui-focused': { color: 'black' } }} />
-
-//                     <Button variant="outlined" onClick={handleLogin} fullWidth sx={{ textTransform: 'none', marginTop: 2.5, borderColor: 'pink', color: 'black', backgroundColor: 'transparent', '&:hover': { backgroundColor: 'transparent', borderColor: 'black', color: 'pink' }, '&:active': { backgroundColor: 'transparent', color: 'pink' } }}>
-//                         You're In!
-//                     </Button>
-//                 </Box>
-//             </Modal>
-//         </div>
-//     </>)
-// }
-
-// export default SignUp
-
-
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { 
@@ -97,14 +27,12 @@ import { FormEvent, useRef, useState } from "react";
 
 const apiUrl = import.meta.env.VITE_APP_API_URL;
 
-// Animation keyframes for gradient text
 const animateGradient = keyframes`
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 `;
 
-// Custom styled components
 const SignUpContainer = styled(Box)(({ }) => ({
   position: "relative",
   borderRadius: "12px",
@@ -147,7 +75,6 @@ const StyledTextField = styled(TextField)({
   },
 });
 
-// Gradient Text component
 const GradientText = styled(Typography)({
   background: "linear-gradient(81.02deg, #f1535d 7.47%, #ffffff 45.52%, #edc106 114.8%)",
   backgroundSize: "200% 200%",
@@ -159,7 +86,6 @@ const GradientText = styled(Typography)({
   display: "inline-block",
 });
 
-// Updated sign up button with grow effect and gradient border on hover
 const SignUpButton = styled(Button)({
   textTransform: "none",
   borderRadius: "8px",
@@ -171,7 +97,7 @@ const SignUpButton = styled(Button)({
   border: "1px solid rgba(255, 255, 255, 0.15)",
   "&:hover": {
     backgroundColor: "transparent",
-    transform: "scale(1.03)", // Slight grow effect
+    transform: "scale(1.03)",
     borderWidth: "1px",
     borderStyle: "solid",
     borderColor: "rgb(226 153 157)",
@@ -183,7 +109,6 @@ const SignUpButton = styled(Button)({
   transition: "all 0.3s ease",
 });
 
-// Unified social button style in grayscale
 const SocialButton = styled(Button)({
   textTransform: "none",
   borderRadius: "8px",
@@ -272,7 +197,6 @@ const SignUp = ({
         sessionStorage.setItem("token", res.data.token);
         console.log("Registration successful:", res.data.token);
         
-        // Add success animation before redirecting
         setLoading(false);
         setSignUp(true);
         

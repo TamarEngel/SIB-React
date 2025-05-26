@@ -152,35 +152,33 @@ const WinningCreation = observer(({ challengeId }: { challengeId: number }) => {
                 </Typography>
             </Box>
             
-            {/* Creation display - Fixed size container */}
             <Box sx={{ 
                 flex: 1,
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
                 width: "100%",
-                padding: "60px 20px 70px 20px", // Adjusted padding to fit content
+                padding: "60px 20px 70px 20px", 
                 overflow: "hidden",
             }}>
                 <Box sx={{
                     width: "100%",
                     height: "100%",
-                    maxWidth: "80%", // Limit maximum width of content
-                    maxHeight: "80%", // Limit maximum height of content
+                    maxWidth: "80%", 
+                    maxHeight: "80%", 
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     "& img": {
                         maxWidth: "100%",
                         maxHeight: "100%",
-                        objectFit: "contain" // Maintain aspect ratio
+                        objectFit: "contain"
                     }
                 }}>
                     <CreationView2 fileName={winningCreation.fileName} />
                 </Box>
             </Box>
             
-            {/* Creator info bar - Fixed at bottom */}
             <Box sx={{ 
                 width: "100%",
                 background: "rgba(0, 0, 0, 0.8)",
@@ -194,7 +192,6 @@ const WinningCreation = observer(({ challengeId }: { challengeId: number }) => {
                 left: 0,
                 right: 0
             }}>
-                {/* Creator info */}
                 <Box sx={{ 
                     display: "flex", 
                     alignItems: "center", 

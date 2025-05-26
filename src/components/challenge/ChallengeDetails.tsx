@@ -45,12 +45,24 @@ const ChallengeDetails = observer(() => {
     }, [id, currentChallenge]);
 
     if (!currentChallenge) {
-        return <div>טוען את פרטי האתגר...</div>;
+        return <Typography variant="h6" 
+                sx={{ 
+                    marginTop:" 11px",
+                    fontFamily: "Roboto, Helvetica, Arial, sans-serif",
+                    fontWeight: "500",
+                    fontSize: "1.15rem",
+                    lineHeight: "1.6",
+                    letterSpacing:" 0.0075em",
+                    color:" #f6c2c2",
+                    marginLeft: "7px",
+                    marginBottom: "16.128px",
+                }}>
+                    Loading challenge details...;
+                </Typography>
     }
 
     return (<>
         <Box sx={{ padding: 3,marginTop:"50px",marginLeft:"60px",width:"80%" }}>
-            {/* כותרת מעוצבת */}
             <Typography sx={{
                 fontSize: "clamp(1.5625rem, 0.8152rem + 2.9891vw, 2.25rem)",
                 fontWeight: 700,
@@ -66,7 +78,6 @@ const ChallengeDetails = observer(() => {
                 {currentChallenge.title}
             </Typography>
 
-            {/* תיאור מעוצב */}
             <Typography sx={{
                 fontSize: "1rem",
                 fontWeight: 400,
@@ -81,10 +92,22 @@ const ChallengeDetails = observer(() => {
 
 
             {currentChallenge.isDeleted && (
-                <Typography variant="h6" sx={{ color: "#ffffff" }}>This Challenge is fininshed</Typography>
+                <Typography variant="h6" 
+                sx={{ 
+                    marginTop:" 11px",
+                    fontFamily: "Roboto, Helvetica, Arial, sans-serif",
+                    fontWeight: "500",
+                    fontSize: "1.15rem",
+                    lineHeight: "1.6",
+                    letterSpacing:" 0.0075em",
+                    color:" #f6c2c2",
+                    marginLeft: "7px",
+                    marginBottom: "16.128px",
+                }}>
+                    This Challenge is fininshed
+                </Typography>
             )}
 
-            {/* הצגת התמונות שהועלו לאתגר */}
             <Typography variant="h6" sx={{
                 marginLeft: "10px",
                 marginTop: 3,
@@ -97,11 +120,11 @@ const ChallengeDetails = observer(() => {
             </Typography>
 
             <Grid container spacing={4} sx={{
-                marginTop: 3,  // רווח משמעותי בין הדפים
+                marginTop: 3,  
                 display: 'flex',
-                justifyContent: 'center',  // למרכז את התוכן
-                alignItems: 'flex-start',  // לוודא שהם מתחילים מאותה שורה
-                backgroundColor: "#000000",  // רקע שחור לדף
+                justifyContent: 'center',  
+                alignItems: 'flex-start',  
+                backgroundColor: "#000000",
                 padding: 3
             }}>
                 {creations.length > 0 ? (
@@ -109,25 +132,25 @@ const ChallengeDetails = observer(() => {
                         <Grid item xs={12} sm={6} md={4} key={creation.id}>
                             <Paper sx={{
                                 margin: "20px",
-                                padding: 0.5,  // הגדלה של רווח בתוך הכרטיס
+                                padding: 0.5, 
                                 textAlign: "center",
-                                backgroundColor: "black",  // רקע כהה יותר לכרטיסים
+                                backgroundColor: "black", 
                                 border: "1px solid #26272c",
                                 width: "100%",
-                                borderRadius: 2  // פינות מעוגלות
+                                borderRadius: 2 
                             }}>
                                 <CreationView fileName={creation.fileName} />
                                 <Typography variant="body2" sx={{
-                                    marginTop: 0.5,  // רווח קטן יותר בין התמונה לכיתוב
+                                    marginTop: 0.5,  
                                     color: "#ffffff",
-                                    fontSize: "0.875rem"  // כיתוב קטן יותר
+                                    fontSize: "0.875rem"  
                                 }}>
                                     {creation.fileName}
                                 </Typography>
                                 {currentChallenge.isDeleted && (
                                     <Typography variant="h6" sx={{
                                         color: "#ffffff",
-                                        fontSize: "0.9rem"  // כיתוב קטן יותר
+                                        fontSize: "0.9rem"  
                                     }}>
                                         count #{creation.votes}
                                     </Typography>
@@ -143,14 +166,13 @@ const ChallengeDetails = observer(() => {
                         <Typography sx={{
                             padding: 2,
                             color: "#ffffff",
-                            fontSize: "0.9rem"  // כיתוב קטן יותר כאשר אין יצירות
+                            fontSize: "1rem"  
                         }}>
                            Loading........
                         </Typography>
                     </Grid>
                 )}
             </Grid>
-            {/* הוספת תמונה לאתגר */}
             {!currentChallenge.isDeleted && (
                 <>
                 <FileUploader challengeId={currentChallenge.id} setCreations={setCreations} />
