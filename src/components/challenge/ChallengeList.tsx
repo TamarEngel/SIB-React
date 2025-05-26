@@ -33,7 +33,7 @@ const ChallengeProgressSection = () => (
                 display: "inline-block",
                 fontFamily: '"Plus Jakarta Sans", Arial, Helvetica, sans-serif'
             }}>
-                Active Challenges Progress
+                Competition Stats Overview
             </Typography>
         </Box>
         <Grid container spacing={4}>
@@ -44,6 +44,7 @@ const ChallengeProgressSection = () => (
             ].map((challenge, index) => (
                 <Grid item xs={12} md={4} key={index}>
                     <Card sx={{
+                        backgroundColor: "transparent",
                         border: "1px solid #ffffff26",
                         borderRadius: "15px",
                         padding: "28px",
@@ -87,7 +88,7 @@ const ChallengeProgressSection = () => (
                                 sx={{
                                     height: "4px",
                                     borderRadius: "5px",
-                                    // backgroundColor: "rgba(255, 255, 255, 0.08)",
+                                    backgroundColor: "rgba(255, 255, 255, 0.08)",
                                     "& .MuiLinearProgress-bar": {
                                         background: "linear-gradient(81.02deg, #f1535d -4.47%, #ffffff 65.52%, #edc106 283.8%)",
                                         borderRadius: "5px"
