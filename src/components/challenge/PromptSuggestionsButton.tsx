@@ -62,7 +62,7 @@ export default function ChatPromptBot({
         const response = await axios.post(`${apiUrl}/api/PromptSuggestions`, {
           messages: [...chat, { role, content }]
         });
-        
+
         // Small delay to make it feel more natural
         setTimeout(() => {
           setShowTypingIndicator(false);
@@ -88,28 +88,28 @@ export default function ChatPromptBot({
   // Typing indicator component
   const TypingIndicator = () => (
     <Box sx={{ display: 'flex', gap: 0.5, p: 1, alignItems: 'center' }}>
-      <div className="dot" style={{ 
-        width: 5, 
-        height: 5, 
-        borderRadius: '50%', 
+      <div className="dot" style={{
+        width: 5,
+        height: 5,
+        borderRadius: '50%',
         backgroundColor: '#f1535d',
         opacity: 0.7,
         animation: 'pulse 1.5s infinite',
         animationDelay: '0s'
       }}></div>
-      <div className="dot" style={{ 
-        width: 5, 
-        height: 5, 
-        borderRadius: '50%', 
+      <div className="dot" style={{
+        width: 5,
+        height: 5,
+        borderRadius: '50%',
         backgroundColor: '#f1535d',
         opacity: 0.7,
         animation: 'pulse 1.5s infinite',
         animationDelay: '0.3s'
       }}></div>
-      <div className="dot" style={{ 
-        width: 5, 
-        height: 5, 
-        borderRadius: '50%', 
+      <div className="dot" style={{
+        width: 5,
+        height: 5,
+        borderRadius: '50%',
         backgroundColor: '#f1535d',
         opacity: 0.7,
         animation: 'pulse 1.5s infinite',
@@ -129,40 +129,40 @@ export default function ChatPromptBot({
     <>
       {/* Floating Chat Icon Button - positioned at bottom right */}
       <Tooltip title="Get Creative Ideas" placement="left">
-      <IconButton 
-  onClick={handleOpen} 
-  sx={{
-    position: 'fixed',
-    bottom: '20px',
-    right: '20px',
-    width: '65px',
-    height: '65px',
-    borderRadius: '50%',
-    backgroundColor: 'rgba(24, 24, 26, 0.95)',
-    color: 'white',
-    boxShadow: '0 3px 10px rgba(0, 0, 0, 0.2)',
-    zIndex: 1000,
-    transition: 'all 0.3s ease',
-    border: '1px solid rgba(255, 255, 255, 0.08)',
-    // במצב רגיל - אין גרדיאנט
-    '&:hover': {
-      transform: 'scale(1.05)',
-      boxShadow: '0 6px 20px rgba(0, 0, 0, 0.25)',
-      // במצב hover - מוסיף מסגרת גרדיאנט
-      backgroundColor: 'linear-gradient(81.02deg, #f1535d 7.47%, #ffffff 45.52%, #edc106 114.8%) 1 ',
-      borderStyle: 'solid',
-      borderWidth: '2px'
-    }
-  }}
-  aria-label="Chat assistant"
->
-  <ChatIcon sx={{ fontSize: 30 }} />
-</IconButton>
+        <IconButton
+          onClick={handleOpen}
+          sx={{
+            position: 'fixed',
+            bottom: '20px',
+            right: '20px',
+            width: '65px',
+            height: '65px',
+            borderRadius: '50%',
+            backgroundColor: 'rgba(24, 24, 26, 0.95)',
+            color: 'white',
+            boxShadow: '0 3px 10px rgba(0, 0, 0, 0.2)',
+            zIndex: 1000,
+            transition: 'all 0.3s ease',
+            border: '1px solid rgba(255, 255, 255, 0.08)',
+            // במצב רגיל - אין גרדיאנט
+            '&:hover': {
+              transform: 'scale(1.05)',
+              boxShadow: '0 6px 20px rgba(0, 0, 0, 0.25)',
+              // במצב hover - מוסיף מסגרת גרדיאנט
+              backgroundColor: 'linear-gradient(81.02deg, #f1535d 7.47%, #ffffff 45.52%, #edc106 114.8%) 1 ',
+              borderStyle: 'solid',
+              borderWidth: '2px'
+            }
+          }}
+          aria-label="Chat assistant"
+        >
+          <ChatIcon sx={{ fontSize: 30 }} />
+        </IconButton>
       </Tooltip>
 
       {/* Chat Modal */}
-      <Modal 
-        open={open} 
+      <Modal
+        open={open}
         onClose={() => setOpen(false)}
         closeAfterTransition
       >
@@ -192,8 +192,8 @@ export default function ChatPromptBot({
               background: 'rgba(0,0,0,0.3)',
             }}>
               <Box display="flex" alignItems="center" gap={1.8}>
-                <Avatar sx={{ 
-                  bgcolor: 'transparent', 
+                <Avatar sx={{
+                  bgcolor: 'transparent',
                   width: 36,
                   height: 36,
                   border: '1px solid rgba(255, 255, 255, 0.1)',
@@ -215,7 +215,7 @@ export default function ChatPromptBot({
                   <SmartToyIcon sx={{ color: '#fff', fontSize: '20px' }} />
                 </Avatar>
                 <Box>
-                  <Typography variant="subtitle1" sx={{ 
+                  <Typography variant="subtitle1" sx={{
                     color: '#fff',
                     fontWeight: 500,
                     fontFamily: '"Poppins", "Roboto", sans-serif',
@@ -224,8 +224,8 @@ export default function ChatPromptBot({
                   }}>
                     Creative Assistant
                   </Typography>
-                  <Typography variant="caption" sx={{ 
-                    color: '#aaa', 
+                  <Typography variant="caption" sx={{
+                    color: '#aaa',
                     fontFamily: '"Poppins", "Roboto", sans-serif',
                     fontSize: '12px',
                     letterSpacing: '0.2px'
@@ -234,23 +234,23 @@ export default function ChatPromptBot({
                   </Typography>
                 </Box>
               </Box>
-              <IconButton onClick={() => setOpen(false)} sx={{ 
-                color: '#aaa', 
+              <IconButton onClick={() => setOpen(false)} sx={{
+                color: '#aaa',
                 padding: '6px',
-                '&:hover': { color: '#fff' } 
+                '&:hover': { color: '#fff' }
               }}>
                 <CloseIcon fontSize="small" />
               </IconButton>
             </Box>
-            
+
             {/* Challenge Info Banner */}
-            <Box sx={{ 
-              p: 2, 
+            <Box sx={{
+              p: 2,
               py: 1.2,
               background: 'rgba(255, 255, 255, 0.02)',
               borderBottom: '1px solid rgba(255,255,255,0.04)'
             }}>
-              <Typography variant="caption" sx={{ 
+              <Typography variant="caption" sx={{
                 color: '#bbb',
                 fontSize: '12px',
                 fontFamily: '"Poppins", "Roboto", sans-serif',
@@ -261,12 +261,12 @@ export default function ChatPromptBot({
             </Box>
 
             {/* Messages Area */}
-            <List sx={{ 
-              flexGrow: 1, 
-              overflowY: 'auto', 
-              p: 2, 
-              display: 'flex', 
-              flexDirection: 'column', 
+            <List sx={{
+              flexGrow: 1,
+              overflowY: 'auto',
+              p: 2,
+              display: 'flex',
+              flexDirection: 'column',
               gap: 2,
               '&::-webkit-scrollbar': {
                 width: '4px',
@@ -303,7 +303,7 @@ export default function ChatPromptBot({
                         width: 28,
                         height: 28,
                         bgcolor: 'rgba(15, 15, 17, 0.95)',
-                        border: message.role === "user" 
+                        border: message.role === "user"
                           ? '1px solid rgba(255, 255, 255, 0.15)'
                           : '1px solid rgba(241, 83, 93, 0.2)',
                         position: 'relative',
@@ -335,7 +335,7 @@ export default function ChatPromptBot({
                       sx={{
                         p: 1.8,
                         borderRadius: 2.5,
-                        backgroundColor: message.role === "user" 
+                        backgroundColor: message.role === "user"
                           ? 'rgba(255, 255, 255, 0.03)'
                           : 'rgba(255, 255, 255, 0.01)',
                         border: message.role === "user"
@@ -349,9 +349,9 @@ export default function ChatPromptBot({
                         wordBreak: 'break-word'
                       }}
                     >
-                      <Typography 
-                        variant="body2" 
-                        sx={{ 
+                      <Typography
+                        variant="body2"
+                        sx={{
                           whiteSpace: 'pre-wrap',
                           fontFamily: '"Assistant", "Heebo", sans-serif',
                           fontSize: '14px',
@@ -360,7 +360,7 @@ export default function ChatPromptBot({
                           color: message.role === "user" ? '#fff' : '#eee',
                         }}
                       >
-                        {message.role === "assistant" 
+                        {message.role === "assistant"
                           ? formatNumberedIdeas(message.content)
                           : message.content
                         }
@@ -369,7 +369,7 @@ export default function ChatPromptBot({
                   </Box>
                 </ListItem>
               ))}
-              
+
               {showTypingIndicator && (
                 <ListItem sx={{ p: 0, justifyContent: "flex-start" }}>
                   <Box sx={{ display: 'flex', gap: 1.2, alignItems: 'flex-end' }}>
@@ -414,8 +414,8 @@ export default function ChatPromptBot({
             </List>
 
             {/* Input Area */}
-            <Box sx={{ 
-              p: 2, 
+            <Box sx={{
+              p: 2,
               backgroundColor: 'rgba(0,0,0,0.25)',
               borderTop: '1px solid rgba(255,255,255,0.04)',
               display: 'flex',
@@ -454,8 +454,8 @@ export default function ChatPromptBot({
                   },
                 }}
                 InputProps={{
-                  sx: { 
-                    color: '#fff', 
+                  sx: {
+                    color: '#fff',
                     direction: 'rtl',
                     fontFamily: '"Assistant", "Heebo", sans-serif',
                     padding: '12px 14px',
@@ -464,9 +464,9 @@ export default function ChatPromptBot({
               />
               <Tooltip title="Send Message">
                 <span>
-                  <IconButton 
-                    onClick={handleSend} 
-                    disabled={loading || !input.trim()} 
+                  <IconButton
+                    onClick={handleSend}
+                    disabled={loading || !input.trim()}
                     sx={{
                       height: '42px',
                       width: '42px',
@@ -487,7 +487,7 @@ export default function ChatPromptBot({
                         transition: 'opacity 0.3s ease',
                         zIndex: -1,
                       },
-                      '&:hover': { 
+                      '&:hover': {
                         backgroundColor: 'rgba(20, 20, 22, 0.95)',
                         '&::before': {
                           opacity: 0.8,
@@ -519,12 +519,12 @@ function formatNumberedIdeas(content: string): React.ReactNode {
   // Check if the content has numbered ideas like "1.", "2.", etc.
   const lines = content.split('\n');
   const numberedPattern = /^\d+\.\s/;
-  
+
   // If there are no numbered lines, return the content as is
   if (!lines.some(line => numberedPattern.test(line))) {
     return content;
   }
-  
+
   // Process the text to properly format numbered ideas
   return lines.map((line, index) => {
     const match = line.match(numberedPattern);
@@ -533,11 +533,11 @@ function formatNumberedIdeas(content: string): React.ReactNode {
         <React.Fragment key={index}>
           {index > 0 && <br />}
           <Box sx={{ display: 'flex', marginBottom: '10px' }}>
-            <Typography 
-              component="span" 
-              sx={{ 
-                color: 'rgba(241, 83, 93, 0.9)', 
-                fontWeight: 'bold', 
+            <Typography
+              component="span"
+              sx={{
+                color: 'rgba(241, 83, 93, 0.9)',
+                fontWeight: 'bold',
                 marginRight: '10px',
                 minWidth: '20px',
                 fontSize: '14px'

@@ -24,9 +24,9 @@ const ChallengeList = observer(() => {
     const [page, setPage] = useState(1);
 
     useEffect(() => {
-        document.body.style.backgroundColor = "#000000"; // רקע שחור
+        document.body.style.backgroundColor = "#020202"; 
         return () => {
-            document.body.style.backgroundColor = ""; // מחזירים את הרקע המקורי כשהקומפוננטה נעלמת
+            document.body.style.backgroundColor = "";
         };
     }, []);
 
@@ -38,13 +38,12 @@ const ChallengeList = observer(() => {
         setPage(newPage);
     };
 
-    // חישוב האתגרים להציג בדף הנוכחי
     const challengesToShow = challenges.slice((page - 1) * 3, page * 3);
 
     return (<>
   
         <Box sx={{
-            backgroundColor: "#06080d",
+            backgroundColor: "#020202",
             marginTop:"20px",
             minHeight: "100vh",
             padding: "95px 40px 70px",

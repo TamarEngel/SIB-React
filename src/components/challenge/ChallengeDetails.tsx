@@ -83,16 +83,6 @@ const ChallengeDetails = observer(() => {
             {currentChallenge.isDeleted && (
                 <Typography variant="h6" sx={{ color: "#ffffff" }}>This Challenge is fininshed</Typography>
             )}
-            {/* הצגת התמונה הזוכה אם האתגר הסתיים */}
-            {/* {currentChallenge.isDeleted && winningCreation && (
-                <Box sx={{ marginTop: 3, textAlign: "left" }}>
-                    <Typography variant="h6" sx={{ color: "#ffffff" }}>תמונה זוכה:</Typography>
-                    <CreationView fileName={winningCreation.fileName} />
-                    <Typography variant="body1" sx={{ marginTop: 1, color: "#ffffff" }}>
-                        {winningCreation.fileName}
-                    </Typography>
-                </Box>
-            )} */}
 
             {/* הצגת התמונות שהועלו לאתגר */}
             <Typography variant="h6" sx={{
